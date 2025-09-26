@@ -1,0 +1,44 @@
+{
+    "key": "group_strain_fields",
+    "title": "Strain Fields",
+    "fields": [
+        {
+            "key": "field_genetics",
+            "label": "Genetics",
+            "name": "genetics",
+            "type": "text"
+        },
+        {
+            "key": "field_strain_number",
+            "label": "Strain Number",
+            "name": "strain_number",
+            "type": "text"
+        },
+        {
+            "key": "field_nose",
+            "label": "Nose / Aroma",
+            "name": "nose",
+            "type": "text"
+        },
+        {
+            "key": "field_coa_link",
+            "label": "COA Link",
+            "name": "coa_link",
+            "type": "url"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "strain"
+            }
+        ]
+    ],
+    "options": {
+        "position": "normal",
+        "layout": "default",
+        "hide_on_screen": []
+    }
+}

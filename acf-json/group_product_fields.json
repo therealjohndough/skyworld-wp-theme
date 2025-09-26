@@ -1,0 +1,56 @@
+{
+    "key": "group_product_fields",
+    "title": "Product Fields",
+    "fields": [
+        {
+            "key": "field_related_strain",
+            "label": "Related Strain",
+            "name": "related_strain",
+            "type": "post_object",
+            "post_type": [
+                "strain"
+            ],
+            "return_format": "object"
+        },
+        {
+            "key": "field_batch_number",
+            "label": "Batch Number",
+            "name": "batch_number",
+            "type": "text"
+        },
+        {
+            "key": "field_thc_percent",
+            "label": "THC %",
+            "name": "thc_percent",
+            "type": "number",
+            "step": "0.01"
+        },
+        {
+            "key": "field_weight",
+            "label": "Weight",
+            "name": "weight",
+            "type": "text"
+        },
+        {
+            "key": "field_coa",
+            "label": "COA PDF",
+            "name": "coa_pdf",
+            "type": "file",
+            "return_format": "url"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "sky_product"
+            }
+        ]
+    ],
+    "options": {
+        "position": "normal",
+        "layout": "default",
+        "hide_on_screen": []
+    }
+}
