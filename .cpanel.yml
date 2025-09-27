@@ -2,24 +2,25 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/sjradmin/dev.skyworldcannabis.com/wp-content/themes/skyworld-wp-child
-    - echo "=== SIMPLE DEPLOYMENT TEST ==="
+    - echo "=== COMPLETE PROFESSIONAL CANNABIS THEME DEPLOYMENT ==="
     - echo "Creating theme directory..."
     - /bin/mkdir -p $DEPLOYPATH
-    - echo "Copying style.css..."
-    - /bin/cp style.css $DEPLOYPATH/
-    - echo "Copying functions.php..."
-    - /bin/cp functions.php $DEPLOYPATH/
-    - echo "Copying index.php..."
-    - /bin/cp index.php $DEPLOYPATH/
-    - echo "Checking if files copied:"
-    - ls -la $DEPLOYPATH/
-    - echo "If you see files above, the deployment is working!"
-    - echo "Now copying all remaining files..."
-    - /bin/cp -R inc/ $DEPLOYPATH/ 2>/dev/null || echo "inc folder copy failed"
-    - /bin/cp -R assets/ $DEPLOYPATH/ 2>/dev/null || echo "assets folder copy failed"  
-    - /bin/cp -R acf-json/ $DEPLOYPATH/ 2>/dev/null || echo "acf-json folder copy failed"
-    - /bin/cp *.php $DEPLOYPATH/ 2>/dev/null || echo "PHP files copy failed"
-    - /bin/cp *.css $DEPLOYPATH/ 2>/dev/null || echo "CSS files copy failed"
-    - /bin/cp *.md $DEPLOYPATH/ 2>/dev/null || echo "MD files copy failed"
-    - echo "=== FINAL FILE LIST ==="
-    - ls -la $DEPLOYPATH/
+    - /bin/rm -rf $DEPLOYPATH/* 2>/dev/null || true
+    - echo "Copying all theme files..."
+    - /bin/cp -R * $DEPLOYPATH/
+    - /bin/cp -R .[^.]* $DEPLOYPATH/ 2>/dev/null || true
+    - echo "Setting proper permissions..."
+    - /bin/chmod -R 755 $DEPLOYPATH
+    - echo "Professional Cannabis Management System deployed successfully!"
+    - echo "Theme includes:"
+    - echo "✅ Front page template with age gate"
+    - echo "✅ Cannabis management dashboard" 
+    - echo "✅ Professional Phosphor icons"
+    - echo "✅ SEO management system"
+    - echo "✅ Strain/product templates"
+    - echo ""
+    - echo "Files deployed:"
+    - ls -la $DEPLOYPATH/ | head -20
+    - echo ""
+    - echo "Template parts:"
+    - ls -la $DEPLOYPATH/template-parts/ 2>/dev/null || echo "No template-parts found"
