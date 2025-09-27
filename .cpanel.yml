@@ -1,15 +1,23 @@
 ---
 deployment:
   tasks:
+    - echo "=== DEPLOYMENT DEBUG START ==="
+    - echo "Current working directory:"
+    - pwd
+    - echo "Available files to deploy:"
+    - ls -la
+    - echo "Target deployment path:"
     - export DEPLOYPATH=/home/sjradmin/dev.skyworldcannabis.com/wp-content/themes/skyworld-wp-child
-    - echo "Deploying to: $DEPLOYPATH"
+    - echo $DEPLOYPATH
+    - echo "Checking if WordPress directory exists:"
+    - ls -la /home/sjradmin/dev.skyworldcannabis.com/wp-content/ || echo "WordPress wp-content not found"
+    - echo "Creating deployment directory:"
     - /bin/mkdir -p $DEPLOYPATH
-    - /bin/rm -rf $DEPLOYPATH/* 2>/dev/null || true
+    - echo "Copying files:"
     - /bin/cp -R * $DEPLOYPATH
     - /bin/cp -R .[^.]* $DEPLOYPATH 2>/dev/null || true
+    - echo "Setting permissions:"
     - /bin/chmod -R 755 $DEPLOYPATH
-    - echo "Professional Cannabis Management System deployed successfully!"
-    - echo "Deployed to: dev.skyworldcannabis.com"
-    - echo "STANDALONE THEME: No parent theme needed - activate directly!"
-    - echo "Files deployed:"
-    - ls -la $DEPLOYPATH/ | head -10
+    - echo "Deployment complete! Files in target directory:"
+    - ls -la $DEPLOYPATH/
+    - echo "=== DEPLOYMENT DEBUG END ==="
