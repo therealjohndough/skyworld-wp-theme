@@ -1,148 +1,401 @@
 <?php
 /**
- * skyworld-wp-child functions and definitions
+ * Skyworld Child Theme Functions
+ * Clean, client-friendly cannabis business management
+ * NO GUTENBERG - Everything controlled via ACF & Customizer
  */
 
-add_action( 'wp_enqueue_scripts', 'skyworld_child_enqueue_styles' );
-function skyworld_child_enqueue_styles() {
-    $parent_style = get_template_directory_uri() . '/style.css';
+// DISABLE GUTENBERG COMPLETELY - Client safety first!
+add_filter( 'use_block_editor_for_post', '__return_false', 10 );
+add_filter( 'use_block_editor_for_post_type', '__return_false', 10 );
+remove_theme_support( 'widgets-block-editor' );
 
-    // Enqueue parent style
-    wp_enqueue_style( 'parent-style', $parent_style, array(), wp_get_theme( get_template() )->get('Version') );
-
-    // Enqueue child theme stylesheet
-    wp_enqueue_style( 'skyworld-child-style', get_stylesheet_directory_uri() . '/assets/css/skyworld.css', array('parent-style'), '1.0.0' );
-
-    // Enqueue child theme JS
-    wp_enqueue_script( 'skyworld-child-js', get_stylesheet_directory_uri() . '/assets/js/skyworld.js', array('jquery'), '1.0.0', true );
-
-    // Load Font Awesome from CDN used by the template
-    wp_enqueue_style( 'font-awesome-cdn', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css', array(), '6.4.0' );
+// Remove Gutenberg CSS
+add_action( 'wp_enqueue_scripts', 'remove_gutenberg_css' );
+function remove_gutenberg_css() {
+    wp_dequeue_style( 'wp-block-library' );
+    wp_dequeue_style( 'wp-block-library-theme' );
+    wp_dequeue_style( 'wc-block-style' );
 }
 
-// Allow SVG uploads (optional convenience)
-add_filter( 'upload_mimes', 'skyworld_child_mime_types' );
-function skyworld_child_mime_types( $mimes ) {
-    $mimes['svg'] = 'image/svg+xml';
-    return $mimes;
+// Include all our custom functionality - ORDER MATTERS!
+require_once get_stylesheet_directory() . '/inc/post-types.php';
+require_once get_stylesheet_directory() . '/inc/acf-fields.php';
+require_once get_stylesheet_directory() . '/inc/customizer.php';
+require_once get_stylesheet_directory() . '/inc/admin-dashboard.php';
+require_once get_stylesheet_directory() . '/inc/seo-manager.php';
+
+// Legacy admin interface for backward compatibility
+if ( file_exists( get_stylesheet_directory() . '/inc/admin-interface.php' ) ) {
+    require_once get_stylesheet_directory() . '/inc/admin-interface.php';
 }
 
-
-/**
- * Register custom post types and taxonomies for Skyworld
- * Important: avoid using the slug 'product' for the CPT to prevent conflicts with WooCommerce.
- * We use 'sky_product' as the post type and rewrite slug 'products' (URL: /products/)
- */
-add_action( 'init', 'skyworld_register_cpts_and_taxonomies' );
-function skyworld_register_cpts_and_taxonomies() {
-    // Strain CPT (the hub)
-    $strain_labels = array(
-        'name'               => 'Strains',
-        'singular_name'      => 'Strain',
-        'menu_name'          => 'Strain Library',
-        'name_admin_bar'     => 'Strain',
-        'add_new'            => 'Add Strain',
-        'add_new_item'       => 'Add New Strain',
-        'new_item'           => 'New Strain',
-        'edit_item'          => 'Edit Strain',
-        'view_item'          => 'View Strain',
-        'all_items'          => 'All Strains',
-    );
-
-    $strain_args = array(
-        'labels'             => $strain_labels,
-        'public'             => true,
-        'show_in_rest'       => true,
-        'has_archive'        => true,
-        'rewrite'            => array( 'slug' => 'strains' ),
-        'supports'           => array( 'title', 'editor', 'thumbnail', 'excerpt', 'custom-fields' ),
-        'menu_position'      => 20,
-        'menu_icon'          => 'dashicons-palmtree',
-    );
-
-    register_post_type( 'strain', $strain_args );
-
-    // Sky Product CPT (safe alternative to 'product')
-    $product_labels = array(
-        'name'               => 'Products',
-        'singular_name'      => 'Product',
-        'menu_name'          => 'Products',
-        'name_admin_bar'     => 'Product',
-        'add_new'            => 'Add Product',
-        'add_new_item'       => 'Add New Product',
-        'new_item'           => 'New Product',
-        'edit_item'          => 'Edit Product',
-        'view_item'          => 'View Product',
-        'all_items'          => 'All Products',
-    );
-
-    // If WooCommerce or another plugin has already registered the 'product' post type,
-    // avoid using the same rewrite slug. Use 'products' normally, otherwise fall back to 'sky-products'.
-    $product_rewrite_slug = post_type_exists( 'product' ) ? 'sky-products' : 'products';
-
-    $product_args = array(
-        'labels'             => $product_labels,
-        'public'             => true,
-        'show_in_rest'       => true,
-        'has_archive'        => true,
-        // rewrite uses a safe slug for pretty URLs but CPT slug remains 'sky_product' to avoid collisions
-        'rewrite'            => array( 'slug' => $product_rewrite_slug ),
-        'supports'           => array( 'title', 'editor', 'thumbnail', 'excerpt', 'custom-fields' ),
-        'menu_position'      => 21,
-        'menu_icon'          => 'dashicons-cart',
-    );
-
-    register_post_type( 'sky_product', $product_args );
-
-    // Taxonomies for strain: effects and terpene
-    $effects_labels = array(
-        'name'          => 'Effects',
-        'singular_name' => 'Effect',
-        'search_items'  => 'Search Effects',
-        'all_items'     => 'All Effects',
-        'edit_item'     => 'Edit Effect',
-        'update_item'   => 'Update Effect',
-        'add_new_item'  => 'Add New Effect',
-        'new_item_name' => 'New Effect Name',
-        'menu_name'     => 'Effects',
-    );
-
-    register_taxonomy( 'effects', array( 'strain' ), array(
-        'hierarchical'      => false,
-        'labels'            => $effects_labels,
-        'show_ui'           => true,
-        'show_in_rest'      => true,
-        'rewrite'           => array( 'slug' => 'effects' ),
-    ) );
-
-    $terpene_labels = array(
-        'name'          => 'Terpenes',
-        'singular_name' => 'Terpene',
-        'search_items'  => 'Search Terpenes',
-        'all_items'     => 'All Terpenes',
-        'edit_item'     => 'Edit Terpene',
-        'update_item'   => 'Update Terpene',
-        'add_new_item'  => 'Add New Terpene',
-        'new_item_name' => 'New Terpene Name',
-        'menu_name'     => 'Terpenes',
-    );
-
-    register_taxonomy( 'terpene', array( 'strain' ), array(
-        'hierarchical'      => false,
-        'labels'            => $terpene_labels,
-        'show_ui'           => true,
-        'show_in_rest'      => true,
-        'rewrite'           => array( 'slug' => 'terpenes' ),
-    ) );
-
+// Enqueue child theme assets
+add_action( 'wp_enqueue_scripts', 'skyworld_child_enqueue_assets' );
+function skyworld_child_enqueue_assets() {
+    // Parent theme styles
+    wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css');
+    
+    // Child theme styles
+    wp_enqueue_style('child-style', get_stylesheet_directory_uri() . '/style.css', array('parent-style'));
+    wp_enqueue_style('skyworld-css', get_stylesheet_directory_uri() . '/assets/css/skyworld.css', array('child-style'));
+    wp_enqueue_style('template-blocks-css', get_stylesheet_directory_uri() . '/assets/css/template-blocks.css', array('skyworld-css'));
+    wp_enqueue_style('color-palette-css', get_stylesheet_directory_uri() . '/assets/css/color-palette.css', array('skyworld-css'));
+    wp_enqueue_style('phosphor-icons-css', get_stylesheet_directory_uri() . '/assets/css/phosphor-icons.css', array('child-style'));
+    
+    // Page-specific styles
+    if (is_page_template('page-store-locator.php')) {
+        wp_enqueue_style('store-locator-css', get_stylesheet_directory_uri() . '/assets/css/store-locator.css');
+    }
+    
+    if (is_page_template('page-coa.php')) {
+        wp_enqueue_style('coa-css', get_stylesheet_directory_uri() . '/assets/css/coa.css');
+    }
+    
+    // Strain library styles for archive and single strain pages
+    if (is_post_type_archive('strain') || is_singular('strain')) {
+        wp_enqueue_style('strain-library-css', get_stylesheet_directory_uri() . '/assets/css/strain-library.css');
+    }
+    
+    // Age gate styles and scripts for all pages
+    wp_enqueue_style('age-gate-css', get_stylesheet_directory_uri() . '/assets/css/age-gate.css');
+    wp_enqueue_script('age-gate-js', get_stylesheet_directory_uri() . '/assets/js/age-gate.js', array('jquery'), '1.0.0', true);
+    
+    // Enqueue child theme scripts
+    wp_enqueue_script('skyworld-js', get_stylesheet_directory_uri() . '/assets/js/skyworld.js', array('jquery'), '1.0.0', true);
+    
+    // Google Maps API for store locator
+    if (is_page_template('page-store-locator.php')) {
+        wp_enqueue_script('google-maps', 'https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places', array(), null, true);
+        wp_enqueue_script('store-locator-js', get_stylesheet_directory_uri() . '/assets/js/store-locator.js', array('jquery', 'google-maps'), '1.0.0', true);
+        
+        wp_localize_script('store-locator-js', 'storeLocator', array(
+            'ajaxurl' => admin_url('admin-ajax.php'),
+            'nonce' => wp_create_nonce('store_locator_nonce')
+        ));
+    }
 }
 
-// Load local ACF PHP fallback if present (registers fields programmatically)
-if ( file_exists( get_stylesheet_directory() . '/inc/acf-fields.php' ) ) {
-    require_once get_stylesheet_directory() . '/inc/acf-fields.php';
+// Add theme support for features
+add_theme_support( 'post-thumbnails' );
+add_theme_support( 'title-tag' );
+add_theme_support( 'custom-logo' );
+add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption' ) );
+
+// Set up image sizes for cannabis products
+add_image_size( 'product-thumb', 300, 300, true );
+add_image_size( 'product-large', 600, 600, true );
+add_image_size( 'strain-card', 400, 250, true );
+
+// Clean up WordPress head
+remove_action( 'wp_head', 'wp_generator' );
+remove_action( 'wp_head', 'wlwmanifest_link' );
+remove_action( 'wp_head', 'rsd_link' );
+
+// Custom login logo
+function skyworld_login_logo() {
+    $logo = get_theme_mod( 'custom_logo' );
+    if ( $logo ) {
+        $image = wp_get_attachment_image_src( $logo, 'full' );
+        echo '<style type="text/css">
+            #login h1 a, .login h1 a {
+                background-image: url(' . $image[0] . ');
+                background-size: contain;
+                width: 320px;
+                height: 80px;
+            }
+        </style>';
+    }
+}
+add_action( 'login_enqueue_scripts', 'skyworld_login_logo' );
+
+// Custom login URL
+function skyworld_login_url() {
+    return home_url();
+}
+add_filter( 'login_headerurl', 'skyworld_login_url' );
+
+// Age gate functionality from customizer
+function skyworld_age_gate_script() {
+    if ( ! get_theme_mod( 'skyworld_enable_age_gate', true ) ) {
+        return;
+    }
+    
+    if ( ! isset( $_COOKIE['skyworld_age_verified'] ) ) {
+        ?>
+        <div id="age-gate-overlay" style="
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 999999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        ">
+            <div style="
+                background: white;
+                padding: 40px;
+                border-radius: 10px;
+                text-align: center;
+                max-width: 400px;
+                margin: 20px;
+            ">
+                <h2 style="color: #333; margin-bottom: 20px;"><?php echo esc_html( get_theme_mod( 'skyworld_age_gate_headline', 'Age Verification Required' ) ); ?></h2>
+                <p style="color: #666; margin-bottom: 30px;"><?php echo esc_html( get_theme_mod( 'skyworld_age_gate_message', 'You must be 21 years or older to view this website.' ) ); ?></p>
+                <button onclick="verifyAge()" style="
+                    background: <?php echo get_theme_mod( 'skyworld_primary_color', '#ff793f' ); ?>;
+                    color: white;
+                    border: none;
+                    padding: 12px 30px;
+                    border-radius: 5px;
+                    font-size: 16px;
+                    cursor: pointer;
+                    margin-right: 10px;
+                ">I'm 21+</button>
+                <button onclick="window.location='https://google.com'" style="
+                    background: #666;
+                    color: white;
+                    border: none;
+                    padding: 12px 30px;
+                    border-radius: 5px;
+                    font-size: 16px;
+                    cursor: pointer;
+                ">Under 21</button>
+            </div>
+        </div>
+        <script>
+        function verifyAge() {
+            document.cookie = "skyworld_age_verified=true; path=/; max-age=" + (60*60*24*30);
+            document.getElementById('age-gate-overlay').style.display = 'none';
+        }
+        </script>
+        <?php
+    }
+}
+add_action( 'wp_footer', 'skyworld_age_gate_script' );
+
+// Add Google Analytics tracking from customizer
+add_action( 'wp_head', 'skyworld_google_analytics' );
+function skyworld_google_analytics() {
+    $ga_id = get_theme_mod( 'skyworld_ga_tracking_id' );
+    if ( $ga_id ) {
+        ?>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo esc_attr( $ga_id ); ?>"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '<?php echo esc_js( $ga_id ); ?>');
+        </script>
+        <?php
+    }
 }
 
-// Include CSV importer utility if present
-if ( file_exists( get_stylesheet_directory() . '/inc/importer.php' ) ) {
-    require_once get_stylesheet_directory() . '/inc/importer.php';
+// Add Google Search Console verification
+add_action( 'wp_head', 'skyworld_search_console_verification' );
+function skyworld_search_console_verification() {
+    $verification_code = get_theme_mod( 'skyworld_search_console_code' );
+    if ( $verification_code ) {
+        echo '<meta name="google-site-verification" content="' . esc_attr( $verification_code ) . '" />' . "\n";
+    }
+}
+
+// Add custom meta descriptions
+add_action( 'wp_head', 'skyworld_custom_meta_description' );
+function skyworld_custom_meta_description() {
+    if ( is_home() || is_front_page() ) {
+        $description = get_theme_mod( 'skyworld_default_meta_description', 'Premium indoor cannabis cultivation in New York.' );
+        echo '<meta name="description" content="' . esc_attr( $description ) . '" />' . "\n";
+    }
+}
+
+// Add structured data (Schema.org) for cannabis business
+add_action( 'wp_head', 'skyworld_structured_data' );
+function skyworld_structured_data() {
+    if ( ! get_theme_mod( 'skyworld_enable_schema', true ) ) {
+        return;
+    }
+    
+    $company_name = get_theme_mod( 'skyworld_company_name', 'Skyworld Cannabis' );
+    $phone = get_theme_mod( 'skyworld_phone', '' );
+    $email = get_theme_mod( 'skyworld_email', '' );
+    
+    if ( is_home() || is_front_page() ) {
+        ?>
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "<?php echo esc_js( $company_name ); ?>",
+          "url": "<?php echo esc_js( home_url() ); ?>",
+          <?php if ( $phone ) : ?>
+          "telephone": "<?php echo esc_js( $phone ); ?>",
+          <?php endif; ?>
+          <?php if ( $email ) : ?>
+          "email": "<?php echo esc_js( $email ); ?>",
+          <?php endif; ?>
+          "industry": "Cannabis Cultivation",
+          "description": "<?php echo esc_js( get_theme_mod( 'skyworld_default_meta_description', 'Premium cannabis cultivation' ) ); ?>"
+        }
+        </script>
+        <?php
+    }
+    
+    // Product schema for individual cannabis products
+    if ( is_singular( 'sky_product' ) ) {
+        global $post;
+        $strain = get_field( 'product_strain', $post->ID );
+        $thc = get_field( 'product_thc_percentage', $post->ID );
+        $price = get_field( 'product_price', $post->ID );
+        $image = get_the_post_thumbnail_url( $post->ID, 'large' );
+        
+        ?>
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Product",
+          "name": "<?php echo esc_js( $post->post_title ); ?>",
+          "description": "<?php echo esc_js( wp_strip_all_tags( $post->post_content ) ); ?>",
+          <?php if ( $image ) : ?>
+          "image": "<?php echo esc_js( $image ); ?>",
+          <?php endif; ?>
+          "category": "Cannabis Product",
+          <?php if ( $strain ) : ?>
+          "additionalProperty": {
+            "@type": "PropertyValue",
+            "name": "Strain",
+            "value": "<?php echo esc_js( $strain->post_title ); ?>"
+          },
+          <?php endif; ?>
+          <?php if ( $price ) : ?>
+          "offers": {
+            "@type": "Offer",
+            "price": "<?php echo esc_js( $price ); ?>",
+            "priceCurrency": "USD"
+          },
+          <?php endif; ?>
+          "brand": {
+            "@type": "Brand",
+            "name": "<?php echo esc_js( $company_name ); ?>"
+          }
+        }
+        </script>
+        <?php
+    }
+}
+
+// Custom title tags for better SEO
+add_filter( 'pre_get_document_title', 'skyworld_custom_title' );
+function skyworld_custom_title( $title ) {
+    if ( is_home() || is_front_page() ) {
+        $custom_title = get_theme_mod( 'skyworld_homepage_title' );
+        if ( $custom_title ) {
+            return $custom_title;
+        }
+    }
+    
+    return $title;
+}
+
+// AJAX handlers for store locator
+add_action( 'wp_ajax_get_nearby_stores', 'skyworld_get_nearby_stores' );
+add_action( 'wp_ajax_nopriv_get_nearby_stores', 'skyworld_get_nearby_stores' );
+
+function skyworld_get_nearby_stores() {
+    // Verify nonce for security
+    if ( ! wp_verify_nonce( $_POST['nonce'], 'store_locator_nonce' ) ) {
+        wp_die( 'Security check failed' );
+    }
+    
+    $lat = floatval( $_POST['lat'] );
+    $lng = floatval( $_POST['lng'] );
+    $radius = intval( $_POST['radius'] ) ?: 25; // Default 25 miles
+    
+    // Get all locations
+    $locations = get_posts( array(
+        'post_type' => 'location',
+        'posts_per_page' => -1,
+        'post_status' => 'publish'
+    ));
+    
+    $nearby_stores = array();
+    
+    foreach ( $locations as $location ) {
+        $store_lat = get_field( 'location_latitude', $location->ID );
+        $store_lng = get_field( 'location_longitude', $location->ID );
+        
+        if ( $store_lat && $store_lng ) {
+            $distance = skyworld_calculate_distance( $lat, $lng, $store_lat, $store_lng );
+            
+            if ( $distance <= $radius ) {
+                $nearby_stores[] = array(
+                    'id' => $location->ID,
+                    'title' => $location->post_title,
+                    'address' => get_field( 'location_address', $location->ID ),
+                    'phone' => get_field( 'location_phone', $location->ID ),
+                    'hours' => get_field( 'location_hours', $location->ID ),
+                    'website' => get_field( 'location_website', $location->ID ),
+                    'lat' => $store_lat,
+                    'lng' => $store_lng,
+                    'distance' => round( $distance, 1 )
+                );
+            }
+        }
+    }
+    
+    // Sort by distance
+    usort( $nearby_stores, function( $a, $b ) {
+        return $a['distance'] <=> $b['distance'];
+    });
+    
+    wp_send_json_success( $nearby_stores );
+}
+
+// Calculate distance between two coordinates
+function skyworld_calculate_distance( $lat1, $lng1, $lat2, $lng2 ) {
+    $earth_radius = 3959; // miles
+    
+    $delta_lat = deg2rad( $lat2 - $lat1 );
+    $delta_lng = deg2rad( $lng2 - $lng1 );
+    
+    $a = sin( $delta_lat / 2 ) * sin( $delta_lat / 2 ) +
+         cos( deg2rad( $lat1 ) ) * cos( deg2rad( $lat2 ) ) *
+         sin( $delta_lng / 2 ) * sin( $delta_lng / 2 );
+    
+    $c = 2 * atan2( sqrt( $a ), sqrt( 1 - $a ) );
+    
+    return $earth_radius * $c;
+}
+
+// Add admin notice if ACF is not active
+add_action( 'admin_notices', 'skyworld_acf_admin_notice' );
+function skyworld_acf_admin_notice() {
+    if ( ! function_exists( 'get_field' ) ) {
+        echo '<div class="notice notice-error">
+            <p><strong>Skyworld Theme:</strong> This theme requires Advanced Custom Fields (ACF) plugin to function properly. Please install and activate ACF.</p>
+        </div>';
+    }
+}
+
+// Custom body classes for easier styling
+add_filter( 'body_class', 'skyworld_custom_body_classes' );
+function skyworld_custom_body_classes( $classes ) {
+    // Add cannabis-specific classes
+    if ( is_post_type_archive( 'strain' ) || is_singular( 'strain' ) ) {
+        $classes[] = 'cannabis-strains';
+    }
+    
+    if ( is_post_type_archive( 'sky_product' ) || is_singular( 'sky_product' ) ) {
+        $classes[] = 'cannabis-products';
+    }
+    
+    if ( is_post_type_archive( 'location' ) || is_singular( 'location' ) ) {
+        $classes[] = 'cannabis-locations';
+    }
+    
+    return $classes;
 }

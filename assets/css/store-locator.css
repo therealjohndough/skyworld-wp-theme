@@ -1,0 +1,522 @@
+/* Store Locator Styles */
+
+.store-locator-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.store-locator-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.store-locator-header h1 {
+    font-size: 48px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+.store-locator-header p {
+    font-size: 18px;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.store-locator-search {
+    margin-bottom: 40px;
+}
+
+.search-input-container {
+    display: flex;
+    max-width: 600px;
+    margin: 0 auto;
+    gap: 10px;
+}
+
+#location-search {
+    flex: 1;
+    padding: 15px 20px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+#location-search:focus {
+    border-color: #27ae60;
+}
+
+.search-button,
+.locate-button {
+    padding: 15px 20px;
+    border: none;
+    border-radius: 8px;
+    background: #27ae60;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    min-width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-button:hover,
+.locate-button:hover {
+    background: #219a52;
+    transform: translateY(-2px);
+}
+
+.locate-button {
+    background: #3498db;
+}
+
+.locate-button:hover {
+    background: #2980b9;
+}
+
+.store-locator-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    min-height: 600px;
+}
+
+.store-results-panel {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: #f8f9fa;
+    border-bottom: 1px solid #eee;
+}
+
+.results-count {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.view-toggle {
+    display: flex;
+    gap: 5px;
+}
+
+.view-btn {
+    padding: 8px 15px;
+    border: 1px solid #ddd;
+    background: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.view-btn.active,
+.view-btn:hover {
+    background: #27ae60;
+    color: white;
+    border-color: #27ae60;
+}
+
+.loading-spinner {
+    display: none;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #27ae60;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.store-list {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.store-item {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.3s ease;
+}
+
+.store-item:hover {
+    background-color: #f8f9fa;
+}
+
+.store-item:last-child {
+    border-bottom: none;
+}
+
+.store-info h3 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.store-address,
+.store-phone {
+    color: #666;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.store-address i,
+.store-phone i {
+    width: 16px;
+    color: #27ae60;
+}
+
+.store-phone a {
+    color: #27ae60;
+    text-decoration: none;
+}
+
+.store-phone a:hover {
+    text-decoration: underline;
+}
+
+.store-actions {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: #27ae60;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #219a52;
+    transform: translateY(-1px);
+}
+
+.btn-outline {
+    background: white;
+    color: #27ae60;
+    border: 1px solid #27ae60;
+}
+
+.btn-outline:hover {
+    background: #27ae60;
+    color: white;
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #5a6268;
+}
+
+.store-map-container {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.store-map {
+    width: 100%;
+    height: 100%;
+    min-height: 600px;
+}
+
+.map-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: #666;
+    text-align: center;
+    background: #f8f9fa;
+}
+
+/* Store Modal Styles */
+.store-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+}
+
+.store-modal-content {
+    background: white;
+    border-radius: 12px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.store-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.store-modal-header h3 {
+    margin: 0;
+    color: #2c3e50;
+}
+
+.store-modal-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.store-modal-close:hover {
+    color: #333;
+}
+
+.store-modal-body {
+    padding: 20px;
+}
+
+.store-modal-info > div {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.store-modal-info i {
+    width: 20px;
+    color: #27ae60;
+    margin-top: 2px;
+}
+
+.store-address,
+.store-website a,
+.store-phone a {
+    color: #27ae60;
+    text-decoration: none;
+}
+
+.store-website a:hover,
+.store-phone a:hover {
+    text-decoration: underline;
+}
+
+.store-hours > div {
+    margin-bottom: 5px;
+}
+
+.store-modal-actions {
+    margin-top: 25px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+/* Google Maps Info Window Styles */
+.info-window {
+    padding: 10px;
+    min-width: 200px;
+}
+
+.info-window h4 {
+    margin: 0 0 10px 0;
+    color: #2c3e50;
+}
+
+.info-window p {
+    margin: 5px 0;
+    color: #666;
+}
+
+.info-window-actions {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.info-window-actions button {
+    padding: 6px 12px;
+    border: 1px solid #27ae60;
+    background: white;
+    color: #27ae60;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.info-window-actions button:hover {
+    background: #27ae60;
+    color: white;
+}
+
+/* Dark Mode Support */
+body.dark-mode .store-locator-header h1 {
+    color: #ecf0f1;
+}
+
+body.dark-mode .store-locator-header p {
+    color: #bdc3c7;
+}
+
+body.dark-mode #location-search {
+    background: #34495e;
+    border-color: #555;
+    color: #ecf0f1;
+}
+
+body.dark-mode .store-results-panel,
+body.dark-mode .store-map-container {
+    background: #2c3e50;
+}
+
+body.dark-mode .results-header {
+    background: #34495e;
+    border-color: #555;
+}
+
+body.dark-mode .results-count {
+    color: #ecf0f1;
+}
+
+body.dark-mode .store-item {
+    border-color: #555;
+}
+
+body.dark-mode .store-item:hover {
+    background: #34495e;
+}
+
+body.dark-mode .store-info h3 {
+    color: #ecf0f1;
+}
+
+body.dark-mode .store-address,
+body.dark-mode .store-phone {
+    color: #bdc3c7;
+}
+
+body.dark-mode .store-modal-content {
+    background: #2c3e50;
+    color: #ecf0f1;
+}
+
+body.dark-mode .store-modal-header {
+    border-color: #555;
+}
+
+body.dark-mode .store-modal-header h3 {
+    color: #ecf0f1;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .store-locator-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .store-map-container {
+        order: -1;
+        min-height: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    .store-locator-container {
+        padding: 20px 15px;
+    }
+    
+    .store-locator-header h1 {
+        font-size: 32px;
+    }
+    
+    .search-input-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .results-header {
+        flex-direction: column;
+        gap: 15px;
+        align-items: stretch;
+    }
+    
+    .view-toggle {
+        justify-content: center;
+    }
+    
+    .store-actions {
+        flex-direction: column;
+    }
+    
+    .store-modal-actions {
+        flex-direction: column;
+    }
+}

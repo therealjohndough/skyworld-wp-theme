@@ -1,0 +1,256 @@
+{
+    "key": "group_product_fields_robust",
+    "title": "Product Information",
+    "fields": [
+        {
+            "key": "field_product_strain",
+            "label": "Related Strain",
+            "name": "related_strain",
+            "type": "post_object",
+            "instructions": "Select the strain this product is made from",
+            "required": 0,
+            "post_type": ["strain"],
+            "taxonomy": [],
+            "allow_null": 1,
+            "multiple": 0,
+            "return_format": "object",
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_product_sku",
+            "label": "SKU",
+            "name": "product_sku",
+            "type": "text",
+            "instructions": "Product SKU\/item number",
+            "required": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_product_status",
+            "label": "Product Status",
+            "name": "product_status",
+            "type": "select",
+            "instructions": "Current availability status",
+            "required": 1,
+            "choices": {
+                "available": "Available",
+                "limited": "Limited Supply",
+                "coming_soon": "Coming Soon",
+                "out_of_stock": "Out of Stock",
+                "discontinued": "Discontinued"
+            },
+            "default_value": "available",
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_product_variants",
+            "label": "Product Variants",
+            "name": "product_variants",
+            "type": "repeater",
+            "instructions": "Add different sizes\/weights for this product",
+            "required": 0,
+            "layout": "table",
+            "button_label": "Add Variant",
+            "sub_fields": [
+                {
+                    "key": "field_variant_size",
+                    "label": "Size\/Weight",
+                    "name": "variant_size",
+                    "type": "text",
+                    "instructions": "e.g., 3.5g, 1g, 6-pack",
+                    "required": 1,
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_variant_price",
+                    "label": "Price",
+                    "name": "variant_price",
+                    "type": "number",
+                    "instructions": "Retail price (optional)",
+                    "required": 0,
+                    "min": 0,
+                    "step": 0.01,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_variant_wholesale_price",
+                    "label": "Wholesale Price",
+                    "name": "variant_wholesale_price",
+                    "type": "number",
+                    "instructions": "B2B wholesale price (optional)",
+                    "required": 0,
+                    "min": 0,
+                    "step": 0.01,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_variant_sku",
+                    "label": "Variant SKU",
+                    "name": "variant_sku",
+                    "type": "text",
+                    "instructions": "Specific SKU for this variant",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "20",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ]
+        },
+        {
+            "key": "field_product_lab_results",
+            "label": "Lab Results",
+            "name": "lab_results",
+            "type": "group",
+            "instructions": "Laboratory testing results",
+            "required": 0,
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_thc_percentage",
+                    "label": "THC %",
+                    "name": "thc_percentage",
+                    "type": "number",
+                    "instructions": "Total THC percentage",
+                    "required": 0,
+                    "min": 0,
+                    "max": 100,
+                    "step": 0.01,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_cbd_percentage",
+                    "label": "CBD %",
+                    "name": "cbd_percentage",
+                    "type": "number",
+                    "instructions": "Total CBD percentage",
+                    "required": 0,
+                    "min": 0,
+                    "max": 100,
+                    "step": 0.01,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_cbg_percentage",
+                    "label": "CBG %",
+                    "name": "cbg_percentage",
+                    "type": "number",
+                    "instructions": "Total CBG percentage",
+                    "required": 0,
+                    "min": 0,
+                    "max": 100,
+                    "step": 0.01,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_total_terpenes",
+                    "label": "Total Terpenes %",
+                    "name": "total_terpenes",
+                    "type": "number",
+                    "instructions": "Total terpene percentage",
+                    "required": 0,
+                    "min": 0,
+                    "max": 100,
+                    "step": 0.01,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_coa_link",
+                    "label": "COA Link",
+                    "name": "coa_link",
+                    "type": "url",
+                    "instructions": "Link to Certificate of Analysis",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_test_date",
+                    "label": "Test Date",
+                    "name": "test_date",
+                    "type": "date_picker",
+                    "instructions": "Date of laboratory testing",
+                    "required": 0,
+                    "display_format": "m\/d\/Y",
+                    "return_format": "Y-m-d",
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_lab_name",
+                    "label": "Testing Lab",
+                    "name": "lab_name",
+                    "type": "text",
+                    "instructions": "Name of testing laboratory",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "product"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label"
+}

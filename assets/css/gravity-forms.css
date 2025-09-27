@@ -1,0 +1,358 @@
+/* Skyworld Gravity Forms Styling */
+
+/* Form wrapper styling */
+.skyworld-form {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.skyworld-form .gform_title {
+    color: #2c3e50;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.skyworld-form .gform_description {
+    color: #666;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+/* Field container styling */
+.skyworld-field-container {
+    margin-bottom: 20px;
+}
+
+.skyworld-field-container label {
+    color: #2c3e50;
+    font-weight: 500;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.skyworld-field-container .gfield_required {
+    color: #e74c3c;
+}
+
+/* Input styling */
+.skyworld-form input[type="text"],
+.skyworld-form input[type="email"],
+.skyworld-form input[type="tel"],
+.skyworld-form input[type="url"],
+.skyworld-form textarea,
+.skyworld-form select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: inherit;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background: white;
+}
+
+.skyworld-form input[type="text"]:focus,
+.skyworld-form input[type="email"]:focus,
+.skyworld-form input[type="tel"]:focus,
+.skyworld-form input[type="url"]:focus,
+.skyworld-form textarea:focus,
+.skyworld-form select:focus {
+    outline: none;
+    border-color: #27ae60;
+    box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.1);
+}
+
+/* Textarea specific styling */
+.skyworld-form textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* Submit button styling */
+.skyworld-form input[type="submit"] {
+    background: linear-gradient(135deg, #27ae60, #2ecc71);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.skyworld-form input[type="submit"]:hover {
+    background: linear-gradient(135deg, #219a52, #27ae60);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(39, 174, 96, 0.4);
+}
+
+/* Checkbox and radio styling */
+.skyworld-form input[type="checkbox"],
+.skyworld-form input[type="radio"] {
+    width: auto;
+    margin-right: 8px;
+}
+
+.skyworld-form .gchoice {
+    margin-bottom: 10px;
+}
+
+.skyworld-form .gchoice label {
+    display: inline;
+    font-weight: normal;
+    margin-bottom: 0;
+    cursor: pointer;
+}
+
+/* Validation error styling */
+.skyworld-form .gfield_error {
+    background-color: #fdf2f2;
+    border-color: #e74c3c !important;
+}
+
+.skyworld-form .validation_error {
+    background: #fdf2f2;
+    border: 1px solid #e74c3c;
+    color: #c0392b;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.skyworld-form .gfield_validation_message {
+    color: #e74c3c;
+    font-size: 14px;
+    margin-top: 5px;
+    display: block;
+}
+
+/* Success confirmation styling */
+.skyworld-newsletter-success,
+.skyworld-contact-success,
+.skyworld-wholesale-success {
+    background: linear-gradient(135deg, #d5f4e6, #fafffe);
+    border: 2px solid #27ae60;
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.skyworld-newsletter-success h3,
+.skyworld-contact-success h3,
+.skyworld-wholesale-success h3 {
+    color: #27ae60;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.skyworld-newsletter-success p,
+.skyworld-contact-success p,
+.skyworld-wholesale-success p {
+    color: #2c3e50;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.success-icon {
+    font-size: 48px;
+    color: #27ae60;
+    margin-top: 20px;
+}
+
+.skyworld-wholesale-success ul {
+    text-align: left;
+    max-width: 400px;
+    margin: 15px auto 0;
+    padding: 0;
+    list-style: none;
+}
+
+.skyworld-wholesale-success li {
+    padding: 5px 0;
+    position: relative;
+    padding-left: 25px;
+}
+
+.skyworld-wholesale-success li:before {
+    content: '✓';
+    color: #27ae60;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+/* File upload styling */
+.skyworld-form .ginput_container_fileupload {
+    border: 2px dashed #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    transition: border-color 0.3s ease;
+}
+
+.skyworld-form .ginput_container_fileupload:hover {
+    border-color: #27ae60;
+}
+
+/* Multi-page form styling */
+.skyworld-form .gform_page_footer {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.skyworld-form .gform_next_button,
+.skyworld-form .gform_previous_button {
+    background: #6c757d;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-right: 10px;
+}
+
+.skyworld-form .gform_next_button:hover,
+.skyworld-form .gform_previous_button:hover {
+    background: #5a6268;
+    transform: translateY(-1px);
+}
+
+.skyworld-form .gform_next_button {
+    background: #27ae60;
+}
+
+.skyworld-form .gform_next_button:hover {
+    background: #219a52;
+}
+
+/* Loading spinner */
+.skyworld-form .gform_ajax_spinner {
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #27ae60;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Section breaks */
+.skyworld-form .gsection {
+    border-top: 2px solid #27ae60;
+    padding-top: 20px;
+    margin-top: 30px;
+}
+
+.skyworld-form .gsection .gsection_title {
+    color: #2c3e50;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.skyworld-form .gsection .gsection_description {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+/* Dark mode support */
+body.dark-mode .skyworld-form {
+    background: #2c3e50;
+    color: #ecf0f1;
+}
+
+body.dark-mode .skyworld-form .gform_title {
+    color: #ecf0f1;
+}
+
+body.dark-mode .skyworld-form .gform_description {
+    color: #bdc3c7;
+}
+
+body.dark-mode .skyworld-field-container label {
+    color: #ecf0f1;
+}
+
+body.dark-mode .skyworld-form input[type="text"],
+body.dark-mode .skyworld-form input[type="email"],
+body.dark-mode .skyworld-form input[type="tel"],
+body.dark-mode .skyworld-form input[type="url"],
+body.dark-mode .skyworld-form textarea,
+body.dark-mode .skyworld-form select {
+    background: #34495e;
+    border-color: #555;
+    color: #ecf0f1;
+}
+
+body.dark-mode .skyworld-form input[type="text"]::placeholder,
+body.dark-mode .skyworld-form input[type="email"]::placeholder,
+body.dark-mode .skyworld-form input[type="tel"]::placeholder,
+body.dark-mode .skyworld-form textarea::placeholder {
+    color: #95a5a6;
+}
+
+body.dark-mode .skyworld-form .validation_error {
+    background: #34495e;
+    border-color: #e74c3c;
+    color: #e74c3c;
+}
+
+body.dark-mode .skyworld-form .gsection {
+    border-color: #27ae60;
+}
+
+body.dark-mode .skyworld-form .gsection .gsection_title {
+    color: #ecf0f1;
+}
+
+body.dark-mode .skyworld-form .gsection .gsection_description {
+    color: #bdc3c7;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .skyworld-form {
+        padding: 20px;
+        margin: 15px;
+    }
+    
+    .skyworld-form .gform_title {
+        font-size: 20px;
+    }
+    
+    .skyworld-form input[type="submit"] {
+        width: 100%;
+        padding: 15px;
+    }
+    
+    .skyworld-form .gform_page_footer {
+        text-align: center;
+    }
+    
+    .skyworld-form .gform_next_button,
+    .skyworld-form .gform_previous_button {
+        width: 100%;
+        margin: 5px 0;
+    }
+}

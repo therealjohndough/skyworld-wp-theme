@@ -1,0 +1,162 @@
+{
+    "key": "group_strain_fields_robust",
+    "title": "Strain Information",
+    "fields": [
+        {
+            "key": "field_strain_genetics",
+            "label": "Genetics\/Lineage",
+            "name": "genetics",
+            "type": "text",
+            "instructions": "Parent strains (e.g., Gelato 41 x Gary Payton)",
+            "required": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_strain_breeder",
+            "label": "Breeder",
+            "name": "breeder",
+            "type": "text",
+            "instructions": "Original breeder\/genetics source",
+            "required": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_strain_flowering_time",
+            "label": "Flowering Time",
+            "name": "flowering_time",
+            "type": "text",
+            "instructions": "Days to harvest (e.g., 63-70 days)",
+            "required": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_strain_yield",
+            "label": "Expected Yield",
+            "name": "yield",
+            "type": "text",
+            "instructions": "Yield information",
+            "required": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_strain_difficulty",
+            "label": "Growing Difficulty",
+            "name": "growing_difficulty",
+            "type": "select",
+            "instructions": "Cultivation difficulty level",
+            "required": 0,
+            "choices": {
+                "beginner": "Beginner",
+                "intermediate": "Intermediate",
+                "advanced": "Advanced",
+                "expert": "Expert"
+            },
+            "wrapper": {
+                "width": "34",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_strain_aroma_profile",
+            "label": "Aroma Profile",
+            "name": "aroma_profile",
+            "type": "textarea",
+            "instructions": "Detailed aroma description",
+            "required": 0,
+            "rows": 3,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_strain_flavor_profile",
+            "label": "Flavor Profile",
+            "name": "flavor_profile",
+            "type": "textarea",
+            "instructions": "Detailed flavor description",
+            "required": 0,
+            "rows": 3,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_strain_terpene_profile",
+            "label": "Terpene Profile",
+            "name": "terpene_profile",
+            "type": "repeater",
+            "instructions": "Add dominant terpenes with percentages",
+            "required": 0,
+            "layout": "table",
+            "button_label": "Add Terpene",
+            "sub_fields": [
+                {
+                    "key": "field_terpene_name",
+                    "label": "Terpene",
+                    "name": "terpene_name",
+                    "type": "taxonomy",
+                    "taxonomy": "terpene",
+                    "field_type": "select",
+                    "allow_null": 0,
+                    "add_term": 1,
+                    "wrapper": {
+                        "width": "60",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_terpene_percentage",
+                    "label": "Percentage",
+                    "name": "terpene_percentage",
+                    "type": "number",
+                    "instructions": "Percentage (e.g., 1.30)",
+                    "required": 0,
+                    "min": 0,
+                    "max": 100,
+                    "step": 0.01,
+                    "wrapper": {
+                        "width": "40",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "strain"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label"
+}

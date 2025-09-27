@@ -1,0 +1,208 @@
+/* 
+ * Phosphor Icons Integration for Skyworld Cannabis Admin
+ * Professional, futuristic icon set - NO EMOJI NONSENSE
+ */
+
+/* Load Phosphor Icons from CDN */
+@import url('https://unpkg.com/phosphor-icons@1.4.2/src/css/icons.css');
+
+/* Icon Base Styles */
+.skyworld-icon {
+    font-family: "Phosphor";
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 20px;
+    margin-right: 8px;
+}
+
+/* Cannabis Business Icons */
+.icon-cannabis { font-family: "Phosphor"; }
+.icon-cannabis:before { content: "\f32e"; } /* leaf */
+
+.icon-dna { font-family: "Phosphor"; }
+.icon-dna:before { content: "\f0ad"; } /* dna strand for strains */
+
+.icon-package { font-family: "Phosphor"; }
+.icon-package:before { content: "\f1c2"; } /* package box for products */
+
+.icon-map-pin { font-family: "Phosphor"; }
+.icon-map-pin:before { content: "\f140"; } /* location pin */
+
+.icon-chart-line { font-family: "Phosphor"; }
+.icon-chart-line:before { content: "\f088"; } /* trending up for SEO */
+
+.icon-lightning { font-family: "Phosphor"; }
+.icon-lightning:before { content: "\f132"; } /* lightning bolt for quick actions */
+
+.icon-gear { font-family: "Phosphor"; }
+.icon-gear:before { content: "\f0fb"; } /* settings gear */
+
+.icon-palette { font-family: "Phosphor"; }
+.icon-palette:before { content: "\f1a2"; } /* color palette for customization */
+
+.icon-plus-circle { font-family: "Phosphor"; }
+.icon-plus-circle:before { content: "\f1d5"; } /* add new items */
+
+.icon-activity { font-family: "Phosphor"; }
+.icon-activity:before { content: "\f009"; } /* activity/pulse line */
+
+/* Dashboard Specific Icons */
+.icon-dashboard { font-family: "Phosphor"; }
+.icon-dashboard:before { content: "\f0a0"; } /* squares four */
+
+.icon-target { font-family: "Phosphor"; }
+.icon-target:before { content: "\f257"; } /* crosshair target for meta data */
+
+.icon-file-text { font-family: "Phosphor"; }
+.icon-file-text:before { content: "\f0e5"; } /* file text for content */
+
+.icon-stack { font-family: "Phosphor"; }
+.icon-stack:before { content: "\f23a"; } /* stack for site structure */
+
+.icon-magnifying-glass { font-family: "Phosphor"; }
+.icon-magnifying-glass:before { content: "\f141"; } /* search/keyword analysis */
+
+.icon-image { font-family: "Phosphor"; }
+.icon-image:before { content: "\f11a"; } /* image optimization */
+
+.icon-sitemap { font-family: "Phosphor"; }
+.icon-sitemap:before { content: "\f226"; } /* sitemap tree */
+
+/* Status Icons */
+.icon-check-circle { font-family: "Phosphor"; }
+.icon-check-circle:before { content: "\f080"; } /* success status */
+
+.icon-warning-circle { font-family: "Phosphor"; }
+.icon-warning-circle:before { content: "\f28c"; } /* warning status */
+
+.icon-x-circle { font-family: "Phosphor"; }
+.icon-x-circle:before { content: "\f2a4"; } /* error/needs work status */
+
+.icon-info { font-family: "Phosphor"; }
+.icon-info:before { content: "\f11c"; } /* information */
+
+/* Navigation Icons */
+.icon-house { font-family: "Phosphor"; }
+.icon-house:before { content: "\f10f"; } /* home/dashboard */
+
+.icon-flask { font-family: "Phosphor"; }
+.icon-flask:before { content: "\f0f3"; } /* lab/testing for products */
+
+.icon-microscope { font-family: "Phosphor"; }
+.icon-microscope:before { content: "\f153"; } /* microscope for strain analysis */
+
+.icon-storefront { font-family: "Phosphor"; }
+.icon-storefront:before { content: "\f242"; } /* storefront for locations */
+
+/* Utility Icons */
+.icon-arrow-right { font-family: "Phosphor"; }
+.icon-arrow-right:before { content: "\f030"; }
+
+.icon-external-link { font-family: "Phosphor"; }
+.icon-external-link:before { content: "\f0d4"; }
+
+.icon-download { font-family: "Phosphor"; }
+.icon-download:before { content: "\f0b8"; }
+
+.icon-upload { font-family: "Phosphor"; }
+.icon-upload:before { content: "\f278"; }
+
+/* Social Media Icons */
+.icon-instagram { font-family: "Phosphor"; }
+.icon-instagram:before { content: "\f119"; }
+
+.icon-facebook { font-family: "Phosphor"; }
+.icon-facebook:before { content: "\f0d9"; }
+
+.icon-twitter { font-family: "Phosphor"; }
+.icon-twitter:before { content: "\f26a"; }
+
+.icon-linkedin { font-family: "Phosphor"; }
+.icon-linkedin:before { content: "\f137"; }
+
+/* Age Verification Icons */
+.icon-shield-check { font-family: "Phosphor"; }
+.icon-shield-check:before { content: "\f217"; } /* age verification */
+
+.icon-lock { font-family: "Phosphor"; }
+.icon-lock:before { content: "\f139"; } /* security/age gate */
+
+/* Content Type Icons */
+.icon-article { font-family: "Phosphor"; }
+.icon-article:before { content: "\f039"; } /* article/blog content */
+
+.icon-video { font-family: "Phosphor"; }
+.icon-video:before { content: "\f282"; } /* video content */
+
+.icon-camera { font-family: "Phosphor"; }
+.icon-camera:before { content: "\f06a"; } /* photos/gallery */
+
+/* Business/Legal Icons */
+.icon-certificate { font-family: "Phosphor"; }
+.icon-certificate:before { content: "\f077"; } /* licenses/certificates */
+
+.icon-scales { font-family: "Phosphor"; }
+.icon-scales:before { content: "\f20d"; } /* legal/compliance */
+
+.icon-building { font-family: "Phosphor"; }
+.icon-building:before { content: "\f05f"; } /* business/company */
+
+.icon-phone { font-family: "Phosphor"; }
+.icon-phone:before { content: "\f1a8"; } /* phone for contact info */
+
+/* Color Variations for Status */
+.icon-status-good { color: #4caf50; }
+.icon-status-warning { color: #ff9800; }
+.icon-status-error { color: #f44336; }
+.icon-status-info { color: #2196f3; }
+.icon-status-primary { color: #ff793f; }
+
+/* Size Variations */
+.icon-small { font-size: 16px; }
+.icon-medium { font-size: 20px; }
+.icon-large { font-size: 24px; }
+.icon-xlarge { font-size: 32px; }
+
+/* Icon in buttons */
+.button .skyworld-icon {
+    margin-right: 6px;
+    font-size: 16px;
+}
+
+/* Icon in menu items */
+.wp-admin .toplevel_page_skyworld-cannabis-manager .wp-menu-image:before {
+    font-family: "Phosphor" !important;
+    content: "\f32e" !important; /* leaf icon */
+    font-size: 20px;
+}
+
+/* Icon animations for interactive elements */
+.skyworld-icon.animated {
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.skyworld-icon.animated:hover {
+    transform: scale(1.1);
+    color: #ff793f;
+}
+
+/* Loading spinner using Phosphor icon */
+.icon-loading {
+    font-family: "Phosphor";
+}
+.icon-loading:before {
+    content: "\f082"; /* circle-notch */
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}

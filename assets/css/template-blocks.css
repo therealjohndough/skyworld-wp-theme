@@ -1,0 +1,257 @@
+/* Minimal Template Block Styles - Force Override */
+
+/* Force all sections to have white background */
+section,
+.section,
+div,
+.hero-slider-section,
+.genetic-library-section,
+.product-slider-section,
+.news-section {
+    background: white !important;
+    color: black !important;
+}
+
+/* Common Section Styles */
+.section-header {
+    text-align: center !important;
+    margin: 2rem 0 !important;
+    background: white !important;
+}
+
+.section-title,
+h1, h2, h3, h4, h5, h6 {
+    font-size: 2rem !important;
+    margin-bottom: 1rem !important;
+    color: black !important;
+    background: white !important;
+    font-family: Arial, sans-serif !important;
+}
+
+.section-subtitle,
+p {
+    color: black !important;
+    margin-bottom: 2rem !important;
+    background: white !important;
+    font-family: Arial, sans-serif !important;
+}
+
+.view-all-button {
+    display: inline-block;
+    background: black;
+    color: white;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border: 1px solid black;
+}
+
+.view-all-button:hover {
+    background: white;
+    color: black;
+}
+
+/* Hero Slider */
+.hero-slider-section {
+    padding: 2rem 0;
+    background: white;
+}
+
+.hero-slides {
+    display: flex;
+    overflow: hidden;
+}
+
+.hero-slide {
+    flex: none;
+    width: 100%;
+    padding: 2rem;
+    border: 1px solid black;
+    margin-bottom: 1rem;
+}
+
+.hero-slide h2 {
+    color: black;
+    margin-bottom: 1rem;
+}
+
+.hero-slide p {
+    color: black;
+    margin-bottom: 1rem;
+}
+
+.hero-slide a {
+    color: black;
+    text-decoration: underline;
+}
+
+/* Genetic Library Block */
+.genetic-library-section {
+    padding: 2rem 0;
+    background: white;
+}
+
+.strain-filters {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.filter-button {
+    background: white;
+    color: black;
+    border: 1px solid black;
+    padding: 0.5rem 1rem;
+    margin: 0.25rem;
+    cursor: pointer;
+}
+
+.filter-button.active {
+    background: black;
+    color: white;
+}
+
+.strain-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+.strain-card {
+    border: 1px solid black;
+    padding: 1rem;
+    background: white;
+}
+
+.strain-card h3 {
+    color: black;
+    margin-bottom: 0.5rem;
+}
+
+.strain-type {
+    color: black;
+    font-size: 0.9rem;
+}
+
+/* Product Slider Block */
+.product-slider-section {
+    padding: 2rem 0;
+    background: white;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.product-card {
+    border: 1px solid black;
+    padding: 1rem;
+    background: white;
+}
+
+.product-card img {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid black;
+    margin-bottom: 1rem;
+}
+
+.product-card h3 {
+    color: black;
+    margin-bottom: 0.5rem;
+}
+
+.product-price {
+    color: black;
+    font-weight: bold;
+}
+
+/* News Block */
+.news-section {
+    padding: 2rem 0;
+    background: white;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+.news-card {
+    border: 1px solid black;
+    padding: 1rem;
+    background: white;
+}
+
+.news-card img {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid black;
+    margin-bottom: 1rem;
+}
+
+.news-card h3 {
+    color: black;
+    margin-bottom: 0.5rem;
+}
+
+.news-meta {
+    color: black;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.news-excerpt {
+    color: black;
+}
+
+/* CTA Section */
+.cta-section {
+    padding: 3rem 0;
+    background: black;
+    color: white;
+    text-align: center;
+}
+
+.cta-title {
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.cta-description {
+    color: white;
+    margin-bottom: 2rem;
+}
+
+.cta-button {
+    background: white;
+    color: black;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    display: inline-block;
+    border: 1px solid white;
+}
+
+.cta-button:hover {
+    background: black;
+    color: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .strain-grid,
+    .product-grid,
+    .news-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero-slide {
+        padding: 1rem;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+}
