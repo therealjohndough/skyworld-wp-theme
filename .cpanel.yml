@@ -1,10 +1,12 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/sjradmin/public_html/dev/wp-content/themes/skyworld-wp-child
+    - export DEPLOYPATH=/home/sjradmin/public_html/dev.skyworldcannabis.com/wp-content/themes/skyworld-wp-child
     - /bin/mkdir -p $DEPLOYPATH
-    - /bin/rm -rf $DEPLOYPATH/*
+    - /bin/rm -rf $DEPLOYPATH/* 2>/dev/null || true
     - /bin/cp -R * $DEPLOYPATH
     - /bin/cp -R .[^.]* $DEPLOYPATH 2>/dev/null || true
+    - /bin/chmod -R 755 $DEPLOYPATH
     - echo "Professional Cannabis Management System deployed successfully!"
+    - echo "Deployed to: dev.skyworldcannabis.com"
     - echo "STANDALONE THEME: No parent theme needed - activate directly!"
