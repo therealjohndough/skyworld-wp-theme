@@ -1,23 +1,25 @@
 ---
 deployment:
   tasks:
-    - echo "=== DEPLOYMENT DEBUG START ==="
-    - echo "Current working directory:"
-    - pwd
-    - echo "Available files to deploy:"
-    - ls -la
-    - echo "Target deployment path:"
     - export DEPLOYPATH=/home/sjradmin/dev.skyworldcannabis.com/wp-content/themes/skyworld-wp-child
-    - echo $DEPLOYPATH
-    - echo "Checking if WordPress directory exists:"
-    - ls -la /home/sjradmin/dev.skyworldcannabis.com/wp-content/ || echo "WordPress wp-content not found"
-    - echo "Creating deployment directory:"
+    - echo "=== SIMPLE DEPLOYMENT TEST ==="
+    - echo "Creating theme directory..."
     - /bin/mkdir -p $DEPLOYPATH
-    - echo "Copying files:"
-    - /bin/cp -R * $DEPLOYPATH
-    - /bin/cp -R .[^.]* $DEPLOYPATH 2>/dev/null || true
-    - echo "Setting permissions:"
-    - /bin/chmod -R 755 $DEPLOYPATH
-    - echo "Deployment complete! Files in target directory:"
+    - echo "Copying style.css..."
+    - /bin/cp style.css $DEPLOYPATH/
+    - echo "Copying functions.php..."
+    - /bin/cp functions.php $DEPLOYPATH/
+    - echo "Copying index.php..."
+    - /bin/cp index.php $DEPLOYPATH/
+    - echo "Checking if files copied:"
     - ls -la $DEPLOYPATH/
-    - echo "=== DEPLOYMENT DEBUG END ==="
+    - echo "If you see files above, the deployment is working!"
+    - echo "Now copying all remaining files..."
+    - /bin/cp -R inc/ $DEPLOYPATH/ 2>/dev/null || echo "inc folder copy failed"
+    - /bin/cp -R assets/ $DEPLOYPATH/ 2>/dev/null || echo "assets folder copy failed"  
+    - /bin/cp -R acf-json/ $DEPLOYPATH/ 2>/dev/null || echo "acf-json folder copy failed"
+    - /bin/cp *.php $DEPLOYPATH/ 2>/dev/null || echo "PHP files copy failed"
+    - /bin/cp *.css $DEPLOYPATH/ 2>/dev/null || echo "CSS files copy failed"
+    - /bin/cp *.md $DEPLOYPATH/ 2>/dev/null || echo "MD files copy failed"
+    - echo "=== FINAL FILE LIST ==="
+    - ls -la $DEPLOYPATH/
