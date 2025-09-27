@@ -3,7 +3,8 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home/sjradmin/public_html/dev/wp-content/themes/skyworld-wp-child
     - /bin/mkdir -p $DEPLOYPATH
+    - /bin/rm -rf $DEPLOYPATH/*
     - /bin/cp -R * $DEPLOYPATH
     - /bin/cp -R .[^.]* $DEPLOYPATH 2>/dev/null || true
     - echo "Professional Cannabis Management System deployed successfully!"
-    - echo "IMPORTANT: Install Astra parent theme and ACF Pro before activating!"
+    - echo "STANDALONE THEME: No parent theme needed - activate directly!"
