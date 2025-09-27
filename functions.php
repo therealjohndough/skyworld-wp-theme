@@ -30,18 +30,37 @@ if ( file_exists( get_stylesheet_directory() . '/inc/admin-interface.php' ) ) {
     require_once get_stylesheet_directory() . '/inc/admin-interface.php';
 }
 
-// Enqueue child theme assets
-add_action( 'wp_enqueue_scripts', 'skyworld_child_enqueue_assets' );
-function skyworld_child_enqueue_assets() {
-    // Parent theme styles
-    wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css');
+// Add WordPress theme support - Professional cannabis theme
+add_action( 'after_setup_theme', 'skyworld_cannabis_setup' );
+function skyworld_cannabis_setup() {
+    // Theme support for professional features
+    add_theme_support( 'title-tag' );
+    add_theme_support( 'post-thumbnails' );
+    add_theme_support( 'custom-logo' );
+    add_theme_support( 'custom-background' );
+    add_theme_support( 'customize-selective-refresh-widgets' );
+    add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
     
-    // Child theme styles
-    wp_enqueue_style('child-style', get_stylesheet_directory_uri() . '/style.css', array('parent-style'));
-    wp_enqueue_style('skyworld-css', get_stylesheet_directory_uri() . '/assets/css/skyworld.css', array('child-style'));
-    wp_enqueue_style('template-blocks-css', get_stylesheet_directory_uri() . '/assets/css/template-blocks.css', array('skyworld-css'));
-    wp_enqueue_style('color-palette-css', get_stylesheet_directory_uri() . '/assets/css/color-palette.css', array('skyworld-css'));
-    wp_enqueue_style('phosphor-icons-css', get_stylesheet_directory_uri() . '/assets/css/phosphor-icons.css', array('child-style'));
+    // Navigation menus
+    register_nav_menus( array(
+        'primary' => 'Primary Navigation',
+        'footer' => 'Footer Navigation',
+    ) );
+    
+    // Image sizes for cannabis products
+    add_image_size( 'product-thumbnail', 300, 300, true );
+    add_image_size( 'strain-hero', 800, 400, true );
+}
+
+// Enqueue professional cannabis theme assets
+add_action( 'wp_enqueue_scripts', 'skyworld_cannabis_enqueue_assets' );
+function skyworld_cannabis_enqueue_assets() {
+    // Core theme styles
+    wp_enqueue_style('skyworld-main', get_stylesheet_directory_uri() . '/style.css');
+    wp_enqueue_style('skyworld-css', get_stylesheet_directory_uri() . '/assets/css/skyworld.css', array('skyworld-main'));
+    wp_enqueue_style('template-blocks-css', get_stylesheet_directory_uri() . '/assets/css/template-blocks.css', array('skyworld-main'));
+    wp_enqueue_style('color-palette-css', get_stylesheet_directory_uri() . '/assets/css/color-palette.css', array('skyworld-main'));
+    wp_enqueue_style('phosphor-icons-css', get_stylesheet_directory_uri() . '/assets/css/phosphor-icons.css', array('skyworld-main'));
     
     // Page-specific styles
     if (is_page_template('page-store-locator.php')) {
@@ -75,6 +94,54 @@ function skyworld_child_enqueue_assets() {
         ));
     }
 }
+
+// PROFESSIONAL SECURITY FEATURES
+// Remove WordPress version from head and feeds for security
+remove_action('wp_head', 'wp_generator');
+add_filter('the_generator', '__return_empty_string');
+
+// Remove RSD link from head for security
+remove_action('wp_head', 'rsd_link');
+
+// Remove wlwmanifest.xml from head
+remove_action('wp_head', 'wlwmanifest_link');
+
+// Disable XML-RPC for security
+add_filter('xmlrpc_enabled', '__return_false');
+
+// Remove shortlink from head
+remove_action('wp_head', 'wp_shortlink_wp_head');
+
+// Hide login errors for security
+add_filter('login_errors', function() { return 'Invalid credentials.'; });
+
+// Disable file editing in WordPress admin for security
+define('DISALLOW_FILE_EDIT', true);
+
+// Add security headers
+add_action('send_headers', 'skyworld_security_headers');
+function skyworld_security_headers() {
+    header('X-Content-Type-Options: nosniff');
+    header('X-Frame-Options: SAMEORIGIN');
+    header('X-XSS-Protection: 1; mode=block');
+    header('Referrer-Policy: strict-origin-when-cross-origin');
+}
+
+// PROFESSIONAL PERFORMANCE FEATURES
+// Remove emoji scripts for performance
+remove_action('wp_head', 'print_emoji_detection_script', 7);
+remove_action('wp_print_styles', 'print_emoji_styles');
+remove_action('admin_print_scripts', 'print_emoji_detection_script');
+remove_action('admin_print_styles', 'print_emoji_styles');
+
+// Disable embeds for performance
+remove_action('wp_head', 'wp_oembed_add_discovery_links');
+remove_action('wp_head', 'wp_oembed_add_host_js');
+
+// Clean up wp_head
+remove_action('wp_head', 'feed_links_extra', 3);
+remove_action('wp_head', 'feed_links', 2);
+remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
 
 // Add theme support for features
 add_theme_support( 'post-thumbnails' );
