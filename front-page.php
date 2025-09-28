@@ -269,6 +269,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const yesButton = document.getElementById('age-gate-yes');
     const noButton = document.getElementById('age-gate-no');
     
+    // Error handling - make sure elements exist
+    if (!ageGateModal || !yesButton || !noButton) {
+        console.warn('Age gate elements not found');
+        return;
+    }
+    
     // Check if user has already verified age
     const ageVerified = localStorage.getItem('skyworld-age-verified');
     const verificationDate = localStorage.getItem('skyworld-age-verification-date');
@@ -284,10 +290,17 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Handle age verification
     yesButton.addEventListener('click', function() {
-        localStorage.setItem('skyworld-age-verified', 'true');
-        localStorage.setItem('skyworld-age-verification-date', currentDate);
-        ageGateModal.style.display = 'none';
-        document.body.style.overflow = '';
+        try {
+            localStorage.setItem('skyworld-age-verified', 'true');
+            localStorage.setItem('skyworld-age-verification-date', currentDate);
+            ageGateModal.style.display = 'none';
+            document.body.style.overflow = '';
+        } catch (e) {
+            console.warn('localStorage not available, using session verification');
+            // Fallback - just hide for this session
+            ageGateModal.style.display = 'none';
+            document.body.style.overflow = '';
+        }
     });
     
     noButton.addEventListener('click', function() {
