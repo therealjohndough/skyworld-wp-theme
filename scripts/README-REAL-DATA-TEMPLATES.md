@@ -6,7 +6,7 @@ Perfect! I've analyzed your actual COA files and created **updated CSV templates
 
 ### 1. Real Data Templates
 - **`notion-strain-masters-real.csv`** - 16 actual strains from your COA files
-- **`notion-product-batches-real.csv`** - 33 actual batches matching your COA structure  
+- **`notion-cannabis-products-real.csv`** - 33 actual products matching your COA structure  
 - **`notion-coa-documents-real.csv`** - 33 COA records using real COA IDs
 
 ### 2. Key Updates Made
@@ -45,9 +45,9 @@ Records: 16 strains
 Include: All your actual strains from COAs
 ```
 
-### Step 2: Import Product Batches  
+### Step 2: Import Cannabis Products
 ```
-File: notion-product-batches-real.csv  
+File: notion-cannabis-products-real.csv  
 Records: 33 batches
 Include: All flower, pre-roll, and hash hole variations
 ```

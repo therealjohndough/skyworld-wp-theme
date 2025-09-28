@@ -44,7 +44,7 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "sky_product"
+                "value": "sw-product"
             }
         ]
     ],

@@ -58,7 +58,7 @@ function skyworld_upload_page() {
             <h3>CSV File Status</h3>
             <ul>
                 <li>Strains CSV: <?php echo file_exists(get_stylesheet_directory() . '/scripts/notion-strain-masters-real.csv') ? '✅ Found' : '❌ Missing'; ?></li>
-                <li>Products CSV: <?php echo file_exists(get_stylesheet_directory() . '/scripts/notion-product-batches-real.csv') ? '✅ Found' : '❌ Missing'; ?></li>
+                <li>Products CSV: <?php echo file_exists(get_stylesheet_directory() . '/scripts/notion-cannabis-products-real.csv') ? '✅ Found' : '❌ Missing'; ?></li>
                 <li>COAs CSV: <?php echo file_exists(get_stylesheet_directory() . '/scripts/notion-coa-documents-real.csv') ? '✅ Found' : '❌ Missing'; ?></li>
             </ul>
         </div>
@@ -95,7 +95,7 @@ function skyworld_handle_product_upload() {
     
     // Import Products
     if (isset($_POST['import_products'])) {
-        $product_file = get_stylesheet_directory() . '/scripts/notion-product-batches-real.csv';
+        $product_file = get_stylesheet_directory() . '/scripts/notion-cannabis-products-real.csv';
         if (file_exists($product_file)) {
             $result = skyworld_import_products_csv($product_file);
             $results[] = "Products: " . $result['message'];

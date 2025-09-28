@@ -244,7 +244,7 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "product"
+                "value": "sw-product"
             }
         ]
     ],

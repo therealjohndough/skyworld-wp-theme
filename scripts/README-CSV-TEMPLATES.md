@@ -11,8 +11,8 @@ Your professional cannabis management system is now complete with three CSV temp
    - Complete cannabinoid data (THC, CBD, CBG)
    - Flavor and aroma profiles
 
-2. **Product Batches Database** (`notion-product-batches.csv`)
-   - 14 batch records (9 flower, 2 pre-rolls, 2 hash holes)
+2. **Cannabis Products Database** (`notion-cannabis-products.csv`)
+   - 14 product records (9 flower, 2 pre-rolls, 2 hash holes)
    - Specific test results and pricing
    - Batch numbers and package sizes
    - Production dates and availability status

@@ -17,7 +17,7 @@ Action: Notion Database → "..." → "Merge with CSV"
 
 ### 2. **Product Batches SECOND** ⭐⭐
 ```
-File: scripts/notion-product-batches-real.csv  
+File: scripts/notion-cannabis-products-real.csv  
 Records: 33 batches
 Action: Notion Database → "..." → "Merge with CSV"
 ```

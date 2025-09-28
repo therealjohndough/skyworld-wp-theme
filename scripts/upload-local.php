@@ -37,7 +37,7 @@ if (file_exists($strains_file)) {
 }
 
 // Preview product data  
-$products_file = __DIR__ . '/notion-product-batches-real.csv';
+$products_file = __DIR__ . '/notion-cannabis-products-real.csv';
 if (file_exists($products_file)) {
     $products_handle = fopen($products_file, 'r');
     $product_header = fgetcsv($products_handle);
