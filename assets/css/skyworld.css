@@ -1,115 +1,596 @@
-/* AGGRESSIVE CSS RESET - Override Everything */
-body *,
-body *:before,
-body *:after {
-    background: white !important;
-    color: black !important;
-    border: none !important;
-    box-shadow: none !important;
-    text-shadow: none !important;
-    background-image: none !important;
-}
+/**
+ * SKYWORLD PROFESSIONAL CANNABIS THEME STYLES
+ * Created by John Dough - MADE TO INSPIRE
+ * Professional cannabis business styling
+ */
 
-/* Minimal Black and White Styling - Force Override */
+/* ==== CORE RESET & BASE ==== */
 * {
-    margin: 0 !important;
-    padding: 0 !important;
-    box-sizing: border-box !important;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body,
-body.home,
-body.page,
-body * {
-    font-family: Arial, sans-serif !important;
-    background: white !important;
-    color: black !important;
-    line-height: 1.6 !important;
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: #2d3436;
+    background: #ffffff;
+    overflow-x: hidden;
 }
 
-/* Force white background on all containers */
-.site,
-.ast-container,
-.site-content,
-.entry-content,
-.ast-article-post,
-.site-main {
-    background: white !important;
-    color: black !important;
+/* ==== PROFESSIONAL CANNABIS COLOR PALETTE ==== */
+:root {
+    --skyworld-primary: #2d5016;      /* Deep cannabis green */
+    --skyworld-secondary: #4a7c59;    /* Professional green */
+    --skyworld-accent: #8fbc8f;       /* Light sage */
+    --skyworld-gold: #d4af37;         /* Premium gold */
+    --skyworld-dark: #1a1a1a;         /* Professional dark */
+    --skyworld-light: #f8f9fa;        /* Clean light */
+    --skyworld-white: #ffffff;
+    --skyworld-text: #2d3436;
+    --skyworld-border: #e1e8ed;
 }
 
-/* Header - Force Override */
-.skyworld-nav-header,
-header,
+/* ==== TYPOGRAPHY ==== */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: var(--skyworld-dark);
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+
+p { margin-bottom: 1rem; }
+
+a {
+    color: var(--skyworld-primary);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: var(--skyworld-secondary);
+}
+
+/* ==== HEADER STYLES ==== */
 .site-header {
-    background: white !important;
-    border-bottom: 1px solid black !important;
-    padding: 1rem 0 !important;
-    box-shadow: none !important;
+    background: var(--skyworld-white);
+    border-bottom: 1px solid var(--skyworld-border);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-.skyworld-nav-container,
-.ast-header-container,
-.main-header-container {
-    max-width: 1200px !important;
-    margin: 0 auto !important;
-    padding: 0 1rem !important;
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    background: white !important;
+.skyworld-nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
 }
 
-.skyworld-nav-brand a,
-.site-branding a,
-.ast-site-title-wrap a {
-    color: black !important;
-    text-decoration: none !important;
-    font-size: 1.5rem !important;
-    font-weight: bold !important;
+.skyworld-logo a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--skyworld-primary);
+    font-size: 1.5rem;
+    font-weight: 700;
 }
 
-.skyworld-nav-menu,
-.main-navigation ul,
-.ast-desktop-menu {
-    list-style: none !important;
-    display: flex !important;
-    gap: 2rem !important;
-    background: white !important;
+.skyworld-logo .brand-text {
+    margin-left: 0.5rem;
 }
 
-.skyworld-nav-menu a,
-.main-navigation a,
-.ast-desktop-menu a {
-    color: black !important;
-    text-decoration: none !important;
-    background: white !important;
+.skyworld-nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    align-items: center;
+}
+
+.skyworld-nav-menu a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--skyworld-text);
+    font-weight: 500;
+    padding: 0.5rem 0;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+    text-decoration: none;
 }
 
 .skyworld-nav-menu a:hover,
-.main-navigation a:hover,
-.ast-desktop-menu a:hover {
-    text-decoration: underline !important;
-    color: black !important;
-    background: white !important;
+.skyworld-nav-menu a.current {
+    color: var(--skyworld-primary);
+    border-bottom-color: var(--skyworld-primary);
 }
 
-/* Footer */
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    gap: 4px;
+}
+
+.hamburger-line {
+    width: 25px;
+    height: 3px;
+    background: var(--skyworld-primary);
+    transition: all 0.3s ease;
+}
+
+/* Mobile Navigation */
+@media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: flex;
+    }
+    
+    .skyworld-nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--skyworld-white);
+        border-top: 1px solid var(--skyworld-border);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    
+    .skyworld-nav.active {
+        display: block;
+    }
+    
+    .skyworld-nav-menu {
+        flex-direction: column;
+        padding: 1rem 0;
+        gap: 0;
+    }
+    
+    .skyworld-nav-menu li {
+        width: 100%;
+        border-bottom: 1px solid var(--skyworld-border);
+    }
+    
+    .skyworld-nav-menu a {
+        padding: 1rem 2rem;
+        border-bottom: none;
+        width: 100%;
+    }
+}
+
+/* ==== MAIN CONTENT ==== */
+.skyworld-front-page {
+    min-height: 100vh;
+}
+
+.site-main {
+    padding-top: 2rem;
+}
+
+/* ==== HERO SECTION ==== */
+.skyworld-hero {
+    background: linear-gradient(135deg, var(--skyworld-primary) 0%, var(--skyworld-secondary) 100%);
+    color: var(--skyworld-white);
+    padding: 4rem 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.skyworld-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="cannabis" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M10 15c-2-2-2-6 0-8 2 2 2 6 0 8z" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100%" height="100%" fill="url(%23cannabis)"/></svg>') repeat;
+    opacity: 0.1;
+}
+
+.skyworld-hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.skyworld-hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--skyworld-white);
+}
+
+.skyworld-hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+/* ==== CONTENT SECTIONS ==== */
+.skyworld-section {
+    padding: 4rem 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.skyworld-section:nth-child(even) {
+    background: var(--skyworld-light);
+}
+
+.skyworld-section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.skyworld-section-title {
+    font-size: 2.5rem;
+    color: var(--skyworld-primary);
+    margin-bottom: 1rem;
+}
+
+.skyworld-section-subtitle {
+    font-size: 1.2rem;
+    color: var(--skyworld-text);
+    opacity: 0.8;
+}
+
+/* ==== PRODUCT GRID ==== */
+.skyworld-products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.skyworld-product-card {
+    background: var(--skyworld-white);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    border: 1px solid var(--skyworld-border);
+}
+
+.skyworld-product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+}
+
+.skyworld-product-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.skyworld-product-title {
+    font-size: 1.3rem;
+    color: var(--skyworld-primary);
+    margin-bottom: 0.5rem;
+}
+
+.skyworld-product-strain {
+    color: var(--skyworld-secondary);
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+/* ==== BUTTONS ==== */
+.skyworld-btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: var(--skyworld-primary);
+    color: var(--skyworld-white);
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.skyworld-btn:hover {
+    background: var(--skyworld-secondary);
+    transform: translateY(-2px);
+    color: var(--skyworld-white);
+}
+
+.skyworld-btn-outline {
+    background: transparent;
+    color: var(--skyworld-primary);
+    border: 2px solid var(--skyworld-primary);
+}
+
+.skyworld-btn-outline:hover {
+    background: var(--skyworld-primary);
+    color: var(--skyworld-white);
+}
+
+/* ==== FOOTER STYLES ==== */
 .skyworld-footer {
-    background: black;
-    color: white;
-    padding: 2rem 0;
+    background: var(--skyworld-dark);
+    color: var(--skyworld-white);
+    padding: 3rem 0 1rem;
     margin-top: 4rem;
 }
 
-.skyworld-footer-container {
+.skyworld-footer-content {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 1rem;
+    padding: 0 2rem;
+}
+
+.skyworld-footer-top {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.footer-section h4 {
+    color: var(--skyworld-white);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.footer-section h5 {
+    color: var(--skyworld-white);
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.footer-logo i {
+    color: var(--skyworld-accent);
+    font-size: 1.5rem;
+}
+
+.footer-tagline {
+    font-size: 1.1rem;
+    color: var(--skyworld-accent);
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.footer-description {
+    opacity: 0.8;
+    line-height: 1.6;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-section a {
+    color: var(--skyworld-white);
+    text-decoration: none;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.footer-section a:hover {
+    opacity: 1;
+    color: var(--skyworld-accent);
+}
+
+.footer-section a i {
+    font-size: 1rem;
+    width: 16px;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    background: var(--skyworld-accent);
+    color: var(--skyworld-white);
+    transform: translateY(-2px);
+}
+
+.skyworld-footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.footer-legal {
+    opacity: 0.8;
+}
+
+.footer-legal p {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.footer-legal-links {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.footer-legal-links a {
+    color: var(--skyworld-white);
+    opacity: 0.8;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.footer-legal-links a:hover {
+    opacity: 1;
+    color: var(--skyworld-accent);
+}
+
+.footer-attribution {
+    opacity: 0.7;
+    font-size: 0.9rem;
+}
+
+.footer-attribution a {
+    color: var(--skyworld-accent);
+    text-decoration: none;
+}
+
+.footer-attribution a:hover {
+    text-decoration: underline;
+}
+
+.age-compliance-notice {
+    background: rgba(212, 175, 55, 0.1);
+    border: 1px solid var(--skyworld-gold);
+    border-radius: 6px;
+    padding: 1rem;
+    margin-top: 2rem;
     text-align: center;
 }
 
-/* Main Content */
+.age-compliance-notice p {
+    margin: 0;
+    color: var(--skyworld-gold);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.age-compliance-notice i {
+    font-size: 1.2rem;
+}
+
+/* Footer Mobile Responsive */
+@media (max-width: 768px) {
+    .skyworld-footer-top {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .skyworld-footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    
+    .footer-legal-links {
+        justify-content: center;
+    }
+}
+
+/* ==== RESPONSIVE DESIGN ==== */
+@media (max-width: 768px) {
+    .skyworld-nav-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .skyworld-nav ul {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    .skyworld-hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .skyworld-section {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    .skyworld-products-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .skyworld-footer-links {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+/* ==== PROFESSIONAL CANNABIS ACCENTS ==== */
+.cannabis-accent {
+    color: var(--skyworld-primary);
+}
+
+.premium-badge {
+    background: var(--skyworld-gold);
+    color: var(--skyworld-white);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.thc-percentage {
+    font-weight: 700;
+    color: var(--skyworld-primary);
+    font-size: 1.1rem;
+}
+
+/* ==== UTILITY CLASSES ==== */
+.text-center { text-align: center; }
+.text-primary { color: var(--skyworld-primary); }
+.bg-light { background: var(--skyworld-light); }
+.mt-1 { margin-top: 1rem; }
+.mt-2 { margin-top: 2rem; }
+.mb-1 { margin-bottom: 1rem; }
+.mb-2 { margin-bottom: 2rem; }
 .container {
     max-width: 1200px;
     margin: 0 auto;
