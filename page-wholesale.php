@@ -22,7 +22,7 @@ get_header();
                         </div>
                         
                         <div class="benefit-item">
-                            <div class="benefit-icon">📦</div>
+                            <div class="benefit-icon"><i class="ph ph-package"></i></div>
                             <h3>Bulk Pricing</h3>
                             <p>Competitive wholesale pricing with volume discounts for qualified partners.</p>
                         </div>
@@ -67,7 +67,7 @@ get_header();
                 </div>
                 
                 <div class="requirement-card">
-                    <h3>📈 Volume Commitments</h3>
+                    <h3><i class="ph ph-chart-line"></i> Volume Commitments</h3>
                     <ul>
                         <li>Minimum monthly order quantities</li>
                         <li>Regular purchase schedules</li>

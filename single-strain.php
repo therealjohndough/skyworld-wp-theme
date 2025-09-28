@@ -110,7 +110,7 @@ $strain_meta = get_post_meta($strain_id);
                     <!-- Effects Section -->
                     <div class="detail-section effects-section">
                         <h3 class="section-title">
-                            <span class="section-icon">✨</span>
+                            <span class="section-icon"><i class="ph ph-sparkle"></i></span>
                             Effects & Experience
                         </h3>
                         
@@ -335,7 +335,7 @@ $strain_meta = get_post_meta($strain_id);
                                         </div>
                                     <?php else : ?>
                                         <div class="product-placeholder">
-                                            <span class="placeholder-icon">📦</span>
+                                            <span class="placeholder-icon"><i class="ph ph-package"></i></span>
                                             <span class="placeholder-label">Product Packaging</span>
                                         </div>
                                     <?php endif; ?>
@@ -403,7 +403,7 @@ $strain_meta = get_post_meta($strain_id);
                                     <?php if (has_post_thumbnail()) : ?>
                                         <?php the_post_thumbnail('medium'); ?>
                                     <?php else : ?>
-                                        <div class="strain-placeholder">🌿</div>
+                                        <div class="strain-placeholder"><i class="ph ph-leaf"></i></div>
                                     <?php endif; ?>
                                 </div>
                                 

@@ -44,7 +44,7 @@ function skyworld_content_blocks_page() {
             
             <!-- Genetic Library Management -->
             <div class="content-block-section">
-                <h2>🧬 Genetic Library Block</h2>
+                <h2><i class="ph ph-dna"></i> Genetic Library Block</h2>
                 <p>The genetic library automatically shows your strains. To manage:</p>
                 <ul>
                     <li><strong>Add New Strains:</strong> Go to Strains → Add New</li>
@@ -58,7 +58,7 @@ function skyworld_content_blocks_page() {
             
             <!-- Product Slider Management -->
             <div class="content-block-section">
-                <h2>📦 Product Slider Block</h2>
+                <h2><i class="ph ph-package"></i> Product Slider Block</h2>
                 <p>Featured products appear in the slider. To manage:</p>
                 <ul>
                     <li><strong>Add New Products:</strong> Go to Products → Add New</li>
@@ -86,7 +86,7 @@ function skyworld_content_blocks_page() {
         </div>
         
         <div class="content-blocks-tips">
-            <h2>💡 Content Tips</h2>
+            <h2><i class="ph ph-lightbulb"></i> Content Tips</h2>
             <div class="tips-grid">
                 <div class="tip-card">
                     <h3>Image Guidelines</h3>

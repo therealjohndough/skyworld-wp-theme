@@ -30,6 +30,17 @@ body {
     --skyworld-white: #ffffff;
     --skyworld-text: #2d3436;
     --skyworld-border: #e1e8ed;
+    
+    /* Front-page compatibility variables */
+    --color-sativa: #2d5016;          /* Same as primary */
+    --color-indica: #4a7c59;          /* Same as secondary */
+    --color-hybrid: #8fbc8f;          /* Same as accent */
+    --color-card-bg: #ffffff;         /* Card background */
+    --color-text: #2d3436;            /* Same as text */
+    --color-text-muted: #666666;      /* Muted text */
+    --color-orange-brand: #d4af37;    /* Same as gold */
+    --border-radius: 8px;             /* Standard border radius */
+    --transition: all 0.3s ease;      /* Standard transition */
 }
 
 /* ==== TYPOGRAPHY ==== */

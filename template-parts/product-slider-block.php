@@ -56,7 +56,7 @@
                                     <?php else: ?>
                                         <div class="product-card-placeholder">
                                             <i class="fas fa-cannabis"></i>
-                                            <span>📦</span>
+                                            <span><i class="ph ph-package"></i></span>
                                         </div>
                                     <?php endif; ?>
                                     
@@ -155,7 +155,7 @@
                             <div class="product-card-image">
                                 <div class="product-card-placeholder">
                                     <i class="fas fa-cannabis"></i>
-                                    <span>📦</span>
+                                    <span><i class="ph ph-package"></i></span>
                                 </div>
                                 <div class="product-card-overlay">
                                     <div class="product-type-badge flower">Premium Flower</div>

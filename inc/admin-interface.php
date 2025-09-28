@@ -67,7 +67,7 @@ function skyworld_add_admin_menu() {
 function skyworld_management_page() {
     ?>
     <div class="wrap">
-        <h1>🌿 Skyworld Cannabis Management</h1>
+        <h1><i class="ph ph-leaf"></i> Skyworld Cannabis Management</h1>
         <div class="skyworld-dashboard">
             
             <div class="skyworld-stats-grid">
@@ -227,7 +227,7 @@ function skyworld_management_page() {
 function skyworld_strains_page() {
     ?>
     <div class="wrap">
-        <h1>🧬 Strain Library Management</h1>
+        <h1><i class="ph ph-dna"></i> Strain Library Management</h1>
         <p>Manage your cannabis strain genetics library. Each strain represents unique genetics that can be used to create multiple products.</p>
         
         <div class="strain-management">
@@ -258,7 +258,7 @@ function skyworld_strains_page() {
 function skyworld_products_page() {
     ?>
     <div class="wrap">
-        <h1>📦 Product Catalog Management</h1>
+        <h1><i class="ph ph-package"></i> Product Catalog Management</h1>
         <p>Manage your cannabis product inventory. Products are created from strains and represent what customers can purchase.</p>
         
         <div class="product-management">
@@ -289,7 +289,7 @@ function skyworld_products_page() {
 function skyworld_locations_page() {
     ?>
     <div class="wrap">
-        <h1>📍 Retail Location Management</h1>
+        <h1><i class="ph ph-map-pin"></i> Retail Location Management</h1>
         <p>Manage dispensaries, delivery services, and other retail locations that carry Skyworld products.</p>
         
         <div class="location-management">
