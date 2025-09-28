@@ -36,6 +36,9 @@ get_header();
     <!-- Genetic Library Section -->
     <?php get_template_part('template-parts/genetic-library-block'); ?>
     
+    <!-- Video CTA Section - Explore Our Genetics -->
+    <?php get_template_part('template-parts/video-cta-block'); ?>
+    
     <!-- Product Slider Section -->
     <?php get_template_part('template-parts/product-slider-block'); ?>
     

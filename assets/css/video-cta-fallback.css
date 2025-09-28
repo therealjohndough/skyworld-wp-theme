@@ -1,0 +1,51 @@
+/* 
+ * Video CTA Block - CSS Only Version
+ * Use this if you don't have video files yet
+ */
+
+.skyworld-video-cta .video-background {
+    background: linear-gradient(
+        135deg,
+        var(--skyworld-dark-green) 0%,
+        #1c3824 25%,
+        var(--skyworld-cannabis-green) 50%,
+        #1c3824 75%,
+        var(--skyworld-dark-green) 100%
+    );
+    background-size: 400% 400%;
+    animation: gradientShift 8s ease-in-out infinite;
+}
+
+.skyworld-video-cta .background-video {
+    display: none; /* Hide video until you have actual video files */
+}
+
+@keyframes gradientShift {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    25% {
+        background-position: 100% 50%;
+    }
+    50% {
+        background-position: 50% 100%;
+    }
+    75% {
+        background-position: 50% 0%;
+    }
+}
+
+/* Add subtle pattern overlay */
+.skyworld-video-cta .video-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 20%, rgba(216, 251, 24, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(216, 251, 24, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 60%, rgba(216, 251, 24, 0.05) 0%, transparent 50%);
+    z-index: 1;
+}

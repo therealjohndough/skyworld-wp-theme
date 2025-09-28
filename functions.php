@@ -67,6 +67,9 @@ function skyworld_cannabis_assets() {
     // COA Viewer styles
     wp_enqueue_style( 'skyworld-coa', get_stylesheet_directory_uri() . '/assets/css/coa-viewer.css', array(), filemtime( get_stylesheet_directory() . '/assets/css/coa-viewer.css' ) );
     
+    // Video CTA fallback styles (until you have actual video files)
+    wp_enqueue_style( 'skyworld-video-cta', get_stylesheet_directory_uri() . '/assets/css/video-cta-fallback.css', array(), filemtime( get_stylesheet_directory() . '/assets/css/video-cta-fallback.css' ) );
+    
     // Custom JavaScript
     wp_enqueue_script( 'skyworld-js', get_stylesheet_directory_uri() . '/assets/js/skyworld.js', array( 'jquery' ), filemtime( get_stylesheet_directory() . '/assets/js/skyworld.js' ), true );
     
