@@ -1,0 +1,10 @@
+{
+  "functions": {},
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "destination": "https://dev.skyworldcannabis.com",
+      "permanent": true
+    }
+  ]
+}

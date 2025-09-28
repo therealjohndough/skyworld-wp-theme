@@ -1,4 +1,10 @@
-# Skyworld Cannabis WordPress Child Theme
+# Skyworld Cannabis WordPress Theme
+
+⚠️ **IMPORTANT: This is a WordPress theme repository, not a Next.js project!**
+
+If you're seeing this on Vercel, please visit the actual WordPress site: **[https://dev.skyworldcannabis.com](https://dev.skyworldcannabis.com)**
+
+---
 
 A comprehensive WordPress child theme for Skyworld Cannabis featuring advanced strain library, store locator, COA management, age verification, and wholesale integration.
 
