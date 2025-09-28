@@ -237,6 +237,118 @@
                     }
                 }
             ]
+        },
+        {
+            "key": "field_product_media",
+            "label": "Product Media",
+            "name": "product_media",
+            "type": "group",
+            "instructions": "Images and visual content for this product",
+            "required": 0,
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_product_gallery",
+                    "label": "Product Gallery",
+                    "name": "product_gallery",
+                    "type": "gallery",
+                    "instructions": "High-quality product photos (nug shots, packaging, etc.)",
+                    "required": 0,
+                    "return_format": "array",
+                    "preview_size": "medium",
+                    "insert": "append",
+                    "library": "all",
+                    "min": 0,
+                    "max": 10
+                },
+                {
+                    "key": "field_hero_image",
+                    "label": "Hero Image",
+                    "name": "hero_image",
+                    "type": "image",
+                    "instructions": "Primary product image for cards and headers",
+                    "required": 0,
+                    "return_format": "array",
+                    "preview_size": "medium",
+                    "library": "all"
+                },
+                {
+                    "key": "field_product_video",
+                    "label": "Product Video",
+                    "name": "product_video",
+                    "type": "url",
+                    "instructions": "YouTube, Vimeo, or direct video URL",
+                    "required": 0
+                }
+            ]
+        },
+        {
+            "key": "field_marketing_content",
+            "label": "Marketing Content",
+            "name": "marketing_content",
+            "type": "group",
+            "instructions": "Copy and content for product marketing",
+            "required": 0,
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_product_tagline",
+                    "label": "Product Tagline",
+                    "name": "product_tagline",
+                    "type": "text",
+                    "instructions": "Short catchy description (e.g., 'Premium Indoor Perfection')",
+                    "required": 0,
+                    "maxlength": 100
+                },
+                {
+                    "key": "field_product_description",
+                    "label": "Product Description",
+                    "name": "product_description",
+                    "type": "textarea",
+                    "instructions": "Detailed product description with flavor, effects, experience",
+                    "required": 0,
+                    "rows": 4,
+                    "maxlength": 500
+                },
+                {
+                    "key": "field_flavor_profile",
+                    "label": "Flavor Profile",
+                    "name": "flavor_profile",
+                    "type": "text",
+                    "instructions": "Primary flavors (e.g., 'Sweet berries with earthy undertones')",
+                    "required": 0,
+                    "maxlength": 150
+                },
+                {
+                    "key": "field_experience_notes",
+                    "label": "Experience Notes",
+                    "name": "experience_notes",
+                    "type": "textarea",
+                    "instructions": "What makes this batch special? Growing notes, phenotype details, etc.",
+                    "required": 0,
+                    "rows": 3,
+                    "maxlength": 300
+                },
+                {
+                    "key": "field_recommended_use",
+                    "label": "Recommended Use",
+                    "name": "recommended_use",
+                    "type": "checkbox",
+                    "instructions": "Best occasions or times for this product",
+                    "required": 0,
+                    "choices": {
+                        "morning": "Morning",
+                        "afternoon": "Afternoon", 
+                        "evening": "Evening",
+                        "creative": "Creative Work",
+                        "social": "Social Situations",
+                        "relaxation": "Relaxation",
+                        "focus": "Focus",
+                        "sleep": "Sleep Aid"
+                    },
+                    "layout": "vertical"
+                }
+            ]
         }
     ],
     "location": [

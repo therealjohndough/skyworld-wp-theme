@@ -453,3 +453,83 @@ function skyworld_custom_body_classes( $classes ) {
     
     return $classes;
 }
+
+/**
+ * Enhanced Product Image Helper
+ * Gets the best available image for a product with fallbacks
+ */
+function skyworld_get_product_image( $product_id, $size = 'medium' ) {
+    // Try to get ACF media fields first
+    $media = get_field( 'product_media', $product_id );
+    
+    if ( $media ) {
+        // Try hero image first
+        if ( isset( $media['hero_image'] ) && $media['hero_image'] ) {
+            return array(
+                'url' => $media['hero_image']['url'],
+                'alt' => $media['hero_image']['alt'] ?: get_the_title( $product_id ),
+                'source' => 'hero_image'
+            );
+        }
+        
+        // Try first gallery image
+        if ( isset( $media['product_gallery'] ) && !empty( $media['product_gallery'] ) ) {
+            $first_gallery = $media['product_gallery'][0];
+            return array(
+                'url' => $first_gallery['url'],
+                'alt' => $first_gallery['alt'] ?: get_the_title( $product_id ),
+                'source' => 'gallery'
+            );
+        }
+    }
+    
+    // Try product featured image
+    if ( has_post_thumbnail( $product_id ) ) {
+        return array(
+            'url' => get_the_post_thumbnail_url( $product_id, $size ),
+            'alt' => get_post_meta( get_post_thumbnail_id( $product_id ), '_wp_attachment_image_alt', true ) ?: get_the_title( $product_id ),
+            'source' => 'featured_image'
+        );
+    }
+    
+    // Try related strain image
+    $related_strain = get_field( 'related_strain', $product_id );
+    if ( $related_strain ) {
+        $strain_media = get_field( 'strain_media', $related_strain->ID );
+        
+        if ( $strain_media && isset( $strain_media['strain_hero_image'] ) && $strain_media['strain_hero_image'] ) {
+            return array(
+                'url' => $strain_media['strain_hero_image']['url'],
+                'alt' => get_the_title( $related_strain->ID ) . ' strain',
+                'source' => 'strain_hero'
+            );
+        }
+        
+        if ( has_post_thumbnail( $related_strain->ID ) ) {
+            return array(
+                'url' => get_the_post_thumbnail_url( $related_strain->ID, $size ),
+                'alt' => get_the_title( $related_strain->ID ) . ' strain',
+                'source' => 'strain_featured'
+            );
+        }
+    }
+    
+    // Return null if no image found - template will handle placeholder
+    return null;
+}
+
+/**
+ * Get Product Marketing Content
+ * Safely retrieves marketing content with fallbacks
+ */
+function skyworld_get_product_marketing( $product_id ) {
+    $marketing = get_field( 'marketing_content', $product_id );
+    
+    return array(
+        'tagline' => $marketing['product_tagline'] ?? '',
+        'description' => $marketing['product_description'] ?? get_the_excerpt( $product_id ),
+        'flavor_profile' => $marketing['flavor_profile'] ?? '',
+        'experience_notes' => $marketing['experience_notes'] ?? '',
+        'recommended_use' => $marketing['recommended_use'] ?? array()
+    );
+}

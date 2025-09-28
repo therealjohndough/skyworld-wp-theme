@@ -36,26 +36,37 @@
                 
                 if ($products_query->have_posts()) :
                     while ($products_query->have_posts()) : $products_query->the_post();
+                        // Get product data using helper functions
+                        $product_id = get_the_ID();
                         $product_type = get_field('product_type') ?: 'flower';
-                        $product_price = get_field('product_price');
-                        $product_weight = get_field('product_weight');
-                        $thc_content = get_field('thc_content');
-                        $cbd_content = get_field('cbd_content');
-                        $strain_genetics = get_field('strain_genetics');
-                        $product_image = get_the_post_thumbnail_url(get_the_ID(), 'medium');
-                        $availability = get_field('product_availability') ?: 'In Stock';
+                        $product_weight = get_field('product_weight') ?: get_field('weight');
+                        $thc_content = get_field('thc_percentage') ?: get_field('thc_percent');
+                        $cbd_content = get_field('cbd_percentage') ?: get_field('cbd_percent');
+                        $related_strain = get_field('related_strain');
+                        $availability = get_field('product_status') ?: 'available';
+                        
+                        // Get marketing content using helper function
+                        $marketing = skyworld_get_product_marketing($product_id);
+                        
+                        // Get product image using helper function
+                        $product_image_data = skyworld_get_product_image($product_id, 'medium');
+                        
+                        // Get strain info for enhanced display
+                        $strain_name = $related_strain ? get_the_title($related_strain->ID) : '';
+                        $strain_genetics = $related_strain ? get_field('genetics', $related_strain->ID) : '';
+                        $strain_type = $related_strain ? get_field('strain_type', $related_strain->ID) : '';
                         ?>
                         
                         <div class="product-slide">
-                            <div class="product-card">
+                            <div class="product-card <?php echo esc_attr(strtolower($strain_type)); ?>">
                                 <div class="product-card-image">
-                                    <?php if ($product_image): ?>
-                                        <img src="<?php echo $product_image; ?>" 
-                                             alt="<?php the_title(); ?> Product Packaging"
+                                    <?php if ($product_image_data && isset($product_image_data['url'])): ?>
+                                        <img src="<?php echo esc_url($product_image_data['url']); ?>" 
+                                             alt="<?php echo esc_attr($product_image_data['alt']); ?>"
                                              loading="lazy">
                                     <?php else: ?>
                                         <div class="product-card-placeholder">
-                                            <i class="fas fa-cannabis"></i>
+                                            <i class="ph ph-cannabis"></i>
                                             <span><i class="ph ph-package"></i></span>
                                         </div>
                                     <?php endif; ?>
@@ -86,37 +97,54 @@
                                 </div>
                                 
                                 <div class="product-card-content">
-                                    <h3 class="product-card-title">
-                                        <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-                                    </h3>
-                                    
-                                    <?php if ($strain_genetics): ?>
-                                    <div class="product-genetics">
-                                        <i class="fas fa-dna"></i>
-                                        <span><?php echo $strain_genetics; ?></span>
+                                    <div class="product-card-header">
+                                        <h3 class="product-card-title">
+                                            <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                                        </h3>
+                                        
+                                        <?php if ($marketing['tagline']): ?>
+                                        <p class="product-tagline"><?php echo esc_html($marketing['tagline']); ?></p>
+                                        <?php endif; ?>
+                                        
+                                        <?php if ($strain_name): ?>
+                                        <div class="strain-name">
+                                            <i class="ph ph-plant"></i>
+                                            <span><?php echo esc_html($strain_name); ?></span>
+                                        </div>
+                                        <?php endif; ?>
                                     </div>
+                                    
+                                    <?php if ($marketing['flavor_profile']): ?>
+                                    <div class="flavor-profile">
+                                        <i class="ph ph-coffee"></i>
+                                        <span><?php echo esc_html($marketing['flavor_profile']); ?></span>
+                                    </div>
+                                    <?php endif; ?>
+                                    
+                                    <?php if ($marketing['description']): ?>
+                                    <p class="product-description"><?php echo esc_html(wp_trim_words($marketing['description'], 15)); ?></p>
                                     <?php endif; ?>
                                     
                                     <div class="product-card-details">
                                         <?php if ($product_weight): ?>
                                         <div class="product-detail">
-                                            <span class="detail-label">Weight:</span>
-                                            <span class="detail-value"><?php echo $product_weight; ?></span>
+                                            <span class="detail-label"><i class="ph ph-scales"></i> Weight:</span>
+                                            <span class="detail-value"><?php echo esc_html($product_weight); ?></span>
                                         </div>
                                         <?php endif; ?>
                                         
                                         <div class="product-potency">
                                             <?php if ($thc_content): ?>
-                                            <div class="potency-stat">
+                                            <div class="potency-stat thc">
                                                 <span class="stat-label">THC</span>
-                                                <span class="stat-value"><?php echo $thc_content; ?>%</span>
+                                                <span class="stat-value"><?php echo esc_html($thc_content); ?>%</span>
                                             </div>
                                             <?php endif; ?>
                                             
-                                            <?php if ($cbd_content): ?>
-                                            <div class="potency-stat">
+                                            <?php if ($cbd_content && $cbd_content > 0): ?>
+                                            <div class="potency-stat cbd">
                                                 <span class="stat-label">CBD</span>
-                                                <span class="stat-value"><?php echo $cbd_content; ?>%</span>
+                                                <span class="stat-value"><?php echo esc_html($cbd_content); ?>%</span>
                                             </div>
                                             <?php endif; ?>
                                         </div>

@@ -25,6 +25,51 @@
             "label": "COA Link",
             "name": "coa_link",
             "type": "url"
+        },
+        {
+            "key": "field_strain_gallery",
+            "label": "Strain Gallery",
+            "name": "strain_gallery",
+            "type": "gallery",
+            "instructions": "High-quality strain photos (plant, buds, trichomes)",
+            "required": 0,
+            "return_format": "array",
+            "preview_size": "medium",
+            "insert": "append",
+            "library": "all",
+            "min": 0,
+            "max": 8
+        },
+        {
+            "key": "field_strain_hero_image",
+            "label": "Strain Hero Image", 
+            "name": "strain_hero_image",
+            "type": "image",
+            "instructions": "Primary strain image for displays",
+            "required": 0,
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all"
+        },
+        {
+            "key": "field_strain_description",
+            "label": "Strain Description",
+            "name": "strain_description",
+            "type": "textarea",
+            "instructions": "Detailed strain description, effects, and characteristics",
+            "required": 0,
+            "rows": 4,
+            "maxlength": 500
+        },
+        {
+            "key": "field_grow_notes",
+            "label": "Growing Notes",
+            "name": "grow_notes",
+            "type": "textarea", 
+            "instructions": "Cultivation details, phenotype info, harvest notes",
+            "required": 0,
+            "rows": 3,
+            "maxlength": 300
         }
     ],
     "location": [
