@@ -36,7 +36,7 @@ add_action( 'admin_menu', 'skyworld_asset_manager_menu' );
 
 function skyworld_asset_manager_menu() {
     add_submenu_page(
-        'edit.php?post_type=sky_product',
+        'edit.php?post_type=sw-product',
         'Asset Manager',
         '<i class="ph ph-folder-open"></i> Asset Manager',
         'manage_options',
@@ -369,7 +369,7 @@ function skyworld_add_asset_fields() {
                     array(
                         'param' => 'post_type',
                         'operator' => '==',
-                        'value' => 'sky_product',
+                        'value' => 'sw-product',
                     ),
                 ),
                 array(

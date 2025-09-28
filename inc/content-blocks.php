@@ -215,7 +215,7 @@ function skyworld_add_content_block_meta_boxes() {
         'skyworld-featured-settings',
         'Featured Content Settings',
         'skyworld_featured_settings_callback',
-        'sky_product',
+        'sw-product',
         'side',
         'high'
     );

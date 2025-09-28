@@ -81,7 +81,7 @@ function skyworld_clean_admin_menu() {
 // Main Cannabis Dashboard
 function skyworld_cannabis_dashboard() {
     $strain_count = wp_count_posts( 'strain' )->publish;
-    $product_count = wp_count_posts( 'sky_product' )->publish;
+    $product_count = wp_count_posts( 'sw-product' )->publish;
     $location_count = wp_count_posts( 'location' )->publish;
     ?>
     <div class="wrap skyworld-admin-dashboard">
@@ -98,7 +98,7 @@ function skyworld_cannabis_dashboard() {
             <div class="stat-card">
                 <h3><i class="skyworld-icon icon-package"></i> Products</h3>
                 <div class="stat-number"><?php echo $product_count; ?></div>
-                <a href="edit.php?post_type=sky_product" class="button">Manage Products</a>
+                <a href="edit.php?post_type=sw-product" class="button">Manage Products</a>
             </div>
             
             <div class="stat-card">
@@ -126,7 +126,7 @@ function skyworld_cannabis_dashboard() {
             <h2>Quick Actions</h2>
             <div class="action-buttons">
                 <a href="post-new.php?post_type=strain" class="button button-primary button-large"><i class="skyworld-icon icon-plus-circle"></i> Add New Strain</a>
-                <a href="post-new.php?post_type=sky_product" class="button button-primary button-large"><i class="skyworld-icon icon-plus-circle"></i> Add New Product</a>
+                <a href="post-new.php?post_type=sw-product" class="button button-primary button-large"><i class="skyworld-icon icon-plus-circle"></i> Add New Product</a>
                 <a href="post-new.php?post_type=location" class="button button-primary button-large"><i class="skyworld-icon icon-plus-circle"></i> Add New Location</a>
                 <a href="admin.php?page=skyworld-seo-manager" class="button button-secondary button-large"><i class="skyworld-icon icon-chart-line"></i> SEO Manager</a>
                 <a href="customize.php" class="button button-secondary button-large"><i class="skyworld-icon icon-palette"></i> Customize Website</a>
@@ -138,7 +138,7 @@ function skyworld_cannabis_dashboard() {
             <?php
             $recent_posts = get_posts( array(
                 'numberposts' => 10,
-                'post_type' => array( 'strain', 'sky_product', 'location' ),
+                'post_type' => array( 'strain', 'sw-product', 'location' ),
                 'post_status' => 'publish',
                 'orderby' => 'date',
                 'order' => 'DESC'
@@ -148,7 +148,7 @@ function skyworld_cannabis_dashboard() {
                 echo '<ul>';
                 foreach ( $recent_posts as $post ) {
                     $post_type_obj = get_post_type_object( $post->post_type );
-                    $icon = $post->post_type == 'strain' ? 'icon-dna' : ( $post->post_type == 'sky_product' ? 'icon-package' : 'icon-map-pin' );
+                    $icon = $post->post_type == 'strain' ? 'icon-dna' : ( $post->post_type == 'sw-product' ? 'icon-package' : 'icon-map-pin' );
                     echo '<li>';
                     echo '<strong><i class="skyworld-icon icon-small ' . $icon . '"></i> ' . $post_type_obj->labels->singular_name . ':</strong> ';
                     echo '<a href="post.php?post=' . $post->ID . '&action=edit">' . $post->post_title . '</a>';
@@ -380,14 +380,14 @@ function skyworld_quick_actions_page() {
 // Product Manager Page
 function skyworld_product_manager_page() {
     $products = get_posts( array(
-        'post_type' => 'sky_product',
+        'post_type' => 'sw-product',
         'numberposts' => -1,
         'post_status' => 'publish'
     ));
     ?>
     <div class="wrap">
         <h1><i class="skyworld-icon icon-package"></i> Product Manager</h1>
-        <a href="post-new.php?post_type=sky_product" class="page-title-action">Add New Product</a>
+        <a href="post-new.php?post_type=sw-product" class="page-title-action">Add New Product</a>
         
         <div class="product-stats">
             <div class="stat-box">
@@ -430,7 +430,7 @@ function skyworld_product_manager_page() {
                     </div>
                 <?php endforeach; ?>
             <?php else: ?>
-                <p>No products found. <a href="post-new.php?post_type=sky_product">Add your first product</a>!</p>
+                <p>No products found. <a href="post-new.php?post_type=sw-product">Add your first product</a>!</p>
             <?php endif; ?>
         </div>
     </div>

@@ -10,7 +10,7 @@ add_action( 'admin_menu', 'skyworld_coa_viewer_menu' );
 
 function skyworld_coa_viewer_menu() {
     add_submenu_page(
-        'edit.php?post_type=sky_product',
+        'edit.php?post_type=sw-product',
         'COA Viewer System',
         '<i class="ph ph-flask"></i> COA Viewer',
         'manage_options',

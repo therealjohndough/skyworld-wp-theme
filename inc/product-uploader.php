@@ -4,12 +4,13 @@
  * Access via WordPress Admin: Tools > Upload Cannabis Products
  */
 
-// Add admin menu
+// Add admin menu - organize under Cannabis Products
 add_action('admin_menu', 'skyworld_add_upload_menu');
 function skyworld_add_upload_menu() {
-    add_management_page(
+    add_submenu_page(
+        'edit.php?post_type=sw-product',
         'Upload Cannabis Products',
-        'Upload Cannabis Products',
+        'Upload Products',
         'manage_options',
         'skyworld-upload',
         'skyworld_upload_page'

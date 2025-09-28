@@ -370,7 +370,7 @@ function skyworld_seo_manager_page() {
 // Get SEO metrics for dashboard
 function skyworld_get_seo_metrics() {
     // Meta data score
-    $total_pages = wp_count_posts( 'page' )->publish + wp_count_posts( 'strain' )->publish + wp_count_posts( 'sky_product' )->publish;
+    $total_pages = wp_count_posts( 'page' )->publish + wp_count_posts( 'strain' )->publish + wp_count_posts( 'sw-product' )->publish;
     $pages_with_meta = skyworld_count_pages_with_meta();
     $meta_score = $total_pages > 0 ? round( ( $pages_with_meta / $total_pages ) * 100 ) : 0;
     
@@ -393,7 +393,7 @@ function skyworld_get_seo_metrics() {
 // Count pages with proper meta data
 function skyworld_count_pages_with_meta() {
     $count = 0;
-    $post_types = array( 'page', 'strain', 'sky_product', 'location' );
+    $post_types = array( 'page', 'strain', 'sw-product', 'location' );
     
     foreach ( $post_types as $post_type ) {
         $posts = get_posts( array(
@@ -443,7 +443,7 @@ function skyworld_calculate_content_score() {
     
     // Check if products have lab results
     $products_with_labs = get_posts( array(
-        'post_type' => 'sky_product',
+        'post_type' => 'sw-product',
         'posts_per_page' => -1,
         'meta_query' => array(
             array(
@@ -454,7 +454,7 @@ function skyworld_calculate_content_score() {
         )
     ));
     
-    $total_products = wp_count_posts( 'sky_product' )->publish;
+    $total_products = wp_count_posts( 'sw-product' )->publish;
     if ( $total_products > 0 ) {
         $score += ( count( $products_with_labs ) / $total_products ) * 15;
     }
@@ -468,7 +468,7 @@ function skyworld_calculate_structure_score() {
     
     // Check if custom post types are active
     if ( post_type_exists( 'strain' ) ) $score += 10;
-    if ( post_type_exists( 'sky_product' ) ) $score += 10;
+    if ( post_type_exists( 'sw-product' ) ) $score += 10;
     if ( post_type_exists( 'location' ) ) $score += 10;
     
     // Check if taxonomies are active
@@ -481,7 +481,7 @@ function skyworld_calculate_structure_score() {
 // Get pages missing meta data
 function skyworld_get_pages_missing_meta() {
     $pages_missing = array();
-    $post_types = array( 'page', 'strain', 'sky_product', 'location' );
+    $post_types = array( 'page', 'strain', 'sw-product', 'location' );
     
     foreach ( $post_types as $post_type ) {
         $posts = get_posts( array(
@@ -521,7 +521,7 @@ function skyworld_get_pages_missing_meta() {
 function skyworld_get_cannabis_keyword_stats() {
     return array(
         'strains' => wp_count_posts( 'strain' )->publish,
-        'products' => wp_count_posts( 'sky_product' )->publish,
+        'products' => wp_count_posts( 'sw-product' )->publish,
         'locations' => wp_count_posts( 'location' )->publish,
         'terpenes' => wp_count_terms( array( 'taxonomy' => 'terpene', 'hide_empty' => false ) ),
         'strain_types' => wp_count_terms( array( 'taxonomy' => 'strain_type', 'hide_empty' => false ) ),
@@ -570,7 +570,7 @@ function skyworld_run_technical_seo_checks() {
     $checks[] = array(
         'name' => 'Cannabis Archive Pages',
         'description' => 'Strain and product archive pages are enabled',
-        'status' => post_type_exists( 'strain' ) && post_type_exists( 'sky_product' ),
+        'status' => post_type_exists( 'strain' ) && post_type_exists( 'sw-product' ),
         'fix_url' => ''
     );
     

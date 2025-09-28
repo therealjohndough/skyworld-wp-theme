@@ -31,7 +31,7 @@ function skyworld_register_post_types() {
     // PRODUCTS - Cannabis products (flower, pre-rolls, etc) - Using safe URL slug
     register_post_type( 'sw-product', array(
         'labels' => array(
-            'name' => 'Products',
+            'name' => 'Cannabis Products',
             'singular_name' => 'Product',
             'add_new' => 'Add New Product',
             'add_new_item' => 'Add New Product',
@@ -39,13 +39,15 @@ function skyworld_register_post_types() {
             'new_item' => 'New Product',
             'view_item' => 'View Product',
             'search_items' => 'Search Products',
+            'menu_name' => 'Cannabis Products',
         ),
         'public' => true,
         'has_archive' => true,
         'rewrite' => array( 'slug' => 'cannabis-products' ),
         'supports' => array( 'title', 'editor', 'thumbnail', 'excerpt' ),
-        'menu_icon' => 'dashicons-products',
+        'menu_icon' => 'dashicons-cannabis',
         'show_in_rest' => true,
+        'menu_position' => 20,
     ));
 
     // LOCATIONS - Dispensary/retailer locations
@@ -74,7 +76,7 @@ add_action( 'init', 'skyworld_register_taxonomies' );
 function skyworld_register_taxonomies() {
     
     // STRAIN TYPE - Indica, Sativa, Hybrid with archives
-    register_taxonomy( 'strain_type', array( 'strain', 'product' ), array(
+    register_taxonomy( 'strain_type', array( 'strain', 'sw-product' ), array(
         'labels' => array(
             'name' => 'Strain Types',
             'singular_name' => 'Strain Type',
@@ -97,7 +99,7 @@ function skyworld_register_taxonomies() {
     ));
 
     // PRODUCT TYPE - Flower, Pre-rolls, Hash Holes, etc with archives
-    register_taxonomy( 'product_type', array( 'product' ), array(
+    register_taxonomy( 'product_type', array( 'sw-product' ), array(
         'labels' => array(
             'name' => 'Product Types',
             'singular_name' => 'Product Type',
@@ -119,7 +121,7 @@ function skyworld_register_taxonomies() {
     ));
 
     // TERPENES - Proper terpene taxonomy with archives
-    register_taxonomy( 'terpene', array( 'strain', 'product' ), array(
+    register_taxonomy( 'terpene', array( 'strain', 'sw-product' ), array(
         'labels' => array(
             'name' => 'Terpenes',
             'singular_name' => 'Terpene',
@@ -142,7 +144,7 @@ function skyworld_register_taxonomies() {
     ));
 
     // PACKAGE SIZES/WEIGHTS - Searchable archive
-    register_taxonomy( 'package_size', array( 'product' ), array(
+    register_taxonomy( 'package_size', array( 'sw-product' ), array(
         'labels' => array(
             'name' => 'Package Sizes',
             'singular_name' => 'Package Size',
@@ -164,7 +166,7 @@ function skyworld_register_taxonomies() {
     ));
 
     // CANNABINOIDS - Archive for CBG, CBN, THCV, etc.
-    register_taxonomy( 'cannabinoid', array( 'strain', 'product' ), array(
+    register_taxonomy( 'cannabinoid', array( 'strain', 'sw-product' ), array(
         'labels' => array(
             'name' => 'Cannabinoids',
             'singular_name' => 'Cannabinoid',
@@ -186,7 +188,7 @@ function skyworld_register_taxonomies() {
     ));
 
     // EFFECTS - Cannabis effects with archives
-    register_taxonomy( 'effect', array( 'strain', 'product' ), array(
+    register_taxonomy( 'effect', array( 'strain', 'sw-product' ), array(
         'labels' => array(
             'name' => 'Effects',
             'singular_name' => 'Effect',
@@ -209,7 +211,7 @@ function skyworld_register_taxonomies() {
     ));
 
     // GROWING METHOD - Indoor, Outdoor, Greenhouse
-    register_taxonomy( 'growing_method', array( 'strain', 'product' ), array(
+    register_taxonomy( 'growing_method', array( 'strain', 'sw-product' ), array(
         'labels' => array(
             'name' => 'Growing Methods',
             'singular_name' => 'Growing Method',
