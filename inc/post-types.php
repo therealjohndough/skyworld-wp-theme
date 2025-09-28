@@ -22,17 +22,17 @@ function skyworld_register_post_types() {
         ),
         'public' => true,
         'has_archive' => true,
-        'rewrite' => array( 'slug' => 'strains' ),
+        'rewrite' => array( 'slug' => 'strain-library' ),
         'supports' => array( 'title', 'editor', 'thumbnail', 'excerpt' ),
         'menu_icon' => 'dashicons-carrot',
         'show_in_rest' => true,
     ));
 
-    // PRODUCTS - Cannabis products (flower, pre-rolls, etc)
-    register_post_type( 'product', array(
+    // SW PRODUCTS - Cannabis products (flower, pre-rolls, etc) - Prefixed to avoid WooCommerce conflicts
+    register_post_type( 'sw_product', array(
         'labels' => array(
-            'name' => 'Products',
-            'singular_name' => 'Product',
+            'name' => 'SW Products',
+            'singular_name' => 'SW Product',
             'add_new' => 'Add New Product',
             'add_new_item' => 'Add New Product',
             'edit_item' => 'Edit Product',
@@ -42,7 +42,7 @@ function skyworld_register_post_types() {
         ),
         'public' => true,
         'has_archive' => true,
-        'rewrite' => array( 'slug' => 'products' ),
+        'rewrite' => array( 'slug' => 'cannabis-products' ),
         'supports' => array( 'title', 'editor', 'thumbnail', 'excerpt' ),
         'menu_icon' => 'dashicons-products',
         'show_in_rest' => true,

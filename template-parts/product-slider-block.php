@@ -21,7 +21,7 @@
                 <?php
                 // Query featured products
                 $products_query = new WP_Query(array(
-                    'post_type' => 'sky_product',
+                    'post_type' => 'sw_product',
                     'posts_per_page' => 8,
                     'meta_query' => array(
                         array(

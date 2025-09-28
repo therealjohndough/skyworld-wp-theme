@@ -10,7 +10,7 @@
         <?php
         // Query for featured posts or products (top 3 stories of the month)
         $hero_query = new WP_Query(array(
-            'post_type' => array('post', 'strain', 'sky_product'),
+            'post_type' => array('post', 'strain', 'sw_product'),
             'posts_per_page' => 3,
             'meta_query' => array(
                 array(
@@ -46,7 +46,7 @@
                                 <?php if ($post_type === 'strain'): ?>
                                     <i class="fas fa-seedling"></i>
                                     <span>Featured Strain</span>
-                                <?php elseif ($post_type === 'sky_product'): ?>
+                                <?php elseif ($post_type === 'sw_product'): ?>
                                     <i class="fas fa-star"></i>
                                     <span>Featured Product</span>
                                 <?php else: ?>
@@ -66,7 +66,7 @@
                                     <i class="fas fa-arrow-right"></i>
                                 </a>
                                 
-                                <?php if ($post_type === 'strain' || $post_type === 'sky_product'): ?>
+                                <?php if ($post_type === 'strain' || $post_type === 'sw_product'): ?>
                                 <a href="<?php echo home_url('/store-locator/'); ?>" 
                                    class="hero-slide-button secondary">
                                     <i class="fas fa-map-marker-alt"></i>

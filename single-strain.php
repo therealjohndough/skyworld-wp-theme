@@ -311,7 +311,7 @@ $strain_meta = get_post_meta($strain_id);
                         <?php
                         // Query for products related to this strain
                         $related_products = new WP_Query([
-                            'post_type' => 'sky_product',
+                            'post_type' => 'sw_product',
                             'meta_query' => [
                                 [
                                     'key' => 'strain_reference',

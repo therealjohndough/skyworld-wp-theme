@@ -27,6 +27,7 @@ require_once get_stylesheet_directory() . '/inc/seo-manager.php';
 require_once get_stylesheet_directory() . '/inc/cannabis-importer.php';
 require_once get_stylesheet_directory() . '/inc/asset-manager.php';
 require_once get_stylesheet_directory() . '/inc/coa-viewer.php';
+require_once get_stylesheet_directory() . '/inc/product-uploader.php';
 
 // Legacy admin interface for backward compatibility
 if ( file_exists( get_stylesheet_directory() . '/inc/admin-interface.php' ) ) {
@@ -299,7 +300,7 @@ function skyworld_structured_data() {
     }
     
     // Product schema for individual cannabis products
-    if ( is_singular( 'sky_product' ) ) {
+    if ( is_singular( 'sw_product' ) ) {
         global $post;
         $strain = get_field( 'product_strain', $post->ID );
         $thc = get_field( 'product_thc_percentage', $post->ID );
@@ -442,7 +443,7 @@ function skyworld_custom_body_classes( $classes ) {
         $classes[] = 'cannabis-strains';
     }
     
-    if ( is_post_type_archive( 'sky_product' ) || is_singular( 'sky_product' ) ) {
+    if ( is_post_type_archive( 'sw_product' ) || is_singular( 'sw_product' ) ) {
         $classes[] = 'cannabis-products';
     }
     

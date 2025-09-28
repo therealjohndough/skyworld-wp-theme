@@ -39,7 +39,7 @@ function skyworld_content_blocks_page() {
                 </ol>
                 <a href="<?php echo admin_url('edit.php'); ?>" class="button button-primary">Manage Posts</a>
                 <a href="<?php echo admin_url('edit.php?post_type=strain'); ?>" class="button button-secondary">Manage Strains</a>
-                <a href="<?php echo admin_url('edit.php?post_type=sky_product'); ?>" class="button button-secondary">Manage Products</a>
+                <a href="<?php echo admin_url('edit.php?post_type=sw_product'); ?>" class="button button-secondary">Manage Products</a>
             </div>
             
             <!-- Genetic Library Management -->
@@ -66,8 +66,8 @@ function skyworld_content_blocks_page() {
                     <li><strong>Required Fields:</strong> Product Type, Weight, Price, THC/CBD Content</li>
                     <li><strong>Image:</strong> Upload a product packaging photo</li>
                 </ul>
-                <a href="<?php echo admin_url('edit.php?post_type=sky_product'); ?>" class="button button-primary">Manage Products</a>
-                <a href="<?php echo admin_url('post-new.php?post_type=sky_product'); ?>" class="button button-secondary">Add New Product</a>
+                <a href="<?php echo admin_url('edit.php?post_type=sw_product'); ?>" class="button button-primary">Manage Products</a>
+                <a href="<?php echo admin_url('post-new.php?post_type=sw_product'); ?>" class="button button-secondary">Add New Product</a>
             </div>
             
             <!-- News Block Management -->
@@ -188,7 +188,7 @@ add_action('add_meta_boxes', 'skyworld_add_content_block_meta_boxes');
 
 function skyworld_add_content_block_meta_boxes() {
     // Hero slider meta box for posts, strains, products
-    $post_types = array('post', 'strain', 'sky_product');
+    $post_types = array('post', 'strain', 'sw_product');
     foreach ($post_types as $post_type) {
         add_meta_box(
             'skyworld-hero-settings',
