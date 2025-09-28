@@ -300,7 +300,7 @@ function skyworld_structured_data() {
     }
     
     // Product schema for individual cannabis products
-    if ( is_singular( 'sw_product' ) ) {
+    if ( is_singular( 'sw-product' ) ) {
         global $post;
         $strain = get_field( 'product_strain', $post->ID );
         $thc = get_field( 'product_thc_percentage', $post->ID );
@@ -443,7 +443,7 @@ function skyworld_custom_body_classes( $classes ) {
         $classes[] = 'cannabis-strains';
     }
     
-    if ( is_post_type_archive( 'sw_product' ) || is_singular( 'sw_product' ) ) {
+    if ( is_post_type_archive( 'sw-product' ) || is_singular( 'sw-product' ) ) {
         $classes[] = 'cannabis-products';
     }
     

@@ -102,7 +102,7 @@ function skyworld_management_page() {
                     <a href="<?php echo admin_url('post-new.php?post_type=strain'); ?>" class="button button-primary">
                         <span class="dashicons dashicons-plus"></span> Add New Strain
                     </a>
-                    <a href="<?php echo admin_url('post-new.php?post_type=product'); ?>" class="button button-primary">
+                    <a href="<?php echo admin_url('post-new.php?post_type=sw-product'); ?>" class="button button-primary">
                         <span class="dashicons dashicons-plus"></span> Add New Product
                     </a>
                     <a href="<?php echo admin_url('post-new.php?post_type=location'); ?>" class="button button-primary">
@@ -119,7 +119,7 @@ function skyworld_management_page() {
                 <?php 
                 $recent_posts = get_posts(array(
                     'numberposts' => 5,
-                    'post_type' => array('strain', 'product', 'location'),
+                    'post_type' => array('strain', 'sw-product', 'location'),
                     'post_status' => 'publish'
                 ));
                 
@@ -265,7 +265,7 @@ function skyworld_products_page() {
             <a href="<?php echo admin_url('post-new.php?post_type=product'); ?>" class="button button-primary">
                 <span class="dashicons dashicons-plus"></span> Add New Product
             </a>
-            <a href="<?php echo admin_url('edit.php?post_type=product'); ?>" class="button button-secondary">
+            <a href="<?php echo admin_url('edit.php?post_type=sw-product'); ?>" class="button button-secondary">
                 <span class="dashicons dashicons-list-view"></span> View All Products
             </a>
         </div>

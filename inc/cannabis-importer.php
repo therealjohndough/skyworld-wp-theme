@@ -71,7 +71,7 @@ function skyworld_import_cannabis_products( $csv_path ) {
 
         // Check if product exists
         $existing = get_posts( array(
-            'post_type' => 'product',
+            'post_type' => 'sw-product',
             'title' => $data['name'],
             'post_status' => 'any',
             'numberposts' => 1,
@@ -80,7 +80,7 @@ function skyworld_import_cannabis_products( $csv_path ) {
         $post_data = array(
             'post_title' => sanitize_text_field( $data['name'] ),
             'post_content' => wp_kses_post( $data['description'] ?? '' ),
-            'post_type' => 'product',
+            'post_type' => 'sw-product',
             'post_status' => 'publish',
         );
 
@@ -349,7 +349,7 @@ add_action( 'admin_menu', 'skyworld_importer_admin_menu' );
 
 function skyworld_importer_admin_menu() {
     add_submenu_page(
-        'edit.php?post_type=product',
+        'edit.php?post_type=sw-product',
         'Import Cannabis Data',
         'Import Data',
         'manage_options',

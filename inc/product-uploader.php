@@ -66,7 +66,7 @@ function skyworld_upload_page() {
             <h2>Current Content</h2>
             <ul>
                 <li>Strains: <?php echo wp_count_posts('strain')->publish ?? 0; ?> published</li>
-                <li>Products: <?php echo wp_count_posts('sw_product')->publish ?? 0; ?> published</li>
+                <li>Products: <?php echo wp_count_posts('product')->publish ?? 0; ?> published</li>
             </ul>
         </div>
     </div>
@@ -163,7 +163,7 @@ function skyworld_import_products_csv($csv_path) {
         
         // Skip if product exists (check by batch number)
         $existing = get_posts(array(
-            'post_type' => 'sw_product',
+            'post_type' => 'sw-product',
             'meta_query' => array(array(
                 'key' => 'product_batch_number',
                 'value' => $data['Batch Number']
@@ -185,7 +185,7 @@ function skyworld_import_products_csv($csv_path) {
             'post_title' => sanitize_text_field($title),
             'post_content' => $data['Notes'] ?: 'Premium cannabis product.',
             'post_status' => 'publish',
-            'post_type' => 'sw_product'
+            'post_type' => 'sw-product'
         ));
 
         if ($post_id && function_exists('update_field')) {

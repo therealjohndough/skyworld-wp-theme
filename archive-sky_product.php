@@ -1,6 +1,6 @@
 <?php
 /**
- * Archive template for sw_product CPT
+ * Archive template for sky_product CPT
  */
 get_header();
 ?>

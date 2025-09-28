@@ -27,7 +27,7 @@ get_header();
 
     <h2>Products</h2>
     <ul>
-        <?php $products = get_posts( array( 'post_type' => 'sw_product', 'posts_per_page' => -1 ) );
+        <?php $products = get_posts( array( 'post_type' => 'sw-product', 'posts_per_page' => -1 ) );
         foreach ( $products as $prod ) : ?>
             <li><a href="<?php echo esc_url( get_permalink( $prod ) ); ?>"><?php echo esc_html( get_the_title( $prod ) ); ?></a></li>
         <?php endforeach; ?>

@@ -1,3 +1,4 @@
+
 <?php
 /**
  * Product Upload Script for Skyworld Cannabis
@@ -128,7 +129,7 @@ function import_skyworld_products($csv_path) {
         
         // Check if product already exists by batch number
         $existing = get_posts(array(
-            'post_type' => 'sw_product',
+            'post_type' => 'sw-product',
             'meta_query' => array(
                 array(
                     'key' => 'product_batch_number',
@@ -153,7 +154,7 @@ function import_skyworld_products($csv_path) {
             'post_title' => sanitize_text_field($product_title),
             'post_content' => $product_data['Notes'] ?: 'Premium cannabis product with lab testing.',
             'post_status' => 'publish',
-            'post_type' => 'sw_product'
+            'post_type' => 'sw-product'
         );
 
         $product_id = wp_insert_post($product_post);
@@ -202,7 +203,7 @@ function import_skyworld_coas($csv_path) {
         
         // Find related product by batch number
         $products = get_posts(array(
-            'post_type' => 'sky_product',
+            'post_type' => 'sw-product',
             'meta_query' => array(
                 array(
                     'key' => 'product_batch_number',

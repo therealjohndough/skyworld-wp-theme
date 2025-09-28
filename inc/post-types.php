@@ -28,11 +28,11 @@ function skyworld_register_post_types() {
         'show_in_rest' => true,
     ));
 
-    // SW PRODUCTS - Cannabis products (flower, pre-rolls, etc) - Prefixed to avoid WooCommerce conflicts
-    register_post_type( 'sw_product', array(
+    // PRODUCTS - Cannabis products (flower, pre-rolls, etc) - Using safe URL slug
+    register_post_type( 'sw-product', array(
         'labels' => array(
-            'name' => 'SW Products',
-            'singular_name' => 'SW Product',
+            'name' => 'Products',
+            'singular_name' => 'Product',
             'add_new' => 'Add New Product',
             'add_new_item' => 'Add New Product',
             'edit_item' => 'Edit Product',

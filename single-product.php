@@ -1,6 +1,6 @@
 <?php
 /**
- * Single template for sw_product CPT
+ * Single template for product CPT
  */
 get_header();
 
