@@ -279,21 +279,20 @@ document.addEventListener('DOMContentLoaded', function() {
         ageGateModal.style.display = 'flex';
         document.body.style.overflow = 'hidden';
     } else {
-        ageGateModal.classList.add('hidden');
+        ageGateModal.style.display = 'none';
     }
     
     // Handle age verification
     yesButton.addEventListener('click', function() {
         localStorage.setItem('skyworld-age-verified', 'true');
         localStorage.setItem('skyworld-age-verification-date', currentDate);
-        ageGateModal.classList.add('hidden');
+        ageGateModal.style.display = 'none';
         document.body.style.overflow = '';
     });
     
     noButton.addEventListener('click', function() {
-        // Redirect to age-appropriate site or show message
-        alert('You must be 21 or older to view this content.');
-        window.location.href = 'https://www.samhsa.gov/'; // Redirect to substance abuse resources
+        // Redirect to Google as requested
+        window.location.href = 'https://www.google.com';
     });
 });
 </script>
