@@ -24,6 +24,9 @@ require_once get_stylesheet_directory() . '/inc/acf-fields.php';
 require_once get_stylesheet_directory() . '/inc/customizer.php';
 require_once get_stylesheet_directory() . '/inc/admin-dashboard.php';
 require_once get_stylesheet_directory() . '/inc/seo-manager.php';
+require_once get_stylesheet_directory() . '/inc/cannabis-importer.php';
+require_once get_stylesheet_directory() . '/inc/asset-manager.php';
+require_once get_stylesheet_directory() . '/inc/coa-viewer.php';
 
 // Legacy admin interface for backward compatibility
 if ( file_exists( get_stylesheet_directory() . '/inc/admin-interface.php' ) ) {
@@ -52,47 +55,23 @@ function skyworld_cannabis_setup() {
     add_image_size( 'strain-hero', 800, 400, true );
 }
 
-// Enqueue professional cannabis theme assets
-add_action( 'wp_enqueue_scripts', 'skyworld_cannabis_enqueue_assets' );
-function skyworld_cannabis_enqueue_assets() {
-    // Core theme styles
-    wp_enqueue_style('skyworld-main', get_stylesheet_directory_uri() . '/style.css');
-    wp_enqueue_style('skyworld-css', get_stylesheet_directory_uri() . '/assets/css/skyworld.css', array('skyworld-main'));
-    wp_enqueue_style('template-blocks-css', get_stylesheet_directory_uri() . '/assets/css/template-blocks.css', array('skyworld-main'));
-    wp_enqueue_style('color-palette-css', get_stylesheet_directory_uri() . '/assets/css/color-palette.css', array('skyworld-main'));
-    wp_enqueue_style('phosphor-icons-css', get_stylesheet_directory_uri() . '/assets/css/phosphor-icons.css', array('skyworld-main'));
+// Enqueue theme assets with cache busting
+add_action( 'wp_enqueue_scripts', 'skyworld_cannabis_assets' );
+function skyworld_cannabis_assets() {
+    // Main theme stylesheet
+    wp_enqueue_style( 'skyworld-style', get_stylesheet_uri(), array(), filemtime( get_stylesheet_directory() . '/style.css' ) );
     
-    // Page-specific styles
-    if (is_page_template('page-store-locator.php')) {
-        wp_enqueue_style('store-locator-css', get_stylesheet_directory_uri() . '/assets/css/store-locator.css');
-    }
+    // Custom cannabis business styles
+    wp_enqueue_style( 'skyworld-cannabis', get_stylesheet_directory_uri() . '/assets/css/skyworld.css', array(), filemtime( get_stylesheet_directory() . '/assets/css/skyworld.css' ) );
     
-    if (is_page_template('page-coa.php')) {
-        wp_enqueue_style('coa-css', get_stylesheet_directory_uri() . '/assets/css/coa.css');
-    }
+    // COA Viewer styles
+    wp_enqueue_style( 'skyworld-coa', get_stylesheet_directory_uri() . '/assets/css/coa-viewer.css', array(), filemtime( get_stylesheet_directory() . '/assets/css/coa-viewer.css' ) );
     
-    // Strain library styles for archive and single strain pages
-    if (is_post_type_archive('strain') || is_singular('strain')) {
-        wp_enqueue_style('strain-library-css', get_stylesheet_directory_uri() . '/assets/css/strain-library.css');
-    }
+    // Custom JavaScript
+    wp_enqueue_script( 'skyworld-js', get_stylesheet_directory_uri() . '/assets/js/skyworld.js', array( 'jquery' ), filemtime( get_stylesheet_directory() . '/assets/js/skyworld.js' ), true );
     
-    // Age gate styles and scripts for all pages
-    wp_enqueue_style('age-gate-css', get_stylesheet_directory_uri() . '/assets/css/age-gate.css');
-    wp_enqueue_script('age-gate-js', get_stylesheet_directory_uri() . '/assets/js/age-gate.js', array('jquery'), '1.0.0', true);
-    
-    // Enqueue child theme scripts
-    wp_enqueue_script('skyworld-js', get_stylesheet_directory_uri() . '/assets/js/skyworld.js', array('jquery'), '1.0.0', true);
-    
-    // Google Maps API for store locator
-    if (is_page_template('page-store-locator.php')) {
-        wp_enqueue_script('google-maps', 'https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places', array(), null, true);
-        wp_enqueue_script('store-locator-js', get_stylesheet_directory_uri() . '/assets/js/store-locator.js', array('jquery', 'google-maps'), '1.0.0', true);
-        
-        wp_localize_script('store-locator-js', 'storeLocator', array(
-            'ajaxurl' => admin_url('admin-ajax.php'),
-            'nonce' => wp_create_nonce('store_locator_nonce')
-        ));
-    }
+    // Phosphor Icons (professional icon system)
+    wp_enqueue_style( 'phosphor-icons', 'https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css', array(), '2.0.3' );
 }
 
 // PROFESSIONAL SECURITY FEATURES

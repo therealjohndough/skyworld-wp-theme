@@ -1,42 +1,253 @@
 <?php
 /**
- * Simple CSV importer for Skyworld products.
+ * Professional Cannabis Product Importer for Skyworld
+ * Created by John Dough - MADE TO INSPIRE
+ * 
+ * Handles import of cannabis products, strains, and locations
+ * with proper ACF field mapping and taxonomy assignment
  *
  * Usage (WP-CLI):
- *   wp skyworld import_products /absolute/path/to/file.csv
+ *   wp skyworld import_products /path/to/products.csv
+ *   wp skyworld import_strains /path/to/strains.csv
+ *   wp skyworld import_locations /path/to/locations.csv
  *
- * Or call programmatically: skyworld_import_products_csv( '/path/to/file.csv' );
+ * CSV Format Expected:
+ * Products: name, description, strain_type, thc_percentage, cbd_percentage, terpenes, effects, image_url
+ * Strains: name, description, type, genetics, thc_min, thc_max, cbd_min, cbd_max, dominant_terpenes, effects
+ * Locations: name, address, city, state, zip, phone, hours, dispensary_type, image_url
  */
 
-if ( ! function_exists( 'skyworld_import_products_csv' ) ) {
-    function skyworld_import_products_csv( $csv_path, $options = array() ) {
-        if ( ! file_exists( $csv_path ) ) {
-            return array( 'success' => false, 'message' => 'CSV file not found: ' . $csv_path );
-        }
+// Register WP-CLI commands if available
+if ( defined( 'WP_CLI' ) && WP_CLI ) {
+    WP_CLI::add_command( 'skyworld import_products', 'skyworld_cli_import_products' );
+    WP_CLI::add_command( 'skyworld import_strains', 'skyworld_cli_import_strains' );
+    WP_CLI::add_command( 'skyworld import_locations', 'skyworld_cli_import_locations' );
+}
 
-        if ( ( $fh = fopen( $csv_path, 'r' ) ) === false ) {
-            return array( 'success' => false, 'message' => 'Unable to open CSV.' );
-        }
+function skyworld_cli_import_products( $args, $assoc_args ) {
+    $csv_path = isset( $args[0] ) ? $args[0] : '';
+    if ( ! $csv_path ) {
+        WP_CLI::error( 'Please provide path to CSV file.' );
+    }
+    
+    $result = skyworld_import_cannabis_products( $csv_path );
+    
+    if ( $result['success'] ) {
+        WP_CLI::success( $result['message'] );
+    } else {
+        WP_CLI::error( $result['message'] );
+    }
+}
+
+function skyworld_cli_import_strains( $args, $assoc_args ) {
+    $csv_path = isset( $args[0] ) ? $args[0] : '';
+    if ( ! $csv_path ) {
+        WP_CLI::error( 'Please provide path to CSV file.' );
+    }
+    
+    $result = skyworld_import_cannabis_strains( $csv_path );
+    
+    if ( $result['success'] ) {
+        WP_CLI::success( $result['message'] );
+    } else {
+        WP_CLI::error( $result['message'] );
+    }
+}
+
+function skyworld_cli_import_locations( $args, $assoc_args ) {
+    $csv_path = isset( $args[0] ) ? $args[0] : '';
+    if ( ! $csv_path ) {
+        WP_CLI::error( 'Please provide path to CSV file.' );
+    }
+    
+    $result = skyworld_import_cannabis_locations( $csv_path );
+    
+    if ( $result['success'] ) {
+        WP_CLI::success( $result['message'] );
+    } else {
+        WP_CLI::error( $result['message'] );
+    }
+}
+
+/**
+ * Import Cannabis Products from CSV
+ */
+function skyworld_import_cannabis_products( $csv_path ) {
+    if ( ! file_exists( $csv_path ) ) {
+        return array( 'success' => false, 'message' => 'CSV file not found: ' . $csv_path );
+    }
+
+    if ( ( $fh = fopen( $csv_path, 'r' ) ) === false ) {
+        return array( 'success' => false, 'message' => 'Unable to open CSV file.' );
+    }
 
     $header = fgetcsv( $fh, 0, ',', '"', '\\' );
-        if ( ! $header ) {
-            fclose( $fh );
-            return array( 'success' => false, 'message' => 'Empty CSV or invalid header.' );
+    if ( ! $header ) {
+        fclose( $fh );
+        return array( 'success' => false, 'message' => 'Empty CSV or invalid header.' );
+    }
+
+    // Normalize headers for consistency
+    $header = array_map( function( $h ) { 
+        return trim( strtolower( str_replace( array( ' ', '#', '/', '%' ), array( '_', '', '_', '_percent' ), $h ) ) ); 
+    }, $header );
+
+    $created = 0;
+    $updated = 0;
+    $errors = array();
+
+    while ( ( $row = fgetcsv( $fh, 0, ',', '"', '\\' ) ) !== false ) {
+        if ( count( $row ) != count( $header ) ) {
+            continue; // Skip malformed rows
         }
 
-        // Normalize headers
-        $header = array_map( function( $h ) { return trim( strtolower( str_replace( array( ' ', '#', '/' ), array( '_', '', '_' ), $h ) ) ); }, $header );
+        $data = array_combine( $header, $row );
+        
+        // Required fields check
+        if ( empty( $data['name'] ) ) {
+            $errors[] = 'Skipping row with empty name';
+            continue;
+        }
 
-        $options = wp_parse_args( $options, array(
-            'import_media' => false,
-            'media_base_path' => '',
+        // Check if product exists
+        $existing = get_posts( array(
+            'post_type' => 'product',
+            'title' => $data['name'],
+            'post_status' => 'any',
+            'numberposts' => 1,
         ) );
 
-        $created = 0;
-        $updated = 0;
-        $rows = 0;
+        $post_data = array(
+            'post_title' => sanitize_text_field( $data['name'] ),
+            'post_content' => wp_kses_post( $data['description'] ?? '' ),
+            'post_type' => 'product',
+            'post_status' => 'publish',
+        );
 
-        $csv_dir = dirname( $csv_path );
+        if ( $existing ) {
+            $post_data['ID'] = $existing[0]->ID;
+            $post_id = wp_update_post( $post_data );
+            $updated++;
+        } else {
+            $post_id = wp_insert_post( $post_data );
+            $created++;
+        }
+
+        if ( is_wp_error( $post_id ) ) {
+            $errors[] = 'Failed to create/update product: ' . $data['name'];
+            continue;
+        }
+
+        // Update ACF fields
+        skyworld_update_product_fields( $post_id, $data );
+        
+        // Assign taxonomies
+        skyworld_assign_product_taxonomies( $post_id, $data );
+        
+        // Handle image import
+        if ( ! empty( $data['image_url'] ) ) {
+            skyworld_import_featured_image( $post_id, $data['image_url'] );
+        }
+    }
+
+    fclose( $fh );
+
+    $message = "Import complete: {$created} created, {$updated} updated";
+    if ( ! empty( $errors ) ) {
+        $message .= '. Errors: ' . implode( ', ', $errors );
+    }
+
+    return array( 'success' => true, 'message' => $message );
+}
+
+/**
+ * Import Cannabis Strains from CSV
+ */
+function skyworld_import_cannabis_strains( $csv_path ) {
+    if ( ! file_exists( $csv_path ) ) {
+        return array( 'success' => false, 'message' => 'CSV file not found: ' . $csv_path );
+    }
+
+    if ( ( $fh = fopen( $csv_path, 'r' ) ) === false ) {
+        return array( 'success' => false, 'message' => 'Unable to open CSV file.' );
+    }
+
+    $header = fgetcsv( $fh, 0, ',', '"', '\\' );
+    if ( ! $header ) {
+        fclose( $fh );
+        return array( 'success' => false, 'message' => 'Empty CSV or invalid header.' );
+    }
+
+    $header = array_map( function( $h ) { 
+        return trim( strtolower( str_replace( array( ' ', '#', '/', '%' ), array( '_', '', '_', '_percent' ), $h ) ) ); 
+    }, $header );
+
+    $created = 0;
+    $updated = 0;
+    $errors = array();
+
+    while ( ( $row = fgetcsv( $fh, 0, ',', '"', '\\' ) ) !== false ) {
+        if ( count( $row ) != count( $header ) ) {
+            continue;
+        }
+
+        $data = array_combine( $header, $row );
+        
+        if ( empty( $data['name'] ) ) {
+            $errors[] = 'Skipping row with empty name';
+            continue;
+        }
+
+        // Check if strain exists
+        $existing = get_posts( array(
+            'post_type' => 'strain',
+            'title' => $data['name'],
+            'post_status' => 'any',
+            'numberposts' => 1,
+        ) );
+
+        $post_data = array(
+            'post_title' => sanitize_text_field( $data['name'] ),
+            'post_content' => wp_kses_post( $data['description'] ?? '' ),
+            'post_type' => 'strain',
+            'post_status' => 'publish',
+        );
+
+        if ( $existing ) {
+            $post_data['ID'] = $existing[0]->ID;
+            $post_id = wp_update_post( $post_data );
+            $updated++;
+        } else {
+            $post_id = wp_insert_post( $post_data );
+            $created++;
+        }
+
+        if ( is_wp_error( $post_id ) ) {
+            $errors[] = 'Failed to create/update strain: ' . $data['name'];
+            continue;
+        }
+
+        // Update ACF fields
+        skyworld_update_strain_fields( $post_id, $data );
+        
+        // Assign taxonomies
+        skyworld_assign_strain_taxonomies( $post_id, $data );
+        
+        // Handle image import
+        if ( ! empty( $data['image_url'] ) ) {
+            skyworld_import_featured_image( $post_id, $data['image_url'] );
+        }
+    }
+
+    fclose( $fh );
+
+    $message = "Strain import complete: {$created} created, {$updated} updated";
+    if ( ! empty( $errors ) ) {
+        $message .= '. Errors: ' . implode( ', ', $errors );
+    }
+
+    return array( 'success' => true, 'message' => $message );
+}
 
         // helper: import media from URL or local path and attach to post
         if ( ! function_exists( 'skyworld_import_media' ) ) {
