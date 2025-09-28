@@ -161,8 +161,12 @@ function skyworld_login_url() {
 }
 add_filter( 'login_headerurl', 'skyworld_login_url' );
 
-// Age gate functionality from customizer
+// Age gate functionality from customizer - DISABLED (using front-page.php implementation)
 function skyworld_age_gate_script() {
+    // This function is disabled in favor of the more sophisticated 
+    // age gate implementation in front-page.php
+    return;
+    
     if ( ! get_theme_mod( 'skyworld_enable_age_gate', true ) ) {
         return;
     }
