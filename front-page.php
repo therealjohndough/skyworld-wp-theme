@@ -28,22 +28,416 @@ get_header();
 </div>
 
 <!-- Main Content Container -->
-<main class="skyworld-front-page">
+<main class="skyworld-modern-layout">
     
-    <!-- Hero Slider Section -->
-    <?php get_template_part('template-parts/hero-slider'); ?>
-    
-    <!-- Genetic Library Section -->
-    <?php get_template_part('template-parts/genetic-library-block'); ?>
-    
-    <!-- Video CTA Section - Explore Our Genetics -->
-    <?php get_template_part('template-parts/video-cta-block'); ?>
-    
-    <!-- Product Slider Section -->
-    <?php get_template_part('template-parts/product-slider-block'); ?>
-    
-    <!-- News & Updates Section -->
-    <?php get_template_part('template-parts/news-block'); ?>
+    <!-- Modern Hero Section with Asymmetrical Design -->
+    <section class="section-hero">
+            
+            <!-- Debug Info -->
+            <?php if (current_user_can('administrator')): 
+                $debug_query = new WP_Query(array(
+                    'post_type' => 'sw-product',
+                    'posts_per_page' => 1
+                ));
+            ?>
+            <div class="debug-info">
+                <strong>Debug Info:</strong><br>
+                SW-Product posts found: <?php echo $debug_query->found_posts; ?><br>
+                Post types registered: <?php echo implode(', ', get_post_types()); ?><br>
+                Helper functions: <?php echo function_exists('skyworld_get_product_image') ? 'Images ✓' : 'Images ✗'; ?> | 
+                <?php echo function_exists('skyworld_get_product_marketing') ? 'Marketing ✓' : 'Marketing ✗'; ?>
+            </div>
+            <?php wp_reset_postdata(); endif; ?>
+            
+            <div class="hero-grid">
+            <!-- Main Title Block -->
+            <div class="hero-title-block">
+                <div class="title-pill animate-slide-up">
+                    <span class="label">Premium Cannabis</span>
+                </div>
+                <h1 class="hero-main-title animate-fade-in-up">
+                    <span class="title-line">Skyworld</span>
+                    <span class="title-accent">Indoor Excellence</span>
+                </h1>
+                <p class="hero-description animate-fade-in-up delay-1">
+                    Born from a passion for the plant. We believe New Yorkers deserve 
+                    access to consistent, high-quality cannabis grown with expertise and transparency.
+                </p>
+                
+                <!-- Action Pills -->
+                <div class="action-pills animate-fade-in-up delay-2">
+                    <a href="#products" class="pill-button primary">
+                        <span>Explore Products</span>
+                        <i class="ph ph-arrow-right"></i>
+                    </a>
+                    <a href="/strain-library/" class="pill-button secondary">
+                        <span>View Strains</span>
+                        <i class="ph ph-plant"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Floating Info Cards -->
+            <div class="hero-info-cards">
+                <div class="info-card lab-tested animate-float-1">
+                    <div class="card-icon">
+                        <i class="ph ph-test-tube"></i>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-label">Lab Tested</span>
+                        <span class="card-value">100% Purity</span>
+                    </div>
+                </div>
+                
+                <div class="info-card indoor-grown animate-float-2">
+                    <div class="card-icon">
+                        <i class="ph ph-house"></i>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-label">Indoor Grown</span>
+                        <span class="card-value">Climate Controlled</span>
+                    </div>
+                </div>
+                
+                <div class="info-card ny-grown animate-float-3">
+                    <div class="card-icon">
+                        <i class="ph ph-map-pin"></i>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-label">New York</span>
+                        <span class="card-value">Locally Grown</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Background Decorative Elements -->
+            <div class="hero-background-shapes">
+                <div class="shape shape-1 animate-rotate-slow"></div>
+                <div class="shape shape-2 animate-pulse-slow"></div>
+                <div class="shape shape-3 animate-float-vertical"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section with Asymmetrical Layout -->
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-block large animate-scale-up">
+                <div class="stat-number">15+</div>
+                <div class="stat-label">Premium Strains</div>
+                <div class="stat-description">Carefully selected genetics</div>
+            </div>
+            
+            <div class="stat-block medium animate-scale-up delay-1">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Lab Tested</div>
+            </div>
+            
+            <div class="stat-block small animate-scale-up delay-2">
+                <div class="stat-icon">
+                    <i class="ph ph-certificate"></i>
+                </div>
+                <div class="stat-label">Licensed</div>
+            </div>
+            
+            <div class="stat-block wide animate-scale-up delay-3">
+                <div class="stat-content">
+                    <span class="highlight-text">Rooted in the Empire State</span>
+                    <p>Proud to be a New York cannabis brand, committed to serving our local communities with the highest quality products.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modern Product Showcase -->
+    <section class="modern-product-showcase" id="products">
+        <div class="section-header">
+            <div class="section-pill animate-slide-in">
+                <i class="ph ph-package"></i>
+                <span>Featured Products</span>
+            </div>
+            <h2 class="section-title animate-fade-in-up">
+                Premium Cannabis Products
+            </h2>
+        </div>
+        
+        <div class="product-masonry-grid">
+            <?php
+            // Query featured products
+            $products_query = new WP_Query(array(
+                'post_type' => 'sw-product',
+                'posts_per_page' => 6,
+                'orderby' => 'menu_order',
+                'order' => 'ASC'
+            ));
+            
+            $card_layouts = ['large', 'medium', 'small', 'wide', 'tall', 'medium'];
+            $animation_delays = [0, 1, 2, 3, 4, 5];
+            $counter = 0;
+            
+            if ($products_query->have_posts()) :
+                while ($products_query->have_posts()) : $products_query->the_post();
+                    $product_id = get_the_ID();
+                    $marketing = function_exists('skyworld_get_product_marketing') ? skyworld_get_product_marketing($product_id) : array();
+                    $product_image_data = function_exists('skyworld_get_product_image') ? skyworld_get_product_image($product_id, 'medium') : null;
+                    $related_strain = get_field('related_strain');
+                    $thc_content = get_field('thc_percentage') ?: get_field('thc_percent');
+                    $product_type = get_field('product_type') ?: 'flower';
+                    $product_weight = get_field('weight');
+                    
+                    $layout = $card_layouts[$counter % count($card_layouts)];
+                    $delay = $animation_delays[$counter % count($animation_delays)];
+                    ?>
+                    
+                    <article class="product-card-modern <?php echo esc_attr($layout); ?> animate-scale-up delay-<?php echo $delay; ?>">
+                        <?php if ($product_image_data && isset($product_image_data['url'])): ?>
+                        <div class="card-image">
+                            <img src="<?php echo esc_url($product_image_data['url']); ?>" 
+                                 alt="<?php echo esc_attr($product_image_data['alt']); ?>" 
+                                 loading="lazy">
+                            <div class="image-overlay">
+                                <div class="product-type-pill">
+                                    <i class="ph ph-package"></i>
+                                    <span><?php echo esc_html(ucfirst($product_type)); ?></span>
+                                </div>
+                            </div>
+                        </div>
+                        <?php else: ?>
+                        <div class="card-image">
+                            <div class="card-image-placeholder">
+                                <i class="ph ph-cannabis"></i>
+                            </div>
+                            <div class="image-overlay">
+                                <div class="product-type-pill">
+                                    <i class="ph ph-package"></i>
+                                    <span><?php echo esc_html(ucfirst($product_type)); ?></span>
+                                </div>
+                            </div>
+                        </div>
+                        <?php endif; ?>
+                        
+                        <div class="card-content">
+                            <div class="card-header">
+                                <?php if (isset($marketing['tagline']) && $marketing['tagline']): ?>
+                                <div class="tagline-pill">
+                                    <?php echo esc_html($marketing['tagline']); ?>
+                                </div>
+                                <?php endif; ?>
+                                
+                                <h3 class="card-title">
+                                    <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                                </h3>
+                                
+                                <?php if ($related_strain): ?>
+                                <div class="strain-reference">
+                                    <i class="ph ph-plant"></i>
+                                    <span><?php echo esc_html(get_the_title($related_strain->ID)); ?></span>
+                                </div>
+                                <?php endif; ?>
+                            </div>
+                            
+                            <?php if ($marketing['flavor_profile']): ?>
+                            <div class="flavor-pill">
+                                <i class="ph ph-coffee"></i>
+                                <span><?php echo esc_html($marketing['flavor_profile']); ?></span>
+                            </div>
+                            <?php endif; ?>
+                            
+                            <div class="card-stats">
+                                <?php if ($thc_content): ?>
+                                <div class="stat-pill thc">
+                                    <span class="stat-label">THC</span>
+                                    <span class="stat-value"><?php echo esc_html($thc_content); ?>%</span>
+                                </div>
+                                <?php endif; ?>
+                                
+                                <?php if ($product_weight): ?>
+                                <div class="stat-pill weight">
+                                    <span class="stat-label">Weight</span>
+                                    <span class="stat-value"><?php echo esc_html($product_weight); ?></span>
+                                </div>
+                                <?php endif; ?>
+                            </div>
+                            
+                            <div class="card-actions">
+                                <a href="<?php the_permalink(); ?>" class="action-pill primary">
+                                    <span>Learn More</span>
+                                    <i class="ph ph-arrow-right"></i>
+                                </a>
+                                <button class="action-pill secondary quick-view" data-product="<?php echo $product_id; ?>">
+                                    <i class="ph ph-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Decorative Elements -->
+                        <div class="card-decoration">
+                            <div class="decoration-dot"></div>
+                            <div class="decoration-line"></div>
+                        </div>
+                    </article>
+                    
+                    <?php
+                    $counter++;
+                endwhile;
+            else :
+                // Show sample product cards if no products exist yet
+                $sample_products = array(
+                    array(
+                        'title' => 'Northern Lights',
+                        'tagline' => 'Premium Indica',
+                        'description' => 'Classic strain known for relaxation and sweet aroma',
+                        'thc' => '18%',
+                        'type' => 'flower',
+                        'weight' => '3.5g',
+                        'price' => '$45',
+                        'strain' => 'Northern Lights'
+                    ),
+                    array(
+                        'title' => 'Blue Dream',
+                        'tagline' => 'Balanced Hybrid',
+                        'description' => 'Perfect balance of cerebral stimulation and full-body relaxation',
+                        'thc' => '20%',
+                        'type' => 'flower',
+                        'weight' => '3.5g',
+                        'price' => '$50',
+                        'strain' => 'Blue Dream'
+                    ),
+                    array(
+                        'title' => 'Green Crack',
+                        'tagline' => 'Energizing Sativa',
+                        'description' => 'Invigorating mental buzz that keeps you going',
+                        'thc' => '22%',
+                        'type' => 'flower',
+                        'weight' => '3.5g',
+                        'price' => '$55',
+                        'strain' => 'Green Crack'
+                    ),
+                    array(
+                        'title' => 'Sunset Sherbet',
+                        'tagline' => 'Sweet & Potent',
+                        'description' => 'Fruity aroma with euphoric and physically relaxing effects',
+                        'thc' => '19%',
+                        'type' => 'flower',
+                        'weight' => '7g',
+                        'price' => '$90',
+                        'strain' => 'Sunset Sherbet'
+                    ),
+                    array(
+                        'title' => 'Gorilla Glue #4',
+                        'tagline' => 'Ultra Premium',
+                        'description' => 'Heavy-handed euphoria and relaxation',
+                        'thc' => '25%',
+                        'type' => 'flower',
+                        'weight' => '3.5g',
+                        'price' => '$60',
+                        'strain' => 'Gorilla Glue #4'
+                    ),
+                    array(
+                        'title' => 'Wedding Cake',
+                        'tagline' => 'Dessert Strain',
+                        'description' => 'Rich tangy flavor with relaxing and euphoric effects',
+                        'thc' => '23%',
+                        'type' => 'flower',
+                        'weight' => '3.5g',
+                        'price' => '$52',
+                        'strain' => 'Wedding Cake'
+                    )
+                );
+                
+                foreach ($sample_products as $index => $product) :
+                    $layout = $card_layouts[$index % count($card_layouts)];
+                    $delay = $animation_delays[$index % count($animation_delays)];
+                    ?>
+                    
+                    <article class="product-card-modern <?php echo esc_attr($layout); ?> animate-scale-up delay-<?php echo $delay; ?>">
+                        <div class="card-image">
+                            <div class="card-image-placeholder">
+                                <i class="ph ph-cannabis"></i>
+                            </div>
+                            <div class="image-overlay">
+                                <div class="product-type-pill">
+                                    <i class="ph ph-package"></i>
+                                    <span><?php echo esc_html(ucfirst($product['type'])); ?></span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card-content">
+                            <div class="card-header">
+                                <div class="tagline-pill">
+                                    <?php echo esc_html($product['tagline']); ?>
+                                </div>
+                                
+                                <h3 class="card-title">
+                                    <?php echo esc_html($product['title']); ?>
+                                </h3>
+                                
+                                <?php if ($product['strain']): ?>
+                                <div class="strain-info">
+                                    <i class="ph ph-dna"></i>
+                                    <span><?php echo esc_html($product['strain']); ?></span>
+                                </div>
+                                <?php endif; ?>
+                            </div>
+                            
+                            <?php if ($product['description']): ?>
+                            <p class="card-description">
+                                <?php echo esc_html($product['description']); ?>
+                            </p>
+                            <?php endif; ?>
+                            
+                            <div class="card-stats">
+                                <?php if ($product['thc']): ?>
+                                <div class="stat-pill thc">
+                                    <i class="ph ph-leaf"></i>
+                                    <span>THC <?php echo esc_html($product['thc']); ?></span>
+                                </div>
+                                <?php endif; ?>
+                                
+                                <?php if ($product['weight']): ?>
+                                <div class="stat-pill weight">
+                                    <i class="ph ph-scales"></i>
+                                    <span><?php echo esc_html($product['weight']); ?></span>
+                                </div>
+                                <?php endif; ?>
+                            </div>
+                            
+                            <div class="card-footer">
+                                <div class="price">
+                                    <span class="price-label">Price</span>
+                                    <span class="price-value"><?php echo esc_html($product['price']); ?></span>
+                                </div>
+                                <button class="btn-pill primary">
+                                    <span>View Details</span>
+                                    <i class="ph ph-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <?php
+                endforeach;
+                wp_reset_postdata();
+            endif;
+            ?>
+            
+            <!-- Call-to-Action Card -->
+            <div class="cta-card-modern animate-scale-up delay-6">
+                <div class="cta-content">
+                    <div class="cta-icon">
+                        <i class="ph ph-storefront"></i>
+                    </div>
+                    <h3>Find Skyworld Products</h3>
+                    <p>Locate authorized dispensaries carrying our premium cannabis products</p>
+                    <a href="/store-locator/" class="pill-button primary">
+                        <span>Find Stores</span>
+                        <i class="ph ph-map-pin"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
     
     <!-- Call-to-Action Section -->
     <section class="skyworld-cta-section">
