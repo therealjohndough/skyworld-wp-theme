@@ -468,6 +468,19 @@ a:hover {
     font-size: 0.9rem;
 }
 
+.ocm-licenses {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    margin-top: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.ocm-licenses strong {
+    color: var(--skyworld-accent);
+    font-weight: 600;
+}
+
 .footer-legal-links {
     display: flex;
     gap: 1.5rem;

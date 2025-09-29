@@ -74,6 +74,9 @@
                 <p class="license-info">
                     Licensed Cannabis Processor & Cultivator | New York State
                 </p>
+                <p class="ocm-licenses">
+                    <strong>OCM License Numbers:</strong> #OCM-PROC-24-000030 #OCM-CULT-2023-000179
+                </p>
             </div>
             
             <div class="footer-legal-links">

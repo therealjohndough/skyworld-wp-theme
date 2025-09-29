@@ -710,4 +710,6 @@ get_header();
         grid-template-columns: 1fr;
     }
 }
+</style>
+
 <?php get_footer();
