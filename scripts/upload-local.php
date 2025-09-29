@@ -8,7 +8,7 @@ echo "🌿 Skyworld Cannabis Data Upload Preview\n";
 echo "=======================================\n\n";
 
 // Preview strain data
-$strains_file = __DIR__ . '/notion-strain-masters-real.csv';
+$strains_file = __DIR__ . '/../data/skyworld-strains-import.csv';
 if (file_exists($strains_file)) {
     $strains_handle = fopen($strains_file, 'r');
     $strain_header = fgetcsv($strains_handle);
@@ -37,7 +37,7 @@ if (file_exists($strains_file)) {
 }
 
 // Preview product data  
-$products_file = __DIR__ . '/notion-cannabis-products-real.csv';
+$products_file = __DIR__ . '/../data/skyworld-products-import.csv';
 if (file_exists($products_file)) {
     $products_handle = fopen($products_file, 'r');
     $product_header = fgetcsv($products_handle);
@@ -65,7 +65,7 @@ if (file_exists($products_file)) {
 }
 
 // Preview COA data
-$coa_file = __DIR__ . '/notion-coa-documents-real.csv';
+$coa_file = __DIR__ . '/../data/skyworld-coa-documents.csv';
 if (file_exists($coa_file)) {
     $coa_handle = fopen($coa_file, 'r');
     $coa_header = fgetcsv($coa_handle);

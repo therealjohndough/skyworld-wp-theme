@@ -12,9 +12,9 @@ echo "🌿 Skyworld Cannabis Product Upload Starting...\n\n";
 
 // Define paths to your CSV files
 $csv_files = array(
-    'strains' => get_stylesheet_directory() . '/scripts/notion-strain-masters-real.csv',
-    'products' => get_stylesheet_directory() . '/scripts/notion-cannabis-products-real.csv',
-    'coas' => get_stylesheet_directory() . '/scripts/notion-coa-documents-real.csv'
+    'strains' => get_stylesheet_directory() . '/data/skyworld-strains-import.csv',
+    'products' => get_stylesheet_directory() . '/data/skyworld-products-import.csv',
+    'coas' => get_stylesheet_directory() . '/data/skyworld-coa-documents.csv'
 );
 
 $results = array();
