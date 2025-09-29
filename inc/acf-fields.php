@@ -96,7 +96,7 @@ if ( ! function_exists( 'skyworld_register_acf_fields' ) ) :
                     array(
                         'param' => 'post_type',
                         'operator' => '==',
-                        'value' => 'sky_product',
+                        'value' => 'sw-product',
                     ),
                 ),
             ),

@@ -1,0 +1,225 @@
+{
+    "key": "group_location_fields",
+    "title": "Location Information",
+    "fields": [
+        {
+            "key": "field_location_address",
+            "label": "Address",
+            "name": "address",
+            "type": "textarea",
+            "instructions": "Full street address",
+            "required": 1,
+            "rows": 3,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_location_phone",
+            "label": "Phone Number",
+            "name": "phone",
+            "type": "text",
+            "instructions": "Primary contact number",
+            "required": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_location_website",
+            "label": "Website",
+            "name": "website",
+            "type": "url",
+            "instructions": "Dispensary website URL",
+            "required": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_location_type",
+            "label": "Location Type",
+            "name": "location_type",
+            "type": "select",
+            "instructions": "Type of cannabis retailer",
+            "required": 1,
+            "choices": {
+                "dispensary": "Dispensary",
+                "delivery": "Delivery Service",
+                "consumption_lounge": "Consumption Lounge",
+                "distributor": "Distributor",
+                "wholesale": "Wholesale Only"
+            },
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_location_license_type",
+            "label": "License Type",
+            "name": "license_type",
+            "type": "select",
+            "instructions": "NY cannabis license type",
+            "required": 0,
+            "choices": {
+                "adult_use_retail": "Adult Use Retail",
+                "adult_use_delivery": "Adult Use Delivery",
+                "medical_dispensary": "Medical Dispensary",
+                "consumption_site": "Consumption Site",
+                "distributor": "Distributor"
+            },
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_location_status",
+            "label": "Status",
+            "name": "status",
+            "type": "select",
+            "instructions": "Current operational status",
+            "required": 1,
+            "choices": {
+                "active": "Active",
+                "coming_soon": "Coming Soon",
+                "temporarily_closed": "Temporarily Closed",
+                "inactive": "Inactive"
+            },
+            "default_value": "active",
+            "wrapper": {
+                "width": "34",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_location_hours",
+            "label": "Hours of Operation",
+            "name": "hours_of_operation",
+            "type": "repeater",
+            "instructions": "Weekly operating hours",
+            "required": 0,
+            "layout": "table",
+            "button_label": "Add Day",
+            "sub_fields": [
+                {
+                    "key": "field_day_of_week",
+                    "label": "Day",
+                    "name": "day",
+                    "type": "select",
+                    "choices": {
+                        "monday": "Monday",
+                        "tuesday": "Tuesday",
+                        "wednesday": "Wednesday",
+                        "thursday": "Thursday",
+                        "friday": "Friday",
+                        "saturday": "Saturday",
+                        "sunday": "Sunday"
+                    },
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_open_time",
+                    "label": "Open",
+                    "name": "open_time",
+                    "type": "time_picker",
+                    "display_format": "g:i a",
+                    "return_format": "H:i:s",
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_close_time",
+                    "label": "Close",
+                    "name": "close_time",
+                    "type": "time_picker",
+                    "display_format": "g:i a",
+                    "return_format": "H:i:s",
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_closed",
+                    "label": "Closed",
+                    "name": "closed",
+                    "type": "true_false",
+                    "instructions": "Check if closed this day",
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ]
+        },
+        {
+            "key": "field_location_coordinates",
+            "label": "Map Coordinates",
+            "name": "coordinates",
+            "type": "group",
+            "instructions": "Geographic coordinates for mapping",
+            "required": 0,
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_latitude",
+                    "label": "Latitude",
+                    "name": "latitude",
+                    "type": "number",
+                    "step": 0.000001,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_longitude",
+                    "label": "Longitude",
+                    "name": "longitude",
+                    "type": "number",
+                    "step": 0.000001,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "location"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label"
+}

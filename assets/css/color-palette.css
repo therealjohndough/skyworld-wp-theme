@@ -1,0 +1,37 @@
+/* SKYWORLD COLOR PALETTE */
+/* Save these colors for future UI implementation */
+
+:root {
+    /* PRIMARY COLORS - Oranges, Yellows, Greys */
+    --color-primary-orange-1: #ff793f;
+    --color-primary-orange-2: #cd6133;
+    --color-primary-yellow-1: #ffb142;
+    --color-primary-yellow-2: #cc8e35;
+    --color-primary-yellow-light-1: #ffda79;
+    --color-primary-yellow-light-2: #ccae62;
+    --color-primary-grey-1: #f7f1e3;
+    --color-primary-grey-2: #aaa69d;
+    --color-primary-grey-3: #d1ccc0;
+    --color-primary-grey-4: #84817a;
+    
+    /* HIGHLIGHT COLORS - Blues */
+    --color-highlight-blue-1: #34ace0;
+    --color-highlight-blue-2: #227093;
+    
+    /* ACCENT COLORS */
+    --color-accent-purple-1: #40407a;
+    --color-accent-purple-2: #2c2c54;
+    --color-accent-purple-3: #706fd3;
+    --color-accent-purple-4: #474787;
+    --color-accent-red-1: #ff5252;
+    --color-accent-red-2: #b33939;
+    --color-accent-green-1: #33d9b2;
+    --color-accent-green-2: #218c74;
+}
+
+/* 
+ORIGINAL COLOR LIST FOR REFERENCE:
+#40407a #2c2c54 #ff5252 #b33939 #706fd3 #474787 #ff793f #cd6133 
+#f7f1e3 #aaa69d #d1ccc0 #84817a #34ace0 #227093 #227093 #ffb142 
+#cc8e35 #33d9b2 #218c74 #ffda79 #ccae62
+*/

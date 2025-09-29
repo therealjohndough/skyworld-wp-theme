@@ -1,12 +1,23 @@
 /*
-Theme Name: Skyworld WP Child
-Theme URI: https://example.com/skyworld-wp-child
-Description: Child theme for Skyworld — Cannabis Catalog styling and templates.
-Author: Your Name
-Author URI: https://example.com
-Template: astra
-Version: 1.0.0
-Text Domain: skyworld-wp-child
+Theme Name: Skyworld Professional Cannabis Management
+Theme URI: https://skyworldcannabis.com
+Description: Professional standalone cannabis business management system with comprehensive SEO, admin dashboard, and client-friendly interface. No Gutenberg, pure PHP control. MADE TO INSPIRE.
+Author: John Dough
+Author URI: https://therealjohndough.com
+Version: 2.0.0
+Text Domain: skyworld-cannabis
+Requires at least: 5.0
+Tested up to: 6.3
+Requires PHP: 7.4
 */
+
+/* 
+ * SKYWORLD PROFESSIONAL CANNABIS MANAGEMENT THEME
+ * Created by John Dough (therealjohndough.com) - MADE TO INSPIRE
+ * For SKYWORLD Cannabis Business at casestudy-labs.com
+ * 
+ * Enterprise-grade standalone WordPress theme for cannabis industry
+ * Features: Professional admin dashboard, SEO management, security hardened
+ */
 
 /* Child theme custom styles can be placed in assets/css/skyworld.css and enqueued by functions.php */

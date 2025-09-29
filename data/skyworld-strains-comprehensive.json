@@ -1,0 +1,354 @@
+[
+  {
+    "post_type": "strain",
+    "post_title": "Lemon Oreoz",
+    "excerpt": "Oreoz × Monkey Spunk. Zesty-sweet dough with creamy cookie finish.",
+    "meta_title": "Lemon Oreoz | Skyworld Cannabis",
+    "meta_description": "Lemon Oreoz (Oreoz × Monkey Spunk): zesty-sweet cookie dough with a creamy finish. Skyworld Cannabis.",
+    "fields": {
+      "genetics": "Oreoz × Monkey Spunk",
+      "breeder": "Coool Beans (lineage) / SJR Horticulture (cultivator)",
+      "breeder_source_url": "https://en.seedfinder.eu/strain-info/Lemon_Oreoz/Cooool_Beans/",
+      "flowering_time": "8–10 weeks (est.)",
+      "yield": "medium–high (est.)",
+      "growing_difficulty": "intermediate (est.)",
+      "aroma_profile": "Zesty lemon peel, sweet cookie dough, creamy vanilla (est.)",
+      "flavor_profile": "Zesty lemon w/ sweet cookie finish",
+      "terpene_profile": [
+        {"terpene_name": "Limonene", "terpene_percentage": 0.89},
+        {"terpene_name": "β-Caryophyllene", "terpene_percentage": 0.62},
+        {"terpene_name": "Linalool", "terpene_percentage": 0.48}
+      ]
+    }
+  },
+  {
+    "post_type": "strain",
+    "post_title": "Wafflez",
+    "excerpt": "Apple Fritter × Stuffed French Toast. Dessert-forward with apple‑dough, warm spice, and a smooth finish.",
+    "meta_title": "Wafflez | Skyworld Cannabis",
+    "meta_description": "Wafflez (Apple Fritter × Stuffed French Toast): dessert-forward with apple‑dough, warm spice, and a smooth finish.",
+    "fields": {
+      "genetics": "Apple Fritter × Stuffed French Toast",
+      "breeder": "Raw Genetics (lineage) / SJR Horticulture (cultivator)",
+      "breeder_source_url": "https://en.seedfinder.eu/strain-info/Wafflez/Raw_Genetics/",
+      "flowering_time": "8–9.5 weeks",
+      "yield": "med–high",
+      "growing_difficulty": "intermediate",
+      "aroma_profile": "Waffle batter, maple syrup, vanilla, warm bakery spice",
+      "flavor_profile": "Waffle batter w/ maple & vanilla",
+      "terpene_profile": [
+        {"terpene_name": "β-Caryophyllene", "terpene_percentage": 0.76},
+        {"terpene_name": "Limonene", "terpene_percentage": 0.52},
+        {"terpene_name": "Myrcene", "terpene_percentage": 0.41}
+      ]
+    }
+  },
+  {
+    "post_type": "strain",
+    "post_title": "Sherb Cream Pie",
+    "excerpt": "Ice Cream Cake × Sherb BX1. Creamy citrus and berry swirl; bakery‑smooth finish.",
+    "meta_title": "Sherb Cream Pie | Skyworld Cannabis",
+    "meta_description": "Sherb Cream Pie (Ice Cream Cake × Sherb BX1): creamy citrus‑berry swirl with a smooth bakery finish.",
+    "fields": {
+      "genetics": "Ice Cream Cake × Sherb BX1",
+      "breeder": "Seed Junky (lineage) / SJR Horticulture (cultivator)",
+      "breeder_source_url": "https://en.seedfinder.eu/strain-info/Sherb_Cream_Pie/Seed_Junky_Genetics/",
+      "flowering_time": "8–9 weeks",
+      "yield": "medium–high",
+      "growing_difficulty": "intermediate",
+      "aroma_profile": "Creamy citrus, berry swirl, bakery sweetness",
+      "flavor_profile": "Fruity sherbet w/ creamy finish",
+      "terpene_profile": [
+        {"terpene_name": "Limonene", "terpene_percentage": 0.89},
+        {"terpene_name": "β-Caryophyllene", "terpene_percentage": 0.67},
+        {"terpene_name": "Linalool", "terpene_percentage": 0.45}
+      ]
+    }
+  },
+  {
+    "post_type": "strain",
+    "post_title": "Peanut Butter Gelato",
+    "excerpt": "Nutty‑cream backbone with gelato sweetness—polished and satisfying.",
+    "meta_title": "Peanut Butter Gelato | Skyworld Cannabis",
+    "meta_description": "Peanut Butter Gelato: nutty‑cream backbone with gelato sweetness. Polished and satisfying—Skyworld Cannabis.",
+    "fields": {
+      "genetics": "Peanut Butter Cookies × Starfighter × Sherb × Gelato",
+      "breeder": "House convention (lineage expansion) / SJR Horticulture (cultivator)",
+      "breeder_source_url": "https://en.seedfinder.eu/strain-info/Peanut_Butter_Breath/ThugPug/",
+      "flowering_time": "~9 weeks",
+      "yield": "medium",
+      "growing_difficulty": "intermediate",
+      "aroma_profile": "Roasted peanut, sweet cream, cocoa, bakery notes",
+      "flavor_profile": "Rich peanut butter, smooth gelato",
+      "terpene_profile": [
+        {"terpene_name": "β-Caryophyllene", "terpene_percentage": 0.89},
+        {"terpene_name": "Limonene", "terpene_percentage": 0.67},
+        {"terpene_name": "Linalool", "terpene_percentage": 0.45}
+      ]
+    }
+  },
+  {
+    "post_type": "strain",
+    "post_title": "Kept Secret",
+    "excerpt": "Jealousy × Oreoz. Modern cookie‑cream profile with a grounded, earthy core.",
+    "meta_title": "Kept Secret | Skyworld Cannabis",
+    "meta_description": "Kept Secret (Jealousy × Oreoz): modern cookie‑cream character with an earthy core. Skyworld Cannabis.",
+    "fields": {
+      "genetics": "Jealousy × Oreoz",
+      "breeder": "Seed Junky (Jealousy line) / SJR Horticulture (cultivator)",
+      "breeder_source_url": "https://en.seedfinder.eu/strain-info/Jealousy/Seed_Junky_Genetics/",
+      "flowering_time": "8–10 weeks (est.)",
+      "yield": "medium (est.)",
+      "growing_difficulty": "intermediate (est.)",
+      "aroma_profile": "Earthy pine, subtle sweetness, warm spice (est.)",
+      "flavor_profile": "Complex earthy w/ hidden sweetness",
+      "terpene_profile": [
+        {"terpene_name": "Myrcene", "terpene_percentage": 0.68},
+        {"terpene_name": "β-Caryophyllene", "terpene_percentage": 0.52},
+        {"terpene_name": "Pinene", "terpene_percentage": 0.38}
+      ]
+    }
+  },
+  {
+    "post_type": "strain",
+    "post_title": "Charmz",
+    "excerpt": "Lemon Cherry Gelato × Zlushiez. Sweet candy with a fruity rainbow finish.",
+    "meta_title": "Charmz | Skyworld Cannabis",
+    "meta_description": "Charmz (Lemon Cherry Gelato × Zlushiez): sweet candy profile with a fruity rainbow finish.",
+    "fields": {
+      "genetics": "Lemon Cherry Gelato × Zlushiez",
+      "breeder": "Raw Genetics (lineage) / SJR Horticulture (cultivator)",
+      "breeder_source_url": "https://en.seedfinder.eu/strain-info/Charmz/Raw_Genetics/",
+      "flowering_time": "8–10 weeks",
+      "yield": "medium–high",
+      "growing_difficulty": "intermediate",
+      "aroma_profile": "Sweet candy, tropical fruit, sherbet zest",
+      "flavor_profile": "Sweet candy w/ fruity rainbow finish",
+      "terpene_profile": [
+        {"terpene_name": "Limonene", "terpene_percentage": 0.88},
+        {"terpene_name": "Linalool", "terpene_percentage": 0.62},
+        {"terpene_name": "β-Caryophyllene", "terpene_percentage": 0.58}
+      ]
+    }
+  },
+  {
+    "post_type": "strain",
+    "post_title": "Stay Puft",
+    "excerpt": "Marshmallow OG × Grape Gasoline. Vanilla‑marshmallow meets purple‑tinged fuel.",
+    "meta_title": "Stay Puft | Skyworld Cannabis",
+    "meta_description": "Stay Puft (Marshmallow OG × Grape Gasoline): vanilla‑marshmallow with purple‑tinged fuel. Cozy and layered.",
+    "fields": {
+      "genetics": "Marshmallow OG × Grape Gasoline",
+      "breeder": "Compound Genetics (lineage) / SJR Horticulture (cultivator)",
+      "breeder_source_url": "https://en.seedfinder.eu/strain-info/Stay_Puft/Compound_Genetics/",
+      "flowering_time": "8–10 weeks (est.)",
+      "yield": "medium–high (est.)",
+      "growing_difficulty": "moderate (est.)",
+      "aroma_profile": "Vanilla marshmallow, fluffy sugar, light grape fuel (est.)",
+      "flavor_profile": "Creamy marshmallow w/ vanilla",
+      "terpene_profile": [
+        {"terpene_name": "Myrcene", "terpene_percentage": 0.74},
+        {"terpene_name": "Linalool", "terpene_percentage": 0.52},
+        {"terpene_name": "β-Caryophyllene", "terpene_percentage": 0.41}
+      ]
+    }
+  },
+  {
+    "post_type": "strain",
+    "post_title": "41 Gs",
+    "excerpt": "Gelato #41 × Gary Payton. Sweet‑cream gas with a polished finish.",
+    "meta_title": "41 Gs | Skyworld Cannabis",
+    "meta_description": "41 Gs (Gelato #41 × Gary Payton): sweet‑cream gas with a polished finish. Icon energy from Skyworld Cannabis.",
+    "fields": {
+      "genetics": "Gelato #41 × Gary Payton",
+      "breeder": "Cookies Fam / Powerzzzup lineages; SJR Horticulture (cultivator)",
+      "breeder_source_url": "https://en.seedfinder.eu/strain-info/Gary_Payton/Cookies_Fam_Genetics/",
+      "flowering_time": "7–9 weeks (est.)",
+      "yield": "medium–high (est.)",
+      "growing_difficulty": "moderate–advanced (est.)",
+      "aroma_profile": "Sweet cream gas, earthy undertone, light dessert note (est.)",
+      "flavor_profile": "Earthy herbal complexity",
+      "terpene_profile": [
+        {"terpene_name": "β-Caryophyllene", "terpene_percentage": 0.71},
+        {"terpene_name": "Myrcene", "terpene_percentage": 0.58},
+        {"terpene_name": "Pinene", "terpene_percentage": 0.42}
+      ]
+    }
+  },
+  {
+    "post_type": "strain",
+    "post_title": "Garlic Gravity",
+    "excerpt": "Garlatti × Zero Gravity. Savory umami funk with a tidy structure and surprising lift.",
+    "meta_title": "Garlic Gravity | Skyworld Cannabis",
+    "meta_description": "Garlic Gravity (Garlatti × Zero Gravity): savory umami funk with a clean, modern structure.",
+    "fields": {
+      "genetics": "Garlatti × Zero Gravity",
+      "breeder": "Skyworld (house cross / cut); external refs for parents on SeedFinder",
+      "breeder_source_url": "https://en.seedfinder.eu/",
+      "flowering_time": "~8–9 weeks",
+      "yield": "medium–high",
+      "growing_difficulty": "intermediate",
+      "aroma_profile": "Savory garlic, earthy spice, subtle fuel",
+      "flavor_profile": "Strong garlic, earthy & spicy finish",
+      "terpene_profile": [
+        {"terpene_name": "β-Caryophyllene", "terpene_percentage": 0.91},
+        {"terpene_name": "Myrcene", "terpene_percentage": 0.76},
+        {"terpene_name": "Limonene", "terpene_percentage": 0.54}
+      ]
+    }
+  },
+  {
+    "post_type": "strain",
+    "post_title": "Gushcanna",
+    "excerpt": "Tropicanna Cookies × Gushers. Tropical citrus meets candy gas for a bright, flavorful ride.",
+    "meta_title": "Gushcanna | Skyworld Cannabis",
+    "meta_description": "Gushcanna (Tropicanna Cookies × Gushers): tropical citrus and candy gas with a modern finish.",
+    "fields": {
+      "genetics": "Tropicanna Cookies × Gushers",
+      "breeder": "Cannarado (lineage) / SJR Horticulture (cultivator)",
+      "breeder_source_url": "https://en.seedfinder.eu/strain-info/Gushcanna/Cannarado_Genetics/",
+      "flowering_time": "8–10 weeks",
+      "yield": "medium–high",
+      "growing_difficulty": "intermediate",
+      "aroma_profile": "Tropical citrus, candy gas, sweet berry",
+      "flavor_profile": "Sweet tropical w/ citrus burst",
+      "terpene_profile": [
+        {"terpene_name": "Limonene", "terpene_percentage": 0.72},
+        {"terpene_name": "β-Caryophyllene", "terpene_percentage": 0.54},
+        {"terpene_name": "Myrcene", "terpene_percentage": 0.41}
+      ]
+    }
+  },
+  {
+    "post_type": "strain",
+    "post_title": "Dirt n Worms",
+    "excerpt": "Gummy Worms × Quicksand. Rich earth with cocoa‑crumbled undertones and a candied fruit edge.",
+    "meta_title": "Dirt n Worms | Skyworld Cannabis",
+    "meta_description": "Dirt n Worms (Gummy Worms × Quicksand): earthy cocoa with a subtle candied edge.",
+    "fields": {
+      "genetics": "Gummy Worms × Quicksand",
+      "breeder": "Skyworld (in-house cut); parents per SeedFinder (Gummie/Gummy Worms, Archive Quicksand)",
+      "breeder_source_url": "https://en.seedfinder.eu/",
+      "flowering_time": "8–10 weeks (est.)",
+      "yield": "medium (est.)",
+      "growing_difficulty": "easy–moderate (est.)",
+      "aroma_profile": "Rich earth, cocoa crumble, hint of molasses (est.)",
+      "flavor_profile": "Earthy chocolate & coffee",
+      "terpene_profile": [
+        {"terpene_name": "β-Caryophyllene", "terpene_percentage": 0.45},
+        {"terpene_name": "Myrcene", "terpene_percentage": 0.38},
+        {"terpene_name": "Limonene", "terpene_percentage": 0.32}
+      ]
+    }
+  },
+  {
+    "post_type": "strain",
+    "post_title": "Melted Strawberries",
+    "excerpt": "Juicy berry over cream. A polished, fruit‑forward profile with a soft landing.",
+    "meta_title": "Melted Strawberries | Skyworld Cannabis",
+    "meta_description": "Melted Strawberries (GMO × Strawberry Guava): juicy berry over a creamy finish. Polished and fruit‑forward.",
+    "fields": {
+      "genetics": "GMO × Strawberry Guava",
+      "breeder": "Bloom Seed Co. (lineage) / SJR Horticulture (cultivator)",
+      "breeder_source_url": "https://en.seedfinder.eu/strain-info/Melted_Strawberries/Bloom_Seed_Co/",
+      "flowering_time": "8–10 weeks (est.)",
+      "yield": "medium (≈450 g/m²) (est.)",
+      "growing_difficulty": "moderate (est.)",
+      "aroma_profile": "Fresh strawberry, red candy, light cream (est.)",
+      "flavor_profile": "Fresh strawberry w/ sweet candy",
+      "terpene_profile": [
+        {"terpene_name": "Limonene", "terpene_percentage": 1.12},
+        {"terpene_name": "Pinene", "terpene_percentage": 0.68},
+        {"terpene_name": "β-Caryophyllene", "terpene_percentage": 0.54}
+      ]
+    }
+  },
+  {
+    "post_type": "strain",
+    "post_title": "Triple Burger",
+    "excerpt": "GMO × Double Burger. Big, savory diesel with layered depth—serious flavor for seasoned palates.",
+    "meta_title": "Triple Burger | Skyworld Cannabis",
+    "meta_description": "Triple Burger (GMO × Double Burger): layered savory diesel and depth for seasoned palates.",
+    "fields": {
+      "genetics": "GMO × Double Burger",
+      "breeder": "Skunk House Genetics (lineage) / SJR Horticulture (cultivator)",
+      "breeder_source_url": "https://en.seedfinder.eu/strain-info/Triple_Burger/Skunk_House_Genetics/",
+      "flowering_time": "8–10 weeks (est.)",
+      "yield": "medium–high (est.)",
+      "growing_difficulty": "intermediate (est.)",
+      "aroma_profile": "Savory diesel, garlic/umami, earthy spice (est.)",
+      "flavor_profile": "Rich savory, umami undertones",
+      "terpene_profile": [
+        {"terpene_name": "Myrcene", "terpene_percentage": 0.76},
+        {"terpene_name": "β-Caryophyllene", "terpene_percentage": 0.68},
+        {"terpene_name": "Pinene", "terpene_percentage": 0.41}
+      ]
+    }
+  },
+  {
+    "post_type": "strain",
+    "post_title": "Superboof",
+    "excerpt": "Black Cherry Punch × Tropicana Cookies. Rich cherry with tropical undertones; tidy modern finish.",
+    "meta_title": "Superboof | Skyworld Cannabis",
+    "meta_description": "Superboof (Black Cherry Punch × Tropicana Cookies): rich cherry with tropical undertones and a modern finish.",
+    "fields": {
+      "genetics": "Black Cherry Punch × Tropicana Cookies",
+      "breeder": "Various listings; SJR Horticulture (cultivator)",
+      "breeder_source_url": "https://en.seedfinder.eu/",
+      "flowering_time": "8–9.5 weeks",
+      "yield": "medium–high",
+      "growing_difficulty": "intermediate",
+      "aroma_profile": "Ripe cherry, orange zest, tropical candy",
+      "flavor_profile": "Rich cherry w/ tropical undertones",
+      "terpene_profile": [
+        {"terpene_name": "Myrcene", "terpene_percentage": 0.89},
+        {"terpene_name": "β-Caryophyllene", "terpene_percentage": 0.76},
+        {"terpene_name": "Limonene", "terpene_percentage": 0.43}
+      ]
+    }
+  },
+  {
+    "post_type": "strain",
+    "post_title": "White Apple Runtz",
+    "excerpt": "White Runtz × Apple Fritter. Crisp apple and sweet candy with a creamy undertone.",
+    "meta_title": "White Apple Runtz | Skyworld Cannabis",
+    "meta_description": "White Apple Runtz (White Runtz × Apple Fritter): crisp apple and sweet candy with a creamy undertone.",
+    "fields": {
+      "genetics": "White Runtz × Apple Fritter",
+      "breeder": "Unknown selection; references across seller listings",
+      "breeder_source_url": "https://en.seedfinder.eu/",
+      "flowering_time": "8–9.5 weeks",
+      "yield": "medium–high",
+      "growing_difficulty": "intermediate",
+      "aroma_profile": "Crisp green apple, candy sweetness, creamy undertone",
+      "flavor_profile": "Crisp apple w/ sweet candy",
+      "terpene_profile": [
+        {"terpene_name": "Limonene", "terpene_percentage": 0.94},
+        {"terpene_name": "β-Caryophyllene", "terpene_percentage": 0.68},
+        {"terpene_name": "Myrcene", "terpene_percentage": 0.52}
+      ]
+    }
+  },
+  {
+    "post_type": "strain",
+    "post_title": "Stay Melo #7",
+    "excerpt": "Balanced, mellow profile with soft citrus‑cream aromatics and a gentle finish.",
+    "meta_title": "Stay Melo #7 | Skyworld Cannabis",
+    "meta_description": "Stay Melo #7: balanced, mellow profile with soft citrus‑cream aromatics and a gentle finish.",
+    "fields": {
+      "genetics": "Unknown hybrid selection",
+      "breeder": "SJR Horticulture",
+      "breeder_source_url": "",
+      "flowering_time": "8–10 weeks (est.)",
+      "yield": "medium (est.)",
+      "growing_difficulty": "easy–moderate (est.)",
+      "aroma_profile": "Soft citrus, sweet cream, light vanilla, faint herbal (est.)",
+      "flavor_profile": "Balanced mellow flavor, gentle finish",
+      "terpene_profile": [
+        {"terpene_name": "β-Caryophyllene", "terpene_percentage": 0.78},
+        {"terpene_name": "Myrcene", "terpene_percentage": 0.65},
+        {"terpene_name": "Limonene", "terpene_percentage": 0.47}
+      ]
+    }
+  }
+]

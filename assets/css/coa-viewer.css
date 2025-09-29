@@ -1,0 +1,383 @@
+/* Professional COA Viewer Styles */
+
+.skyworld-coa-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #2d5016 0%, #4a7c59 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(45, 80, 22, 0.3);
+  text-decoration: none;
+}
+
+.skyworld-coa-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(45, 80, 22, 0.4);
+  background: linear-gradient(135deg, #4a7c59 0%, #2d5016 100%);
+}
+
+.skyworld-coa-button i {
+  font-size: 1.2rem;
+}
+
+.skyworld-coa-button small {
+  display: block;
+  font-size: 0.8rem;
+  opacity: 0.9;
+  font-weight: 400;
+}
+
+/* COA Modal */
+.coa-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 1rem;
+  backdrop-filter: blur(4px);
+}
+
+.coa-modal-content {
+  background: white;
+  border-radius: 12px;
+  max-width: 900px;
+  width: 100%;
+  max-height: 90vh;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.coa-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 2rem;
+  background: linear-gradient(135deg, #2d5016 0%, #4a7c59 100%);
+  color: white;
+}
+
+.coa-modal-header h3 {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.coa-modal-close {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.coa-modal-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.coa-modal-body {
+  padding: 0;
+  max-height: calc(90vh - 100px);
+  overflow-y: auto;
+}
+
+/* COA Viewer Content */
+.coa-viewer {
+  padding: 2rem;
+}
+
+.coa-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.coa-title h3 {
+  margin: 0 0 0.5rem 0;
+  color: #2d5016;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.coa-strain {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #666;
+}
+
+.coa-batch {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.coa-status {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-pass {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+/* Summary Cards */
+.coa-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.summary-card {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid #e9ecef;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.summary-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.summary-card h4 {
+  margin: 0 0 1rem 0;
+  color: #2d5016;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.main-cannabinoid,
+.main-terpene {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.main-cannabinoid .value,
+.main-terpene .value,
+.safety-status .value {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2d5016;
+  line-height: 1;
+}
+
+.main-cannabinoid .label,
+.main-terpene .label,
+.safety-status .label {
+  display: block;
+  font-size: 0.9rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 0.25rem;
+}
+
+.secondary-cannabinoids,
+.top-terpenes,
+.safety-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.secondary-cannabinoids div,
+.top-terpenes div {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+}
+
+.safety-details div {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #28a745;
+}
+
+.safety-status .pass {
+  color: #28a745;
+}
+
+/* Detailed Charts */
+.coa-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+}
+
+.detail-section h4 {
+  margin: 0 0 1rem 0;
+  color: #2d5016;
+  font-size: 1.1rem;
+}
+
+.cannabinoid-bar,
+.terpene-bar {
+  display: grid;
+  grid-template-columns: 120px 1fr 60px;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.cannabinoid-name,
+.terpene-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #495057;
+}
+
+.bar-container {
+  background: #e9ecef;
+  border-radius: 10px;
+  height: 8px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  background: linear-gradient(90deg, #2d5016 0%, #4a7c59 100%);
+  height: 100%;
+  border-radius: 10px;
+  transition: width 1s ease;
+}
+
+.cannabinoid-value,
+.terpene-value {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #2d5016;
+  text-align: right;
+}
+
+/* Lab Information */
+.coa-footer {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e9ecef;
+}
+
+.lab-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.lab-info div {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Loading and Error States */
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 3rem;
+  color: #666;
+}
+
+.loading i {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.error {
+  background: #f8d7da;
+  color: #721c24;
+  padding: 1rem;
+  border-radius: 4px;
+  text-align: center;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .coa-modal-content {
+    margin: 1rem;
+    max-width: none;
+  }
+  
+  .coa-viewer {
+    padding: 1rem;
+  }
+  
+  .coa-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .coa-summary {
+    grid-template-columns: 1fr;
+  }
+  
+  .coa-details {
+    grid-template-columns: 1fr;
+  }
+  
+  .cannabinoid-bar,
+  .terpene-bar {
+    grid-template-columns: 100px 1fr 50px;
+    gap: 0.5rem;
+  }
+  
+  .lab-info {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .coa-modal {
+    position: static;
+    background: none;
+    padding: 0;
+  }
+  
+  .coa-modal-header,
+  .coa-modal-close {
+    display: none;
+  }
+  
+  .coa-viewer {
+    padding: 1rem 0;
+  }
+}

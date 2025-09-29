@@ -1,0 +1,166 @@
+/* Skyworld Age Gate Styles */
+
+.skyworld-age-gate-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    backdrop-filter: blur(5px);
+}
+
+.skyworld-age-gate-modal {
+    background: #fff;
+    border-radius: 12px;
+    padding: 40px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: ageGateFadeIn 0.5s ease-out;
+}
+
+@keyframes ageGateFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.skyworld-age-gate-content {
+    text-align: center;
+}
+
+.skyworld-age-gate-logo {
+    margin-bottom: 30px;
+}
+
+.skyworld-age-gate-logo img {
+    max-width: 200px;
+    height: auto;
+}
+
+.skyworld-age-gate-modal h2 {
+    color: #2c3e50;
+    font-size: 28px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.skyworld-age-gate-modal p {
+    color: #666;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 30px;
+}
+
+.skyworld-age-gate-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.skyworld-age-gate-buttons button {
+    padding: 15px 40px;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 120px;
+}
+
+.btn-yes {
+    background: linear-gradient(135deg, #27ae60, #2ecc71);
+    color: white;
+}
+
+.btn-yes:hover {
+    background: linear-gradient(135deg, #229954, #27ae60);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4);
+}
+
+.btn-no {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: white;
+}
+
+.btn-no:hover {
+    background: linear-gradient(135deg, #c0392b, #a93226);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+}
+
+.skyworld-age-gate-remember {
+    color: #666;
+    font-size: 14px;
+}
+
+.skyworld-age-gate-remember label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.skyworld-age-gate-remember input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+/* Prevent scrolling when age gate is active */
+body.age-gate-active {
+    overflow: hidden;
+}
+
+/* Dark mode support */
+body.dark-mode .skyworld-age-gate-modal {
+    background: #2c3e50;
+    color: #ecf0f1;
+}
+
+body.dark-mode .skyworld-age-gate-modal h2 {
+    color: #ecf0f1;
+}
+
+body.dark-mode .skyworld-age-gate-modal p,
+body.dark-mode .skyworld-age-gate-remember {
+    color: #bdc3c7;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .skyworld-age-gate-modal {
+        padding: 30px 20px;
+        margin: 20px;
+    }
+    
+    .skyworld-age-gate-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .skyworld-age-gate-modal h2 {
+        font-size: 24px;
+    }
+    
+    .skyworld-age-gate-buttons button {
+        width: 100%;
+        padding: 12px 30px;
+    }
+}

@@ -1,6 +1,6 @@
 <?php
 /**
- * Archive template for sky_product CPT
+ * Archive template for product CPT
  */
 get_header();
 ?>
@@ -17,7 +17,7 @@ get_header();
         <div id="product-grid">
             <?php
             $args = array(
-                'post_type' => 'sky_product',
+                'post_type' => 'sw-product',
                 'posts_per_page' => -1,
             );
 

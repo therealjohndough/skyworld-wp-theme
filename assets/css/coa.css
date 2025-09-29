@@ -1,0 +1,665 @@
+/* COA Page Styles */
+
+.coa-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.coa-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.coa-header h1 {
+    font-size: 48px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.coa-header p {
+    font-size: 18px;
+    color: #666;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.coa-search-filter {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 40px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.search-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#coa-search {
+    flex: 1;
+    padding: 15px 20px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+#coa-search:focus {
+    border-color: #27ae60;
+}
+
+#coa-search-btn {
+    padding: 15px 20px;
+    border: none;
+    border-radius: 8px;
+    background: #27ae60;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    min-width: 60px;
+}
+
+#coa-search-btn:hover {
+    background: #219a52;
+    transform: translateY(-1px);
+}
+
+.filter-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.filter-container select {
+    padding: 12px 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    background: white;
+    outline: none;
+    transition: border-color 0.3s ease;
+    min-width: 180px;
+}
+
+.filter-container select:focus {
+    border-color: #27ae60;
+}
+
+.coa-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.coa-card {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #eee;
+}
+
+.coa-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.coa-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.coa-card-header h3 {
+    color: #2c3e50;
+    font-size: 22px;
+    margin: 0;
+    font-weight: 600;
+}
+
+.product-type-badge {
+    background: #27ae60;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.coa-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-item label {
+    display: block;
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.stat-item span {
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.thc-value {
+    color: #27ae60 !important;
+    font-size: 24px !important;
+}
+
+.coa-terpenes,
+.coa-batch,
+.coa-date {
+    margin-bottom: 15px;
+}
+
+.coa-terpenes label,
+.coa-batch label,
+.coa-date label {
+    font-weight: 600;
+    color: #2c3e50;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.coa-terpenes p,
+.coa-batch span,
+.coa-date span {
+    color: #666;
+    font-size: 14px;
+}
+
+.coa-actions {
+    margin-top: 25px;
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: all 0.3s ease;
+    flex: 1;
+    text-align: center;
+}
+
+.btn-primary {
+    background: #27ae60;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #219a52;
+    transform: translateY(-1px);
+}
+
+.btn-outline {
+    background: white;
+    color: #27ae60;
+    border: 1px solid #27ae60;
+}
+
+.btn-outline:hover {
+    background: #27ae60;
+    color: white;
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #5a6268;
+}
+
+.coa-loading {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #27ae60;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+    color: #666;
+}
+
+/* COA Modal Styles */
+.coa-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.coa-modal-content {
+    background: white;
+    border-radius: 12px;
+    max-width: 800px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.coa-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px;
+    border-bottom: 1px solid #eee;
+    background: #f8f9fa;
+    border-radius: 12px 12px 0 0;
+}
+
+.coa-modal-header h3 {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 24px;
+}
+
+.coa-modal-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.coa-modal-close:hover {
+    background: #e9ecef;
+    color: #333;
+}
+
+.coa-modal-body {
+    padding: 30px;
+}
+
+.coa-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.coa-info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.coa-info-item label {
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 14px;
+}
+
+.coa-info-item span {
+    color: #666;
+    font-size: 16px;
+}
+
+.cannabinoid-results,
+.terpene-results,
+.safety-results {
+    margin-bottom: 30px;
+}
+
+.cannabinoid-results h4,
+.terpene-results h4,
+.safety-results h4 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-size: 18px;
+    border-bottom: 2px solid #27ae60;
+    padding-bottom: 10px;
+}
+
+.cannabinoid-grid,
+.terpene-grid,
+.safety-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+.result-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border-left: 3px solid #27ae60;
+}
+
+.result-name {
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+.result-value {
+    font-weight: 600;
+    color: #27ae60;
+}
+
+.result-value.pass {
+    color: #27ae60;
+    text-transform: uppercase;
+    font-size: 12px;
+    background: #d4edda;
+    padding: 4px 8px;
+    border-radius: 4px;
+    border: 1px solid #c3e6cb;
+}
+
+.coa-actions {
+    margin-top: 30px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+/* FAQs Section */
+.faqs-section {
+    background: #f8f9fa;
+    padding: 60px 0;
+    margin-top: 60px;
+}
+
+.faqs-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.faqs-container h2 {
+    text-align: center;
+    font-size: 36px;
+    color: #2c3e50;
+    margin-bottom: 40px;
+}
+
+.faq-item {
+    background: white;
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.faq-item h3 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.faq-item p {
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Dark Mode Support */
+body.dark-mode .coa-container {
+    color: #ecf0f1;
+}
+
+body.dark-mode .coa-header h1 {
+    color: #ecf0f1;
+}
+
+body.dark-mode .coa-header p {
+    color: #bdc3c7;
+}
+
+body.dark-mode .coa-search-filter {
+    background: #34495e;
+}
+
+body.dark-mode #coa-search,
+body.dark-mode .filter-container select {
+    background: #2c3e50;
+    border-color: #555;
+    color: #ecf0f1;
+}
+
+body.dark-mode .coa-card {
+    background: #2c3e50;
+    border-color: #555;
+}
+
+body.dark-mode .coa-card-header h3 {
+    color: #ecf0f1;
+}
+
+body.dark-mode .coa-stats {
+    background: #34495e;
+}
+
+body.dark-mode .stat-item label,
+body.dark-mode .coa-terpenes label,
+body.dark-mode .coa-batch label,
+body.dark-mode .coa-date label {
+    color: #ecf0f1;
+}
+
+body.dark-mode .stat-item span {
+    color: #ecf0f1;
+}
+
+body.dark-mode .coa-terpenes p,
+body.dark-mode .coa-batch span,
+body.dark-mode .coa-date span {
+    color: #bdc3c7;
+}
+
+body.dark-mode .coa-modal-content {
+    background: #2c3e50;
+    color: #ecf0f1;
+}
+
+body.dark-mode .coa-modal-header {
+    background: #34495e;
+    border-color: #555;
+}
+
+body.dark-mode .coa-modal-header h3 {
+    color: #ecf0f1;
+}
+
+body.dark-mode .coa-info-grid,
+body.dark-mode .result-item {
+    background: #34495e;
+}
+
+body.dark-mode .coa-info-item label,
+body.dark-mode .result-name {
+    color: #ecf0f1;
+}
+
+body.dark-mode .coa-info-item span {
+    color: #bdc3c7;
+}
+
+body.dark-mode .cannabinoid-results h4,
+body.dark-mode .terpene-results h4,
+body.dark-mode .safety-results h4 {
+    color: #ecf0f1;
+}
+
+body.dark-mode .faqs-section {
+    background: #34495e;
+}
+
+body.dark-mode .faq-item {
+    background: #2c3e50;
+}
+
+body.dark-mode .faq-item h3 {
+    color: #ecf0f1;
+}
+
+body.dark-mode .faq-item p {
+    color: #bdc3c7;
+}
+
+body.dark-mode .faqs-container h2 {
+    color: #ecf0f1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .coa-container {
+        padding: 20px 15px;
+    }
+    
+    .coa-header h1 {
+        font-size: 32px;
+    }
+    
+    .coa-search-filter {
+        padding: 20px;
+    }
+    
+    .search-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .filter-container {
+        flex-direction: column;
+    }
+    
+    .filter-container select {
+        min-width: auto;
+        width: 100%;
+    }
+    
+    .coa-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .coa-stats {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .coa-actions {
+        flex-direction: column;
+    }
+    
+    .coa-modal-content {
+        margin: 10px;
+        max-height: calc(100vh - 20px);
+    }
+    
+    .coa-modal-body {
+        padding: 20px;
+    }
+    
+    .coa-info-grid,
+    .cannabinoid-grid,
+    .terpene-grid,
+    .safety-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .coa-actions {
+        flex-direction: column;
+    }
+    
+    .faqs-container {
+        padding: 0 15px;
+    }
+    
+    .faqs-container h2 {
+        font-size: 28px;
+    }
+    
+    .faq-item {
+        padding: 20px;
+    }
+}
