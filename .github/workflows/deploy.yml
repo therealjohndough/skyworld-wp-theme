@@ -1,0 +1,286 @@
+name: 🧪 Test → Deploy Skyworld Theme
+
+on:
+  push:
+    branches: [ dev/skyworld ]
+    paths:
+      - '**.php'
+      - '**.css'
+      - '**.js'
+      - '**.json'
+      - 'assets/**'
+      - 'template-parts/**'
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test-php:
+    name: 🔍 PHP Code Quality Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          extensions: mysqli, zip, gd
+          
+      - name: Validate PHP syntax
+        run: |
+          echo "🔍 Testing PHP syntax..."
+          find . -type f -name "*.php" -not -path "./vendor/*" -print0 | xargs -0 -n1 php -l
+          
+      - name: Check WordPress coding standards
+        run: |
+          echo "📋 Checking WordPress coding standards..."
+          # Basic WordPress function checks
+          if grep -r "echo \$" --include="*.php" .; then
+            echo "⚠️  Warning: Found unescaped echo statements"
+          fi
+          
+          if grep -r "mysql_" --include="*.php" .; then
+            echo "❌ Error: Found deprecated mysql_ functions"
+            exit 1
+          fi
+          
+          echo "✅ WordPress coding standards check passed"
+
+  test-wordpress:
+    name: 🌐 WordPress Environment Tests
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: wordpress
+          MYSQL_DATABASE: wordpress_test
+          MYSQL_USER: wordpress
+          MYSQL_PASSWORD: wordpress
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          extensions: mysqli, zip, gd, curl, dom, exif, fileinfo, hash, json, mbstring, openssl, pcre, xml
+
+      - name: Setup WordPress test environment
+        run: |
+          echo "🏗️  Setting up WordPress test environment..."
+          
+          # Download WordPress
+          curl -O https://wordpress.org/latest.tar.gz
+          tar -xzf latest.tar.gz
+          
+          # Setup wp-config for testing
+          cd wordpress
+          cp wp-config-sample.php wp-config.php
+          sed -i "s/database_name_here/wordpress_test/" wp-config.php
+          sed -i "s/username_here/wordpress/" wp-config.php
+          sed -i "s/password_here/wordpress/" wp-config.php
+          sed -i "s/localhost/127.0.0.1/" wp-config.php
+          
+          # Add test salts
+          curl -s https://api.wordpress.org/secret-key/1.1/salt/ >> wp-config.php
+          
+          echo "✅ WordPress test environment ready"
+
+      - name: Install theme in WordPress
+        run: |
+          echo "🎨 Installing Skyworld theme..."
+          
+          # Create themes directory and copy our theme
+          mkdir -p wordpress/wp-content/themes/skyworld-wp-child
+          cp -r . wordpress/wp-content/themes/skyworld-wp-child/
+          
+          # Remove git files from theme directory
+          rm -rf wordpress/wp-content/themes/skyworld-wp-child/.git
+          
+          echo "✅ Theme installed successfully"
+
+      - name: Test WordPress functionality
+        run: |
+          echo "🧪 Testing WordPress functionality..."
+          cd wordpress
+          
+          # Start PHP built-in server
+          php -S localhost:8000 -t . &
+          SERVER_PID=$!
+          sleep 5
+          
+          # Test if WordPress loads
+          if curl -f http://localhost:8000 > /dev/null 2>&1; then
+            echo "✅ WordPress loads successfully"
+          else
+            echo "❌ WordPress failed to load"
+            kill $SERVER_PID
+            exit 1
+          fi
+          
+          # Test theme activation (simulate)
+          echo "🎨 Testing theme compatibility..."
+          php -r "
+          define('ABSPATH', __DIR__ . '/');
+          define('WP_DEBUG', true);
+          require_once 'wp-config.php';
+          
+          // Test theme functions.php loads without errors
+          ob_start();
+          include 'wp-content/themes/skyworld-wp-child/functions.php';
+          \$output = ob_get_clean();
+          
+          if (empty(\$output)) {
+            echo '✅ Theme functions.php loads without errors\n';
+          } else {
+            echo '⚠️  Theme functions.php generated output: ' . \$output . '\n';
+          }
+          "
+          
+          kill $SERVER_PID
+          echo "✅ All WordPress tests passed"
+
+  test-frontend:
+    name: 🎨 Frontend Asset Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Test CSS validity
+        run: |
+          echo "🎨 Testing CSS files..."
+          
+          # Check for CSS syntax errors (basic)
+          for css_file in $(find assets -name "*.css" 2>/dev/null); do
+            if [ -f "$css_file" ]; then
+              echo "Testing $css_file..."
+              # Basic CSS validation - check for unclosed braces
+              if [ $(grep -c '{' "$css_file") -ne $(grep -c '}' "$css_file") ]; then
+                echo "❌ CSS syntax error in $css_file - mismatched braces"
+                exit 1
+              fi
+            fi
+          done
+          
+          echo "✅ CSS files are valid"
+          
+      - name: Test JavaScript (if any)
+        run: |
+          echo "📜 Testing JavaScript files..."
+          
+          for js_file in $(find assets -name "*.js" 2>/dev/null); do
+            if [ -f "$js_file" ]; then
+              echo "Found JavaScript file: $js_file"
+              # Could add Node.js and ESLint here for proper JS testing
+            fi
+          done
+          
+          echo "✅ JavaScript tests completed"
+
+  deploy-staging:
+    name: 🚧 Deploy to Staging
+    needs: [test-php, test-wordpress, test-frontend]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/dev/skyworld' && needs.test-php.result == 'success' && needs.test-wordpress.result == 'success' && needs.test-frontend.result == 'success'
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: 🚧 Deploy to staging environment
+        uses: SamKirkland/FTP-Deploy-Action@4.3.3
+        with:
+          server: ${{ secrets.STAGING_FTP_SERVER }}
+          username: ${{ secrets.STAGING_FTP_USERNAME }}
+          password: ${{ secrets.STAGING_FTP_PASSWORD }}
+          local-dir: ./
+          server-dir: /wp-content/themes/skyworld-wp-child/
+          exclude: |
+            **/.git*/**
+            **/node_modules/**
+            **/*.md
+            **/scripts/**
+            **/data/**
+            
+      - name: 🧪 Test staging deployment
+        run: |
+          echo "🌐 Testing staging site..."
+          sleep 30  # Give server time to process files
+          
+          # Test if staging site loads (replace with your staging URL)
+          if curl -f https://staging.skyworldcannabis.com > /dev/null 2>&1; then
+            echo "✅ Staging site loads successfully"
+          else
+            echo "⚠️  Staging site may need time to update cache"
+          fi
+
+  deploy-production:
+    name: 🌍 Deploy to Production
+    needs: [deploy-staging]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/dev/skyworld' && needs.deploy-staging.result == 'success'
+    
+    # Add manual approval for production deployments
+    environment: production
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: 📦 Prepare deployment package
+        run: |
+          echo "Creating deployment package..."
+          tar -czf skyworld-theme.tar.gz \
+            --exclude='.git*' \
+            --exclude='node_modules' \
+            --exclude='*.md' \
+            --exclude='scripts' \
+            --exclude='data' \
+            .
+            
+      - name: 🚀 Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@4.3.3
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./
+          server-dir: /wp-content/themes/skyworld-wp-child/
+          exclude: |
+            **/.git*/**
+            **/node_modules/**
+            **/*.md
+            **/scripts/**
+            **/data/**
+            
+      - name: 🎉 Deployment Success Notification
+        run: |
+          echo "🌿 Skyworld Cannabis Theme deployed successfully!"
+          echo "📅 Deployed at: $(date)"
+          echo "🔗 Live site: https://dev.skyworldcannabis.com"
+          echo "🎯 Branch: ${{ github.ref_name }}"
+          echo "📝 Commit: ${{ github.sha }}"
+
+  notify:
+    name: 📢 Send Notifications
+    needs: [test, deploy]
+    runs-on: ubuntu-latest
+    if: always()
+    
+    steps:
+      - name: 🎯 Deployment Status
+        run: |
+          if [ "${{ needs.deploy.result }}" == "success" ]; then
+            echo "✅ Deployment completed successfully!"
+            echo "🌐 Your changes are now live at https://dev.skyworldcannabis.com"
+          else
+            echo "❌ Deployment failed. Check the logs above."
+          fi

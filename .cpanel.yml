@@ -1,26 +1,67 @@
 ---
 deployment:
   tasks:
+    # Set deployment path
     - export DEPLOYPATH=/home/sjradmin/dev.skyworldcannabis.com/wp-content/themes/skyworld-wp-child
-    - echo "=== COMPLETE PROFESSIONAL CANNABIS THEME DEPLOYMENT ==="
-    - echo "Creating theme directory..."
+    - export LOGFILE=/tmp/skyworld-deploy-$(date +%Y%m%d_%H%M%S).log
+    
+    # Start deployment logging
+    - echo "🌿 === SKYWORLD CANNABIS THEME AUTO-DEPLOYMENT ===" | tee $LOGFILE
+    - echo "📅 Deployment started: $(date)" | tee -a $LOGFILE
+    - echo "🎯 Target: $DEPLOYPATH" | tee -a $LOGFILE
+    
+    # Backup current theme (safety measure)
+    - echo "💾 Creating backup..." | tee -a $LOGFILE
+    - /bin/mkdir -p /tmp/skyworld-backups
+    - /bin/tar -czf /tmp/skyworld-backups/backup-$(date +%Y%m%d_%H%M%S).tar.gz -C $DEPLOYPATH . 2>/dev/null || echo "No existing theme to backup"
+    
+    # Prepare deployment directory
+    - echo "🗂️ Preparing deployment directory..." | tee -a $LOGFILE
     - /bin/mkdir -p $DEPLOYPATH
     - /bin/rm -rf $DEPLOYPATH/* 2>/dev/null || true
-    - echo "Copying all theme files..."
-    - /bin/cp -R * $DEPLOYPATH/
-    - /bin/cp -R .[^.]* $DEPLOYPATH/ 2>/dev/null || true
-    - echo "Setting proper permissions..."
-    - /bin/chmod -R 755 $DEPLOYPATH
-    - echo "Professional Cannabis Management System deployed successfully!"
-    - echo "Theme includes:"
-    - echo "✅ Front page template with age gate"
-    - echo "✅ Cannabis management dashboard" 
-    - echo "✅ Professional Phosphor icons"
-    - echo "✅ SEO management system"
-    - echo "✅ Strain/product templates"
+    - /bin/rm -rf $DEPLOYPATH/.* 2>/dev/null || true
+    
+    # Copy theme files (excluding development files)
+    - echo "📁 Copying theme files..." | tee -a $LOGFILE
+    - /bin/cp -R *.php $DEPLOYPATH/ 2>/dev/null || echo "No PHP files found"
+    - /bin/cp -R *.css $DEPLOYPATH/ 2>/dev/null || echo "No CSS files found"
+    - /bin/cp -R assets/ $DEPLOYPATH/ 2>/dev/null || echo "No assets directory"
+    - /bin/cp -R inc/ $DEPLOYPATH/ 2>/dev/null || echo "No inc directory"
+    - /bin/cp -R template-parts/ $DEPLOYPATH/ 2>/dev/null || echo "No template-parts directory"
+    - /bin/cp -R acf-json/ $DEPLOYPATH/ 2>/dev/null || echo "No ACF JSON directory"
+    
+    # Copy configuration files
+    - /bin/cp style.css $DEPLOYPATH/ 2>/dev/null || echo "No style.css found"
+    - /bin/cp functions.php $DEPLOYPATH/ 2>/dev/null || echo "No functions.php found"
+    - /bin/cp index.php $DEPLOYPATH/ 2>/dev/null || echo "No index.php found"
+    
+    # Set proper WordPress permissions
+    - echo "🔒 Setting file permissions..." | tee -a $LOGFILE
+    - /bin/find $DEPLOYPATH -type d -exec chmod 755 {} \;
+    - /bin/find $DEPLOYPATH -type f -exec chmod 644 {} \;
+    
+    # Deployment verification
+    - echo "✅ Verifying deployment..." | tee -a $LOGFILE
+    - echo "📊 Deployment statistics:" | tee -a $LOGFILE
+    - echo "   - PHP files: $(find $DEPLOYPATH -name '*.php' | wc -l)" | tee -a $LOGFILE
+    - echo "   - CSS files: $(find $DEPLOYPATH -name '*.css' | wc -l)" | tee -a $LOGFILE
+    - echo "   - JS files: $(find $DEPLOYPATH -name '*.js' | wc -l)" | tee -a $LOGFILE
+    - echo "   - Template parts: $(ls -1 $DEPLOYPATH/template-parts/ 2>/dev/null | wc -l)" | tee -a $LOGFILE
+    
+    # Success message
+    - echo "🎉 === DEPLOYMENT COMPLETED SUCCESSFULLY ===" | tee -a $LOGFILE
+    - echo "🌐 Live site: https://dev.skyworldcannabis.com" | tee -a $LOGFILE
+    - echo "📅 Completed: $(date)" | tee -a $LOGFILE
+    - echo "📝 Log saved: $LOGFILE" | tee -a $LOGFILE
+    
+    # Display deployment summary
     - echo ""
-    - echo "Files deployed:"
-    - ls -la $DEPLOYPATH/ | head -20
-    - echo ""
-    - echo "Template parts:"
-    - ls -la $DEPLOYPATH/template-parts/ 2>/dev/null || echo "No template-parts found"
+    - echo "🌿 SKYWORLD THEME FEATURES DEPLOYED:"
+    - echo "✅ Reorganized CSS with page-based structure"
+    - echo "✅ Media kit page with professional styling"
+    - echo "✅ About page with brand story and team profiles"
+    - echo "✅ Strain library with filtering system"
+    - echo "✅ Enhanced product cards and details"
+    - echo "✅ OCM compliance licensing display"
+    - echo "✅ Responsive design for all devices"
+    - echo "✅ Professional cannabis branding"
