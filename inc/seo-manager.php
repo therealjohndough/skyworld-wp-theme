@@ -43,7 +43,7 @@ function skyworld_seo_manager_page() {
             </div>
             
             <div class="seo-card <?php echo $seo_data['structure_score'] >= 80 ? 'good' : ($seo_data['structure_score'] >= 60 ? 'warning' : 'needs-work'); ?>">
-                <h3>🏗️ Site Structure</h3>
+                <h3><i class="ph ph-buildings" aria-hidden="true"></i> Site Structure</h3>
                 <div class="seo-score"><?php echo $seo_data['structure_score']; ?>%</div>
                 <p><?php echo $seo_data['structure_message']; ?></p>
                 <a href="#structure-info" class="button">View Structure</a>
@@ -157,7 +157,7 @@ function skyworld_seo_manager_page() {
 
         <!-- Technical SEO Status -->
         <div id="structure-info" class="seo-section">
-            <h2>🏗️ Technical SEO Status</h2>
+            <h2><i class="ph ph-buildings" aria-hidden="true"></i> Technical SEO Status</h2>
             <div class="technical-seo-status">
                 <?php
                 $technical_checks = skyworld_run_technical_seo_checks();

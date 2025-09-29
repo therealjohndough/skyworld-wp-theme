@@ -1,0 +1,68 @@
+[
+  {
+    "post_type": "strain",
+    "post_title": "Lemon Oreoz",
+    "excerpt": "Oreoz × Monkey Spunk. Zesty-sweet dough with creamy cookie finish.",
+    "meta_title": "Lemon Oreoz | Skyworld Cannabis",
+    "meta_description": "Lemon Oreoz (Oreoz × Monkey Spunk): zesty-sweet cookie dough with a creamy finish. Skyworld Cannabis.",
+    "fields": {
+      "genetics": "Oreoz × Monkey Spunk",
+      "breeder": "Coool Beans (lineage) / SJR Horticulture (cultivator)",
+      "breeder_source_url": "https://en.seedfinder.eu/strain-info/Lemon_Oreoz/Cooool_Beans/",
+      "flowering_time": "8–10 weeks (est.)",
+      "yield": "medium–high (est.)",
+      "growing_difficulty": "intermediate (est.)",
+      "aroma_profile": "Zesty lemon peel, sweet cookie dough, creamy vanilla (est.)",
+      "flavor_profile": "Zesty lemon w/ sweet cookie finish",
+      "terpene_profile": [
+        {"terpene_name":"Limonene","terpene_percentage":0.89},
+        {"terpene_name":"β-Caryophyllene","terpene_percentage":0.62},
+        {"terpene_name":"Linalool","terpene_percentage":0.48}
+      ]
+    }
+  },
+  {
+    "post_type": "strain",
+    "post_title": "Wafflez",
+    "excerpt": "Apple Fritter × Stuffed French Toast. Dessert-forward with apple‑dough, warm spice, and a smooth finish.",
+    "meta_title": "Wafflez | Skyworld Cannabis",
+    "meta_description": "Wafflez (Apple Fritter × Stuffed French Toast): dessert-forward with apple‑dough, warm spice, and a smooth finish.",
+    "fields": {
+      "genetics": "Apple Fritter × Stuffed French Toast",
+      "breeder": "Raw Genetics (lineage) / SJR Horticulture (cultivator)",
+      "breeder_source_url": "https://en.seedfinder.eu/strain-info/Wafflez/Raw_Genetics/",
+      "flowering_time": "8–9.5 weeks",
+      "yield": "med–high",
+      "growing_difficulty": "intermediate",
+      "aroma_profile": "Waffle batter, maple syrup, vanilla, warm bakery spice",
+      "flavor_profile": "Waffle batter w/ maple & vanilla",
+      "terpene_profile": [
+        {"terpene_name":"β-Caryophyllene","terpene_percentage":0.76},
+        {"terpene_name":"Limonene","terpene_percentage":0.52},
+        {"terpene_name":"Myrcene","terpene_percentage":0.41}
+      ]
+    }
+  },
+  {
+    "post_type": "strain",
+    "post_title": "Sherb Cream Pie",
+    "excerpt": "Ice Cream Cake × Sherb BX1. Creamy citrus and berry swirl; bakery‑smooth finish.",
+    "meta_title": "Sherb Cream Pie | Skyworld Cannabis",
+    "meta_description": "Sherb Cream Pie (Ice Cream Cake × Sherb BX1): creamy citrus‑berry swirl with a smooth bakery finish.",
+    "fields": {
+      "genetics": "Ice Cream Cake × Sherb BX1",
+      "breeder": "Seed Junky (lineage) / SJR Horticulture (cultivator)",
+      "breeder_source_url": "https://en.seedfinder.eu/strain-info/Sherb_Cream_Pie/Seed_Junky_Genetics/",
+      "flowering_time": "8–9 weeks",
+      "yield": "medium–high",
+      "growing_difficulty": "intermediate",
+      "aroma_profile": "Creamy citrus, berry swirl, bakery sweetness",
+      "flavor_profile": "Fruity sherbet w/ creamy finish",
+      "terpene_profile": [
+        {"terpene_name":"Limonene","terpene_percentage":0.89},
+        {"terpene_name":"β-Caryophyllene","terpene_percentage":0.67},
+        {"terpene_name":"Linalool","terpene_percentage":0.45}
+      ]
+    }
+  }
+]

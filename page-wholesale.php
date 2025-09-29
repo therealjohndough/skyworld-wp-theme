@@ -16,7 +16,7 @@ get_header();
                 <div class="wholesale-benefits">
                     <div class="benefit-grid">
                         <div class="benefit-item">
-                            <div class="benefit-icon">🌱</div>
+                            <div class="benefit-icon"><i class="ph ph-plant" aria-hidden="true"></i></div>
                             <h3>Premium Genetics</h3>
                             <p>Access to our exclusive strain library and award-winning cannabis genetics.</p>
                         </div>
@@ -47,7 +47,7 @@ get_header();
             <h2>Wholesale Requirements</h2>
             <div class="requirements-grid">
                 <div class="requirement-card">
-                    <h3>🏛️ Licensing</h3>
+                    <h3><i class="ph ph-bank" aria-hidden="true"></i> Licensing</h3>
                     <ul>
                         <li>Valid New York cannabis license</li>
                         <li>Business registration documents</li>

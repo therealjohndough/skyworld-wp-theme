@@ -22,6 +22,7 @@ function remove_gutenberg_css() {
 require_once get_stylesheet_directory() . '/inc/post-types.php';
 require_once get_stylesheet_directory() . '/inc/acf-fields.php';
 require_once get_stylesheet_directory() . '/inc/customizer-simple.php';
+require_once get_stylesheet_directory() . '/inc/strain-importer.php';
 require_once get_stylesheet_directory() . '/inc/admin-dashboard.php';
 require_once get_stylesheet_directory() . '/inc/seo-manager.php';
 require_once get_stylesheet_directory() . '/inc/cannabis-importer.php';

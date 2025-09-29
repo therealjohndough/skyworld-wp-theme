@@ -95,7 +95,7 @@ $strain_meta = get_post_meta($strain_id);
                             <?php else : ?>
                                 <div class="strain-placeholder-image">
                                     <div class="placeholder-content">
-                                        <span class="placeholder-icon">�</span>
+                                        <span class="placeholder-icon"><i class="ph ph-leaf"></i></span>
                                         <span class="placeholder-text"><?php the_title(); ?></span>
                                         <span class="placeholder-subtitle">Cannabis Flower</span>
                                     </div>
@@ -139,7 +139,7 @@ $strain_meta = get_post_meta($strain_id);
                     <!-- Terpene Profile -->
                     <div class="detail-section terpenes-section">
                         <h3 class="section-title">
-                            <span class="section-icon">🧪</span>
+                            <span class="section-icon"><i class="ph ph-test-tube"></i></span>
                             Terpene Profile
                         </h3>
                         
@@ -167,7 +167,7 @@ $strain_meta = get_post_meta($strain_id);
                     <!-- Flavors -->
                     <div class="detail-section flavors-section">
                         <h3 class="section-title">
-                            <span class="section-icon">👅</span>
+                            <span class="section-icon"><i class="ph ph-coffee"></i></span>
                             Flavor Profile
                         </h3>
                         
@@ -190,7 +190,7 @@ $strain_meta = get_post_meta($strain_id);
                     <!-- Growing Information -->
                     <div class="detail-section growing-section">
                         <h3 class="section-title">
-                            <span class="section-icon">🌱</span>
+                            <span class="section-icon"><i class="ph ph-plant" aria-hidden="true"></i></span>
                             Growing Information
                         </h3>
                         
@@ -231,39 +231,10 @@ $strain_meta = get_post_meta($strain_id);
                         </div>
                     </div>
 
-                    <!-- Medical Benefits -->
-                    <div class="detail-section medical-section">
-                        <h3 class="section-title">
-                            <span class="section-icon">🏥</span>
-                            Potential Medical Benefits
-                        </h3>
-                        
-                        <div class="medical-content">
-                            <?php 
-                            $medical_benefits = get_the_terms($strain_id, 'medical_benefit');
-                            if ($medical_benefits && !is_wp_error($medical_benefits)) : 
-                            ?>
-                                <div class="medical-benefits-list">
-                                    <?php foreach ($medical_benefits as $benefit) : ?>
-                                        <div class="medical-benefit-item">
-                                            <span class="benefit-name"><?php echo esc_html($benefit->name); ?></span>
-                                        </div>
-                                    <?php endforeach; ?>
-                                </div>
-                            <?php else : ?>
-                                <p class="no-data">Medical benefit information not available.</p>
-                            <?php endif; ?>
-                            
-                            <div class="medical-disclaimer">
-                                <p><em>* This information is for educational purposes only and is not intended as medical advice. Consult with a healthcare provider before using cannabis for medical purposes.</em></p>
-                            </div>
-                        </div>
-                    </div>
-
                     <!-- Lab Results / COA -->
                     <div class="detail-section lab-results-section">
                         <h3 class="section-title">
-                            <span class="section-icon">🔬</span>
+                            <span class="section-icon"><i class="ph ph-flask"></i></span>
                             Lab Results & Quality
                         </h3>
                         
@@ -791,34 +762,6 @@ $strain_meta = get_post_meta($strain_id);
     color: #6c757d;
     line-height: 1.6;
     margin: 0;
-}
-
-/* Medical Benefits */
-.medical-benefits-list {
-    display: grid;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.medical-benefit-item {
-    background: #e7f3ff;
-    color: #0056b3;
-    padding: 12px 16px;
-    border-radius: 8px;
-    border-left: 4px solid #007bff;
-}
-
-.medical-disclaimer {
-    background: #fff3cd;
-    padding: 15px;
-    border-radius: 6px;
-    border-left: 4px solid #ffc107;
-}
-
-.medical-disclaimer p {
-    margin: 0;
-    font-size: 14px;
-    color: #856404;
 }
 
 /* Lab Results */

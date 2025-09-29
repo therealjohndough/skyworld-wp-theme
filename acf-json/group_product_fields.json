@@ -1,42 +1,354 @@
 {
-    "key": "group_product_fields",
-    "title": "Product Fields",
+    "key": "group_product_fields_robust",
+    "title": "Product Information",
     "fields": [
         {
-            "key": "field_related_strain",
+            "key": "field_product_strain",
             "label": "Related Strain",
             "name": "related_strain",
             "type": "post_object",
-            "post_type": [
-                "strain"
-            ],
-            "return_format": "object"
+            "instructions": "Select the strain this product is made from",
+            "required": 0,
+            "post_type": ["strain"],
+            "taxonomy": [],
+            "allow_null": 1,
+            "multiple": 0,
+            "return_format": "object",
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            }
         },
         {
-            "key": "field_batch_number",
-            "label": "Batch Number",
-            "name": "batch_number",
-            "type": "text"
+            "key": "field_product_sku",
+            "label": "SKU",
+            "name": "product_sku",
+            "type": "text",
+            "instructions": "Product SKU\/item number",
+            "required": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            }
         },
         {
-            "key": "field_thc_percent",
-            "label": "THC %",
-            "name": "thc_percent",
-            "type": "number",
-            "step": "0.01"
+            "key": "field_product_status",
+            "label": "Product Status",
+            "name": "product_status",
+            "type": "select",
+            "instructions": "Current availability status",
+            "required": 1,
+            "choices": {
+                "available": "Available",
+                "limited": "Limited Supply",
+                "coming_soon": "Coming Soon",
+                "out_of_stock": "Out of Stock",
+                "discontinued": "Discontinued"
+            },
+            "default_value": "available",
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            }
         },
         {
-            "key": "field_weight",
-            "label": "Weight",
-            "name": "weight",
-            "type": "text"
+            "key": "field_product_variants",
+            "label": "Product Variants",
+            "name": "product_variants",
+            "type": "repeater",
+            "instructions": "Add different sizes\/weights for this product",
+            "required": 0,
+            "layout": "table",
+            "button_label": "Add Variant",
+            "sub_fields": [
+                {
+                    "key": "field_variant_size",
+                    "label": "Size\/Weight",
+                    "name": "variant_size",
+                    "type": "text",
+                    "instructions": "e.g., 3.5g, 1g, 6-pack",
+                    "required": 1,
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_variant_price",
+                    "label": "Price",
+                    "name": "variant_price",
+                    "type": "number",
+                    "instructions": "Retail price (optional)",
+                    "required": 0,
+                    "min": 0,
+                    "step": 0.01,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_variant_wholesale_price",
+                    "label": "Wholesale Price",
+                    "name": "variant_wholesale_price",
+                    "type": "number",
+                    "instructions": "B2B wholesale price (optional)",
+                    "required": 0,
+                    "min": 0,
+                    "step": 0.01,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_variant_sku",
+                    "label": "Variant SKU",
+                    "name": "variant_sku",
+                    "type": "text",
+                    "instructions": "Specific SKU for this variant",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "20",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ]
         },
         {
-            "key": "field_coa",
-            "label": "COA PDF",
-            "name": "coa_pdf",
-            "type": "file",
-            "return_format": "url"
+            "key": "field_product_lab_results",
+            "label": "Lab Results",
+            "name": "lab_results",
+            "type": "group",
+            "instructions": "Laboratory testing results",
+            "required": 0,
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_thc_percentage",
+                    "label": "THC %",
+                    "name": "thc_percentage",
+                    "type": "number",
+                    "instructions": "Total THC percentage",
+                    "required": 0,
+                    "min": 0,
+                    "max": 100,
+                    "step": 0.01,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_cbd_percentage",
+                    "label": "CBD %",
+                    "name": "cbd_percentage",
+                    "type": "number",
+                    "instructions": "Total CBD percentage",
+                    "required": 0,
+                    "min": 0,
+                    "max": 100,
+                    "step": 0.01,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_cbg_percentage",
+                    "label": "CBG %",
+                    "name": "cbg_percentage",
+                    "type": "number",
+                    "instructions": "Total CBG percentage",
+                    "required": 0,
+                    "min": 0,
+                    "max": 100,
+                    "step": 0.01,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_total_terpenes",
+                    "label": "Total Terpenes %",
+                    "name": "total_terpenes",
+                    "type": "number",
+                    "instructions": "Total terpene percentage",
+                    "required": 0,
+                    "min": 0,
+                    "max": 100,
+                    "step": 0.01,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_coa_link",
+                    "label": "COA Link",
+                    "name": "coa_link",
+                    "type": "url",
+                    "instructions": "Link to Certificate of Analysis",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_test_date",
+                    "label": "Test Date",
+                    "name": "test_date",
+                    "type": "date_picker",
+                    "instructions": "Date of laboratory testing",
+                    "required": 0,
+                    "display_format": "m\/d\/Y",
+                    "return_format": "Y-m-d",
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_lab_name",
+                    "label": "Testing Lab",
+                    "name": "lab_name",
+                    "type": "text",
+                    "instructions": "Name of testing laboratory",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ]
+        },
+        {
+            "key": "field_product_media",
+            "label": "Product Media",
+            "name": "product_media",
+            "type": "group",
+            "instructions": "Images and visual content for this product",
+            "required": 0,
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_product_gallery",
+                    "label": "Product Gallery",
+                    "name": "product_gallery",
+                    "type": "gallery",
+                    "instructions": "High-quality product photos (nug shots, packaging, etc.)",
+                    "required": 0,
+                    "return_format": "array",
+                    "preview_size": "medium",
+                    "insert": "append",
+                    "library": "all",
+                    "min": 0,
+                    "max": 10
+                },
+                {
+                    "key": "field_hero_image",
+                    "label": "Hero Image",
+                    "name": "hero_image",
+                    "type": "image",
+                    "instructions": "Primary product image for cards and headers",
+                    "required": 0,
+                    "return_format": "array",
+                    "preview_size": "medium",
+                    "library": "all"
+                },
+                {
+                    "key": "field_product_video",
+                    "label": "Product Video",
+                    "name": "product_video",
+                    "type": "url",
+                    "instructions": "YouTube, Vimeo, or direct video URL",
+                    "required": 0
+                }
+            ]
+        },
+        {
+            "key": "field_marketing_content",
+            "label": "Marketing Content",
+            "name": "marketing_content",
+            "type": "group",
+            "instructions": "Copy and content for product marketing",
+            "required": 0,
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_product_tagline",
+                    "label": "Product Tagline",
+                    "name": "product_tagline",
+                    "type": "text",
+                    "instructions": "Short catchy description (e.g., 'Premium Indoor Perfection')",
+                    "required": 0,
+                    "maxlength": 100
+                },
+                {
+                    "key": "field_product_description",
+                    "label": "Product Description",
+                    "name": "product_description",
+                    "type": "textarea",
+                    "instructions": "Detailed product description with flavor, effects, experience",
+                    "required": 0,
+                    "rows": 4,
+                    "maxlength": 500
+                },
+                {
+                    "key": "field_flavor_profile",
+                    "label": "Flavor Profile",
+                    "name": "flavor_profile",
+                    "type": "text",
+                    "instructions": "Primary flavors (e.g., 'Sweet berries with earthy undertones')",
+                    "required": 0,
+                    "maxlength": 150
+                },
+                {
+                    "key": "field_experience_notes",
+                    "label": "Experience Notes",
+                    "name": "experience_notes",
+                    "type": "textarea",
+                    "instructions": "What makes this batch special? Growing notes, phenotype details, etc.",
+                    "required": 0,
+                    "rows": 3,
+                    "maxlength": 300
+                },
+                {
+                    "key": "field_recommended_use",
+                    "label": "Recommended Use",
+                    "name": "recommended_use",
+                    "type": "checkbox",
+                    "instructions": "Best occasions or times for this product",
+                    "required": 0,
+                    "choices": {
+                        "morning": "Morning",
+                        "afternoon": "Afternoon", 
+                        "evening": "Evening",
+                        "creative": "Creative Work",
+                        "social": "Social Situations",
+                        "relaxation": "Relaxation",
+                        "focus": "Focus",
+                        "sleep": "Sleep Aid"
+                    },
+                    "layout": "vertical"
+                }
+            ]
         }
     ],
     "location": [
@@ -48,9 +360,9 @@
             }
         ]
     ],
-    "options": {
-        "position": "normal",
-        "layout": "default",
-        "hide_on_screen": []
-    }
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label"
 }
