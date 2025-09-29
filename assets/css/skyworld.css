@@ -989,23 +989,15 @@ a:hover {
 }
 
 .product-card-placeholder {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 200px;
-    background: linear-gradient(135deg, var(--skyworld-light), var(--skyworld-accent));
-    color: var(--skyworld-primary);
+    display: none; /* Hide phantom flower placeholders */
 }
 
 .product-card-placeholder i {
-    font-size: 3rem;
-    margin-bottom: 0.5rem;
-    opacity: 0.7;
+    display: none; /* Hide phantom flower icons */
 }
 
 .product-card-placeholder span i {
-    font-size: 1.5rem;
+    display: none; /* Hide phantom package icons */
 }
 
 /* Responsive Enhancements */
@@ -1853,20 +1845,11 @@ a:hover {
 
 /* ==== PRODUCT CARD ENHANCEMENTS ==== */
 .card-image-placeholder {
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 48px;
-    color: #10b981;
-    border-radius: 12px;
+    display: none; /* Hide phantom flower card placeholders */
 }
 
 .card-image-placeholder i {
-    opacity: 0.6;
-    animation: float 3s ease-in-out infinite;
+    display: none; /* Hide animated phantom icons */
 }
 
 
