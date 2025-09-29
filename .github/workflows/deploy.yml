@@ -222,44 +222,44 @@ jobs:
             echo "⚠️  Staging site may need time to update cache"
           fi
 
-  deploy-production:
-    name: 🌍 Deploy to Production
-    needs: [deploy-staging]
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/dev/skyworld' && needs.deploy-staging.result == 'success'
+  # deploy-production:
+  #   name: 🌍 Deploy to Production  
+  #   needs: [deploy-staging]
+  #   runs-on: ubuntu-latest
+  #   if: github.ref == 'refs/heads/dev/skyworld' && needs.deploy-staging.result == 'success'
+  #   
+  #   # Add manual approval for production deployments
+  #   environment: production
     
-    # Add manual approval for production deployments
-    environment: production
-    
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        
-      - name: 📦 Prepare deployment package
-        run: |
-          echo "Creating deployment package..."
-          tar -czf skyworld-theme.tar.gz \
-            --exclude='.git*' \
-            --exclude='node_modules' \
-            --exclude='*.md' \
-            --exclude='scripts' \
-            --exclude='data' \
-            .
-            
-      - name: 🚀 Deploy via FTP
-        uses: SamKirkland/FTP-Deploy-Action@4.3.3
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./
-          server-dir: /wp-content/themes/skyworld-wp-child/
-          exclude: |
-            **/.git*/**
-            **/node_modules/**
-            **/*.md
-            **/scripts/**
-            **/data/**
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v4
+  #       
+  #     - name: 📦 Prepare deployment package
+  #       run: |
+  #         echo "Creating deployment package..."
+  #         tar -czf skyworld-theme.tar.gz \
+  #           --exclude='.git*' \
+  #           --exclude='node_modules' \
+  #           --exclude='*.md' \
+  #           --exclude='scripts' \
+  #           --exclude='data' \
+  #           .
+  #           
+  #     - name: 🚀 Deploy via FTP
+  #       uses: SamKirkland/FTP-Deploy-Action@4.3.3
+  #       with:
+  #         server: ${{ secrets.FTP_SERVER }}
+  #         username: ${{ secrets.FTP_USERNAME }}
+  #         password: ${{ secrets.FTP_PASSWORD }}
+  #         local-dir: ./
+  #         server-dir: /wp-content/themes/skyworld-wp-child/
+  #         exclude: |
+  #           **/.git*/**
+  #           **/node_modules/**
+  #           **/*.md
+  #           **/scripts/**
+  #           **/data/**
             
       - name: 🎉 Deployment Success Notification
         run: |
@@ -271,16 +271,17 @@ jobs:
 
   notify:
     name: 📢 Send Notifications
-    needs: [test, deploy]
+    needs: [test-php, test-wordpress, test-frontend, deploy-staging]
     runs-on: ubuntu-latest
     if: always()
     
     steps:
       - name: 🎯 Deployment Status
         run: |
-          if [ "${{ needs.deploy.result }}" == "success" ]; then
-            echo "✅ Deployment completed successfully!"
-            echo "🌐 Your changes are now live at https://dev.skyworldcannabis.com"
+          if [ "${{ needs.deploy-staging.result }}" == "success" ]; then
+            echo "✅ Staging deployment completed successfully!"
+            echo "🌐 Your changes are now live at your staging site"
+            echo "🚧 Production deployment is disabled - staging only"
           else
             echo "❌ Deployment failed. Check the logs above."
           fi
