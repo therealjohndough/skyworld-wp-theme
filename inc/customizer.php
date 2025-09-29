@@ -1,9 +1,13 @@
 <?php
 /**
- * Skyworld Theme Customizer
- * Clean, client-friendly interface for managing site content
- * NO BLOCK EDITOR - Everything controlled through Customizer & ACF
+ * Skyworld Theme Customizer - Simplified Version
+ * Basic color controls with live preview (like Astra theme)
  */
+
+// Prevent direct access
+if (!defined('ABSPATH')) {
+    exit;
+}
 
 add_action( 'customize_register', 'skyworld_customize_register' );
 function skyworld_customize_register( $wp_customize ) {
