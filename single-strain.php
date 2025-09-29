@@ -88,9 +88,6 @@ $strain_meta = get_post_meta($strain_id);
                             <?php if (has_post_thumbnail()) : ?>
                                 <div class="strain-featured-image">
                                     <?php the_post_thumbnail('large', ['alt' => get_the_title() . ' cannabis flower buds']); ?>
-                                    <div class="image-type-overlay">
-                                        <span class="image-type-label">Cannabis Flower</span>
-                                    </div>
                                 </div>
                             <?php else : ?>
                                 <div class="strain-placeholder-image">

@@ -1,10 +1,25 @@
 /**
- * SKYWORLD PROFESSIONAL CANNABIS THEME STYLES
+ * SKYWORLD CANNABIS THEME STYLES
  * Created by John Dough - MADE TO INSPIRE
- * Professional cannabis business styling
+ * Organized by page and functionality for scalable editing
+ * 
+ * TABLE OF CONTENTS:
+ * 1. CORE FOUNDATION (Reset, Variables, Typography)
+ * 2. GLOBAL COMPONENTS (Header, Footer, Buttons)
+ * 3. HOMEPAGE STYLES
+ * 4. ABOUT PAGE STYLES
+ * 5. STRAIN LIBRARY/ARCHIVE STYLES
+ * 6. PRODUCT PAGES STYLES
+ * 7. MEDIA KIT PAGE STYLES
+ * 8. ANIMATIONS & UTILITIES
+ * 9. RESPONSIVE DESIGN
  */
 
-/* ==== CORE RESET & BASE ==== */
+/* ================================
+   1. CORE FOUNDATION
+   ================================ */
+
+/* Reset & Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -19,7 +34,7 @@ body {
     overflow-x: hidden;
 }
 
-/* ==== PROFESSIONAL CANNABIS COLOR PALETTE ==== */
+/* CSS Variables - Professional Cannabis Color Palette */
 :root {
     --skyworld-primary: #2d5016;      /* Deep cannabis green */
     --skyworld-secondary: #4a7c59;    /* Professional green */
@@ -31,19 +46,19 @@ body {
     --skyworld-text: #2d3436;
     --skyworld-border: #e1e8ed;
     
-    /* Front-page compatibility variables */
-    --color-sativa: #2d5016;          /* Same as primary */
-    --color-indica: #4a7c59;          /* Same as secondary */
-    --color-hybrid: #8fbc8f;          /* Same as accent */
-    --color-card-bg: #ffffff;         /* Card background */
-    --color-text: #2d3436;            /* Same as text */
-    --color-text-muted: #666666;      /* Muted text */
-    --color-orange-brand: #d4af37;    /* Same as gold */
-    --border-radius: 8px;             /* Standard border radius */
-    --transition: all 0.3s ease;      /* Standard transition */
+    /* Compatibility variables for legacy components */
+    --color-sativa: #2d5016;
+    --color-indica: #4a7c59;
+    --color-hybrid: #8fbc8f;
+    --color-card-bg: #ffffff;
+    --color-text: #2d3436;
+    --color-text-muted: #666666;
+    --color-orange-brand: #d4af37;
+    --border-radius: 8px;
+    --transition: all 0.3s ease;
 }
 
-/* ==== TYPOGRAPHY ==== */
+/* Typography Foundation */
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Inter', sans-serif;
     font-weight: 600;
@@ -68,7 +83,11 @@ a:hover {
     color: var(--skyworld-secondary);
 }
 
-/* ==== HEADER STYLES ==== */
+/* ================================
+   2. GLOBAL COMPONENTS
+   ================================ */
+
+/* Header Navigation */
 .site-header {
     background: var(--skyworld-white);
     border-bottom: 1px solid var(--skyworld-border);
@@ -182,7 +201,11 @@ a:hover {
     }
 }
 
-/* ==== MAIN CONTENT ==== */
+/* ================================
+   3. HOMEPAGE STYLES
+   ================================ */
+
+/* Main Layout */
 .skyworld-front-page {
     min-height: 100vh;
 }
@@ -191,7 +214,7 @@ a:hover {
     padding-top: 2rem;
 }
 
-/* ==== HERO SECTION ==== */
+/* Hero Section */
 .skyworld-hero {
     background: linear-gradient(135deg, var(--skyworld-primary) 0%, var(--skyworld-secondary) 100%);
     color: var(--skyworld-white);
@@ -232,7 +255,7 @@ a:hover {
     opacity: 0.9;
 }
 
-/* ==== CONTENT SECTIONS ==== */
+/* Homepage Content Sections */
 .skyworld-section {
     padding: 4rem 0;
     max-width: 1200px;
@@ -262,7 +285,7 @@ a:hover {
     opacity: 0.8;
 }
 
-/* ==== PRODUCT GRID ==== */
+/* Homepage Product Grid */
 .skyworld-products-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -304,7 +327,7 @@ a:hover {
     margin-bottom: 1rem;
 }
 
-/* ==== BUTTONS ==== */
+/* Global Buttons */
 .skyworld-btn {
     display: inline-block;
     padding: 0.75rem 1.5rem;
@@ -335,7 +358,7 @@ a:hover {
     color: var(--skyworld-white);
 }
 
-/* ==== FOOTER STYLES ==== */
+/* Footer */
 .skyworld-footer {
     background: var(--skyworld-dark);
     color: var(--skyworld-white);
@@ -554,39 +577,246 @@ a:hover {
     }
 }
 
-/* ==== RESPONSIVE DESIGN ==== */
-@media (max-width: 768px) {
-    .skyworld-nav-header {
-        flex-direction: column;
-        gap: 1rem;
-    }
-    
-    .skyworld-nav ul {
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
-    }
-    
-    .skyworld-hero h1 {
-        font-size: 2.5rem;
-    }
-    
-    .skyworld-section {
-        padding-left: 1rem;
-        padding-right: 1rem;
-    }
-    
-    .skyworld-products-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .skyworld-footer-links {
-        flex-direction: column;
-        gap: 1rem;
-    }
+/* ================================
+   4. ABOUT PAGE STYLES
+   ================================ */
+
+.site-about {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    line-height: 1.6;
 }
 
-/* ==== PROFESSIONAL CANNABIS ACCENTS ==== */
+.site-about h1 {
+    font-size: 3rem;
+    color: var(--skyworld-primary);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+}
+
+.site-about h2 {
+    font-size: 2rem;
+    color: var(--skyworld-secondary);
+    margin: 2.5rem 0 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--skyworld-accent);
+}
+
+.brand-story {
+    background: var(--skyworld-light);
+    padding: 2rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    border-left: 4px solid var(--skyworld-primary);
+}
+
+.brand-story p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: var(--skyworld-text);
+}
+
+.social-media ul {
+    list-style: none;
+    padding: 0;
+}
+
+.social-media li {
+    background: var(--skyworld-white);
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--skyworld-border);
+}
+
+.social-media a {
+    color: var(--skyworld-primary);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.social-media a:hover {
+    color: var(--skyworld-secondary);
+    text-decoration: underline;
+}
+
+.team-photo {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin: 1rem 0;
+}
+
+.founders, .team-members {
+    margin: 2rem 0;
+}
+
+.founder-profile, .member-profile {
+    background: var(--skyworld-white);
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--skyworld-border);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.founder-profile h3, .member-profile h3 {
+    color: var(--skyworld-primary);
+    margin-bottom: 0.5rem;
+    font-size: 1.4rem;
+}
+
+.founder-profile h4, .member-profile h4 {
+    color: var(--skyworld-secondary);
+    margin-bottom: 1rem;
+    font-weight: 500;
+    font-style: italic;
+}
+
+/* ================================
+   5. STRAIN LIBRARY/ARCHIVE STYLES
+   ================================ */
+
+.strain-library-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.strain-library-hero {
+    text-align: center;
+    padding: 4rem 0;
+    background: linear-gradient(135deg, var(--skyworld-light) 0%, rgba(141, 188, 143, 0.1) 100%);
+    border-radius: 20px;
+    margin-bottom: 3rem;
+}
+
+.hero-title {
+    font-size: 4rem;
+    font-weight: 800;
+    color: var(--skyworld-primary);
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+    font-family: 'Inter', sans-serif;
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    color: var(--skyworld-text);
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    line-height: 1.6;
+}
+
+.hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 1.5rem;
+    background: var(--skyworld-white);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--skyworld-border);
+    min-width: 150px;
+}
+
+.stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--skyworld-primary);
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--skyworld-text);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Strain Grid Styling */
+.strain-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.strain-card {
+    background: var(--skyworld-white);
+    border-radius: 12px;
+    border: 1px solid var(--skyworld-border);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.strain-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Filters and Search */
+.strain-filters {
+    background: var(--skyworld-white);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--skyworld-border);
+    margin-bottom: 2rem;
+}
+
+.filter-section {
+    margin-bottom: 1.5rem;
+}
+
+.filter-section h3 {
+    color: var(--skyworld-primary);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--skyworld-border);
+    background: var(--skyworld-white);
+    color: var(--skyworld-text);
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--skyworld-primary);
+    color: var(--skyworld-white);
+    border-color: var(--skyworld-primary);
+}
+
+/* ================================
+   6. PRODUCT PAGES STYLES
+   ================================ */
+
+/* Product Card Enhancements */
 .cannabis-accent {
     color: var(--skyworld-primary);
 }
@@ -607,72 +837,9 @@ a:hover {
     font-size: 1.1rem;
 }
 
-/* ==== UTILITY CLASSES ==== */
-.text-center { text-align: center; }
-.text-primary { color: var(--skyworld-primary); }
-.bg-light { background: var(--skyworld-light); }
-.mt-1 { margin-top: 1rem; }
-.mt-2 { margin-top: 2rem; }
-.mb-1 { margin-bottom: 1rem; }
-.mb-2 { margin-bottom: 2rem; }
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
-}
 
-/* Age Gate */
-.age-gate-modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.8);
-    z-index: 9999;
-    justify-content: center;
-    align-items: center;
-}
 
-.age-gate-content {
-    background: white;
-    padding: 2rem;
-    text-align: center;
-    max-width: 400px;
-    border: 2px solid black;
-}
-
-.age-gate-button {
-    background: black;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    margin: 0.5rem;
-    cursor: pointer;
-}
-
-.age-gate-button:hover {
-    background: white;
-    color: black;
-    border: 1px solid black;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .skyworld-nav-menu {
-        display: none;
-    }
-    
-    .skyworld-nav-container {
-        flex-direction: column;
-        gap: 1rem;
-    }
-}
-
-/* ==== ENHANCED PRODUCT CARD STYLES ==== */
-
-/* Product Card Layout */
+/* Enhanced Product Card Layout */
 .product-card-header {
     margin-bottom: 1rem;
 }
@@ -859,9 +1026,7 @@ a:hover {
     }
 }
 
-/* ==== MODERN ASYMMETRICAL LAYOUT STYLES ==== */
-
-/* Modern Layout Container */
+/* Modern Asymmetrical Homepage Layout */
 .skyworld-modern-layout {
     min-height: 100vh;
     background: linear-gradient(135deg, #f8fafc 0%, #e8f4f8 100%);
@@ -1700,6 +1865,519 @@ a:hover {
 .card-image-placeholder i {
     opacity: 0.6;
     animation: float 3s ease-in-out infinite;
+}
+
+
+
+/* ================================
+   7. MEDIA KIT PAGE STYLES
+   ================================ */
+
+.media-kit-section {
+    padding: 4rem 0;
+    background: var(--skyworld-white);
+}
+
+.media-kit-section:nth-child(even) {
+    background: var(--skyworld-light);
+}
+
+.media-kit-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    color: var(--skyworld-primary);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.section-header p {
+    font-size: 1.1rem;
+    color: var(--skyworld-text);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Press & Media Inquiries Section */
+.about-skyworld {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-skyworld h3 {
+    font-size: 1.8rem;
+    color: var(--skyworld-secondary);
+    margin-bottom: 1.5rem;
+    margin-top: 2rem;
+}
+
+.about-skyworld p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--skyworld-text);
+    margin-bottom: 1.5rem;
+}
+
+.media-contact {
+    background: var(--skyworld-white);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--skyworld-border);
+    margin-top: 2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.media-contact h3 {
+    color: var(--skyworld-primary);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.contact-email {
+    color: var(--skyworld-primary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.contact-email:hover {
+    color: var(--skyworld-secondary);
+    text-decoration: underline;
+}
+
+/* Logos Section */
+.logos-section {
+    padding: 4rem 0;
+    background: var(--skyworld-light);
+}
+
+.logo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.logo-card {
+    background: var(--skyworld-white);
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid var(--skyworld-border);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.logo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.logo-card div:first-child {
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    background: #fafafa;
+    border-radius: 8px;
+}
+
+.logo-card img {
+    max-width: 100%;
+    max-height: 120px;
+    object-fit: contain;
+}
+
+.logo-placeholder {
+    font-weight: 700;
+    color: var(--skyworld-primary);
+    font-size: 1.2rem;
+}
+
+.logo-card h3 {
+    font-size: 1.3rem;
+    color: var(--skyworld-primary);
+    margin-bottom: 0.5rem;
+}
+
+.logo-card p {
+    color: var(--skyworld-text);
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.download-btn {
+    display: inline-block;
+    background: var(--skyworld-primary);
+    color: var(--skyworld-white);
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.download-btn:hover {
+    background: var(--skyworld-secondary);
+    transform: translateY(-2px);
+}
+
+.usage-guidelines {
+    background: var(--skyworld-white);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--skyworld-border);
+    margin-top: 2rem;
+}
+
+.usage-guidelines h3 {
+    color: var(--skyworld-primary);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.usage-guidelines ul {
+    list-style: none;
+    padding: 0;
+}
+
+.usage-guidelines li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--skyworld-border);
+    color: var(--skyworld-text);
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.usage-guidelines li:before {
+    content: "✓";
+    color: var(--skyworld-primary);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+.usage-guidelines li:last-child {
+    border-bottom: none;
+}
+
+/* Brand Guidelines Section */
+.brand-guidelines-section {
+    padding: 4rem 0;
+    background: var(--skyworld-white);
+}
+
+.brand-content {
+    display: grid;
+    gap: 3rem;
+}
+
+.color-palette h3,
+.typography-section h3 {
+    font-size: 2rem;
+    color: var(--skyworld-primary);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.color-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.color-swatch {
+    text-align: center;
+    background: var(--skyworld-white);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--skyworld-border);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.color-box {
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: white;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.color-swatch:nth-child(1) .color-box {
+    background: #f15b27;
+}
+
+.color-swatch:nth-child(2) .color-box {
+    background: #54a5db;
+}
+
+.color-swatch:nth-child(3) .color-box {
+    background: #000000;
+}
+
+.color-swatch:nth-child(4) .color-box {
+    background: #666666;
+}
+
+.color-info {
+    padding: 1.5rem;
+}
+
+.color-info h4 {
+    font-size: 1.2rem;
+    color: var(--skyworld-primary);
+    margin-bottom: 0.5rem;
+}
+
+.color-info p {
+    color: var(--skyworld-text);
+    font-family: monospace;
+    font-size: 0.95rem;
+}
+
+.typography-section {
+    margin-top: 3rem;
+}
+
+.font-example {
+    background: var(--skyworld-light);
+    padding: 2rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--skyworld-border);
+}
+
+.font-example h4 {
+    color: var(--skyworld-primary);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.font-sample {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--skyworld-text);
+}
+
+.prometo-sample {
+    font-family: 'Prometo', serif;
+    font-weight: 700;
+}
+
+.primary-sample {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+}
+
+.font-example p {
+    color: var(--skyworld-text);
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+/* ================================
+   8. ANIMATIONS & UTILITIES
+   ================================ */
+
+/* Utility Classes */
+.text-center { text-align: center; }
+.text-primary { color: var(--skyworld-primary); }
+.bg-light { background: var(--skyworld-light); }
+.mt-1 { margin-top: 1rem; }
+.mt-2 { margin-top: 2rem; }
+.mb-1 { margin-bottom: 1rem; }
+.mb-2 { margin-bottom: 2rem; }
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Age Gate Modal */
+.age-gate-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
+
+.age-gate-content {
+    background: white;
+    padding: 2rem;
+    text-align: center;
+    max-width: 400px;
+    border: 2px solid black;
+}
+
+.age-gate-button {
+    background: black;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem;
+    cursor: pointer;
+}
+
+.age-gate-button:hover {
+    background: white;
+    color: black;
+    border: 1px solid black;
+}
+
+/* Responsive Design for Media Kit */
+@media (max-width: 768px) {
+    .media-kit-section {
+        padding: 2rem 0;
+    }
+    
+    .media-kit-section .container {
+        padding: 0 1rem;
+    }
+    
+    .section-header h2 {
+        font-size: 2rem;
+    }
+    
+    .logo-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .color-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    .font-sample {
+        font-size: 2rem;
+    }
+    
+    .about-skyworld {
+        padding: 0 1rem;
+    }
+}
+
+/* ================================
+   9. RESPONSIVE DESIGN
+   ================================ */
+
+/* Tablet & Mobile Navigation */
+@media (max-width: 768px) {
+    .skyworld-nav-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .skyworld-nav ul {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    .skyworld-hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .skyworld-section {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    .skyworld-products-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .skyworld-footer-links {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    /* About Page Mobile */
+    .site-about {
+        padding: 1rem;
+    }
+    
+    .site-about h1 {
+        font-size: 2.5rem;
+    }
+    
+    /* Strain Library Mobile */
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-stats {
+        gap: 1rem;
+    }
+    
+    .stat-item {
+        min-width: 120px;
+        padding: 1rem;
+    }
+    
+    .strain-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    /* Media Kit Mobile */
+    .section-header h2 {
+        font-size: 2rem;
+    }
+    
+    .logo-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .color-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    .font-sample {
+        font-size: 2rem;
+    }
+    
+    .about-skyworld {
+        padding: 0 1rem;
+    }
+}
+
+/* Mobile Portrait */
+@media (max-width: 480px) {
+    .color-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .section-header h2 {
+        font-size: 1.8rem;
+    }
+    
+    .font-sample {
+        font-size: 1.8rem;
+    }
 }
 
 /* Additional debugging styles */
