@@ -284,50 +284,145 @@ function skyworld_customizer_css() {
     ?>
     <style type="text/css" id="skyworld-customizer-css">
         :root {
-            --skyworld-primary: <?php echo esc_attr($primary_color); ?>;
-            --skyworld-secondary: <?php echo esc_attr($secondary_color); ?>;
-            --skyworld-bg: <?php echo esc_attr($bg_color); ?>;
-            --skyworld-text: <?php echo esc_attr($text_color); ?>;
-            --skyworld-container-width: <?php echo esc_attr($container_width); ?>px;
-            --skyworld-section-spacing: <?php echo esc_attr($section_spacing); ?>px;
+            --color-primary: <?php echo esc_attr($primary_color); ?>;
+            --color-secondary: <?php echo esc_attr($secondary_color); ?>;
+            --color-sativa: <?php echo esc_attr($primary_color); ?>;
+            --color-bg: <?php echo esc_attr($bg_color); ?>;
+            --color-text: <?php echo esc_attr($text_color); ?>;
+            --container-width: <?php echo esc_attr($container_width); ?>px;
+            --section-padding: <?php echo esc_attr($section_spacing); ?>px;
         }
         
         /* Layout */
         .container {
             max-width: <?php echo esc_attr($container_width); ?>px;
+            margin: 0 auto;
+            padding: 0 2rem;
         }
         
         /* Background */
-        .single-strain-page,
         body {
             background-color: <?php echo esc_attr($bg_color); ?>;
-        }
-        
-        /* Typography */
-        h1, .strain-title {
-            font-size: <?php echo esc_attr($h1_size); ?>px;
-            color: <?php echo esc_attr($secondary_color); ?>;
-        }
-        
-        h2, .section-title {
-            font-size: <?php echo esc_attr($h2_size); ?>px;
-            color: <?php echo esc_attr($secondary_color); ?>;
-        }
-        
-        h3, .strain-name, .product-name {
-            font-size: <?php echo esc_attr($h3_size); ?>px;
-            color: <?php echo esc_attr($secondary_color); ?>;
-        }
-        
-        body, p, .strain-description, .product-type {
-            font-size: <?php echo esc_attr($body_size); ?>px;
             color: <?php echo esc_attr($text_color); ?>;
         }
         
-        /* Colors */
-        .strain-type-badge.hybrid,
-        .effect-tag,
-        .qa-badge,
+        /* Typography */
+        .hero-title,
+        h1 {
+            font-size: <?php echo esc_attr($h1_size); ?>px !important;
+            color: <?php echo esc_attr($text_color); ?> !important;
+        }
+        
+        .section-header h2,
+        .about-text h2,
+        h2 {
+            font-size: <?php echo esc_attr($h2_size); ?>px !important;
+            color: <?php echo esc_attr($text_color); ?> !important;
+        }
+        
+        .feature-card h3,
+        .strain-name,
+        .product-title,
+        h3 {
+            font-size: <?php echo esc_attr($h3_size); ?>px !important;
+            color: <?php echo esc_attr($text_color); ?> !important;
+        }
+        
+        body,
+        p,
+        .hero-subtitle,
+        .feature-card p,
+        .product-description,
+        .strain-description,
+        .about-text p {
+            font-size: <?php echo esc_attr($body_size); ?>px !important;
+            color: <?php echo esc_attr($text_color); ?> !important;
+        }
+        
+        /* Buttons */
+        .btn-primary,
+        .age-gate-yes {
+            background-color: <?php echo esc_attr($primary_color); ?> !important;
+            border-radius: <?php echo esc_attr($button_radius); ?> !important;
+            padding: <?php echo esc_attr($button_padding); ?> !important;
+            color: white !important;
+            border: none !important;
+        }
+        
+        .btn-primary:hover,
+        .age-gate-yes:hover {
+            background-color: <?php echo esc_attr($primary_color); ?>dd !important;
+        }
+        
+        .btn-secondary {
+            background-color: <?php echo esc_attr($bg_color); ?> !important;
+            color: <?php echo esc_attr($text_color); ?> !important;
+            border: 2px solid <?php echo esc_attr($primary_color); ?>33 !important;
+            border-radius: <?php echo esc_attr($button_radius); ?> !important;
+            padding: <?php echo esc_attr($button_padding); ?> !important;
+        }
+        
+        .btn-secondary:hover {
+            background-color: <?php echo esc_attr($primary_color); ?> !important;
+            color: white !important;
+            border-color: <?php echo esc_attr($primary_color); ?> !important;
+        }
+        
+        .btn-outline {
+            background-color: transparent !important;
+            color: <?php echo esc_attr($text_color); ?> !important;
+            border: 2px solid <?php echo esc_attr($primary_color); ?>66 !important;
+            border-radius: <?php echo esc_attr($button_radius); ?> !important;
+            padding: <?php echo esc_attr($button_padding); ?> !important;
+        }
+        
+        .btn-outline:hover {
+            border-color: <?php echo esc_attr($primary_color); ?> !important;
+            color: <?php echo esc_attr($primary_color); ?> !important;
+        }
+        
+        /* Accents and Highlights */
+        .hero-badge,
+        .feature-icon,
+        .product-thc,
+        .strain-type.sativa,
+        .effect-tag {
+            background-color: <?php echo esc_attr($primary_color); ?>1a !important;
+            color: <?php echo esc_attr($primary_color); ?> !important;
+        }
+        
+        .stat-number {
+            color: <?php echo esc_attr($primary_color); ?> !important;
+        }
+        
+        /* Links */
+        a {
+            color: <?php echo esc_attr($primary_color); ?>;
+        }
+        
+        a:hover {
+            color: <?php echo esc_attr($primary_color); ?>cc;
+        }
+        
+        /* Section Spacing */
+        .hero-section,
+        .features-section,
+        .products-section,
+        .strains-section,
+        .about-section {
+            padding: <?php echo esc_attr($section_spacing); ?>px 0 !important;
+        }
+        
+        /* Brand Colors Integration */
+        .strain-type.indica {
+            background-color: <?php echo esc_attr($secondary_color); ?>1a !important;
+            color: <?php echo esc_attr($secondary_color); ?> !important;
+        }
+        
+        .strain-type.hybrid {
+            background: linear-gradient(45deg, <?php echo esc_attr($primary_color); ?>1a, <?php echo esc_attr($secondary_color); ?>1a) !important;
+            color: <?php echo esc_attr($primary_color); ?> !important;
+        }
         .product-potency,
         .thc-stat {
             background-color: <?php echo esc_attr($primary_color); ?>;
