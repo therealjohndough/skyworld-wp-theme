@@ -306,4 +306,4 @@ For technical support and customization requests, please contact the development
 ---
 
 **Skyworld Cannabis** - Premium Indoor Flower for New York Dispensaries  
-*Indigenous-owned cultivator committed to quality, compliance, and community.*
+*Indigenous-owned cultivator committed to quality, compliance, and community.*# Site reset to working state - Sun Sep 28 21:48:22 EDT 2025
