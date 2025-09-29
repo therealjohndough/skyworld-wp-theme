@@ -138,6 +138,21 @@ if [ -f "functions.php" ]; then
         if (!function_exists('get_stylesheet_directory_uri')) {
             function get_stylesheet_directory_uri() { return 'http://example.com/wp-content/themes/skyworld-wp-child'; }
         }
+        if (!function_exists('remove_theme_support')) {
+            function remove_theme_support(\\\$feature) { return true; }
+        }
+        if (!function_exists('add_theme_support')) {
+            function add_theme_support(\\\$feature, \\\$args = null) { return true; }
+        }
+        if (!function_exists('wp_head')) {
+            function wp_head() { return true; }
+        }
+        if (!function_exists('wp_footer')) {
+            function wp_footer() { return true; }
+        }
+        if (!function_exists('register_nav_menus')) {
+            function register_nav_menus(\\\$locations = array()) { return true; }
+        }
         
         // Try to include functions.php
         ob_start();
